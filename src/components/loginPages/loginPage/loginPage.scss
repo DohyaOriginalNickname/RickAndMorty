@@ -1,0 +1,45 @@
+@import "../../../styles/variables.scss";
+@import '../../../styles/mixins.scss';
+
+.sign-in-page{
+    height: 100vh;
+    background-color: $blackTheme;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 28px;
+    gap: 40px;
+    &__title{
+        width: 267.83px;
+        height: 376.22px;
+    }
+    &__form{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        .field{
+            @include field-property(true);
+        }
+        .recovery-client{
+            text-align: right;
+            letter-spacing: 0.25px;
+            font-size: 14px;
+            line-height: 20px;
+            color: $noActiveElement;
+        }
+        .button-submit{
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            @include button;
+            p{
+                color: $noActiveElement;
+                a{
+                    color: #43D049;
+                }                    
+            }
+        }
+    }
+}

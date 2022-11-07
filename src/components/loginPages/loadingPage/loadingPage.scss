@@ -1,0 +1,14 @@
+@import "../../../styles/variables.scss";
+
+.loading{
+    height: 100vh;
+    display: flex;      
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../../assets/loadingPage/background.png');
+    background-color: $LoadingBackground;
+    &__title{
+        margin: auto 40px;
+    }
+}

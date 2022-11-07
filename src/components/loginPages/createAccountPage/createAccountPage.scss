@@ -1,0 +1,57 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.create-account{
+    height: 100vh;
+    background-color: $blackTheme;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0 ;
+    gap: 40px;
+    &__header{
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        .arrow{
+            position: relative;
+            right: 20px;
+        }
+        .title{
+            font-size: $bigSize;
+            line-height: 36px;
+            color: $blackThemeText;
+            font-weight: 700;
+        }
+    }
+    &__form{
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+        .user-data{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            .field{
+                @include field-property;
+            }
+        }
+        .account-data{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            .field{
+                @include field-property(true);
+            }
+        }
+        .border{
+            width: 319px;
+            border: 2px solid rgba(21, 42, 58, 0.5);
+        }
+        .button-submit{
+            position: absolute;
+            bottom: 25px;
+            @include button;
+        }
+    }
+}
