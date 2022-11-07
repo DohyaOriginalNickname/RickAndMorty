@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 import title from "../../../assets/loadingPage/title.png"
 import './loginPage.scss'
 
@@ -17,11 +19,11 @@ const LoginPage = () => {
                 <div className="field">
                     <label htmlFor="pass">Пароль</label>
                     <input type="password" id="pass" placeholder="Пароль" className="field__pass"/>
-                    <p className="recovery-client"><a>Забыли пароль?</a></p>
+                    <Link to={'/recoveryPassword'}><p className="recovery-client">Забыли пароль?</p></Link>
                 </div>
                 <div className="button-submit">
-                    <button>Войти</button>
-                    <p>У вас еще нет аккаунта? <a href="#">Создать</a> </p>
+                    <Link to={'/listOfCharacters'}><button>Войти</button></Link>
+                    <p>У вас еще нет аккаунта? <Link to={'/createAccount'}><span>Создать</span></Link></p>
                 </div>
             </form>
         </div>

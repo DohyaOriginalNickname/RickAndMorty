@@ -36,7 +36,7 @@
             @include button;
             p{
                 color: $noActiveElement;
-                a{
+                span{
                     color: #43D049;
                 }                    
             }

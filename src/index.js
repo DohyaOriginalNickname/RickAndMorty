@@ -3,9 +3,11 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 
-import LoginPage from './components/loginPages/loginPage/loginPage';
-import PasswordRecovery from './components/loginPages/passwordRecoveryPage/passwordRecoveryPage';
-import CreateAccountPage from './components/loginPages/createAccountPage/createAccountPage';
+
+import App from './components/App/App';
+// import LoginPage from './components/loginPages/loginPage/loginPage';
+// import PasswordRecovery from './components/loginPages/passwordRecoveryPage/passwordRecoveryPage';
+// import CreateAccountPage from './components/loginPages/createAccountPage/createAccountPage';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -13,7 +15,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <LoginPage/>
+      <App />
     </Provider>
   </React.StrictMode>
 );

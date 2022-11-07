@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import arrow from '../../../assets/other/bigArrow.png'
 
 import './createAccountPage.scss'
@@ -6,7 +8,7 @@ const CreateAccountPage = () => {
         <div className="create-account">
             <div className="create-account__header">
                 <div className="arrow">
-                    <img src={arrow} alt="backArrow" />
+                    <Link to={'/'}><img src={arrow} alt="backArrow" /></Link>
                 </div>
                 <div className="title">
                     <p>Создание аккаунта</p>
