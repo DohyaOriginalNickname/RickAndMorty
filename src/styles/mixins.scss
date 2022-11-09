@@ -56,3 +56,11 @@
         height: 48px;
     }
 }
+
+
+@mixin text($size, $line-height, $letter-spacing, $weight: $regular-font-weight) {
+    font-weight: $weight;
+    font-size: $size;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+}

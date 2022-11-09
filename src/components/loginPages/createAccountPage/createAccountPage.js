@@ -44,7 +44,7 @@ const CreateAccountPage = () => {
                         </div>
                     </div>
                     <div className="button-submit">
-                        <button>Войти</button>
+                        <Link to={'/listOfCharacters'}><button>Войти</button></Link>
                     </div>
                 </form>
             </div>
