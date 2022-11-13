@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import Group from '../../../assets/other/Group.png'
 import Rick from '../../../assets/image.png'
 
@@ -8,14 +10,16 @@ const ListTemplate = (props) => {
 
     const elements = props.arr.map((i,index) => {
         return (
-            <li className="item" key={index}>
-                <img src={Rick} alt="character" />
-                <div className="item__description">
-                    <p className="live">{i.live ? 'Живой': 'Мертвый'}</p>
-                    <p className="name">{i.name}</p>
-                    <p className="race">{i.raceAndGender}</p>
-                </div>
-            </li>
+            <Link to={"/Character"}>
+                <li className="item" key={index}>
+                    <img src={Rick} alt="character" />
+                    <div className="item__description">
+                        <p className="live">{i.live ? 'Живой': 'Мертвый'}</p>
+                        <p className="name">{i.name}</p>
+                        <p className="race">{i.raceAndGender}</p>
+                    </div>
+                </li>
+            </Link>
         )
     })
 

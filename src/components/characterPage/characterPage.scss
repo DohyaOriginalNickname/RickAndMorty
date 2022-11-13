@@ -1,0 +1,188 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+@mixin name ($flex: true) {
+    @if $flex == true{
+        .title {
+            color: $noActiveElement;
+            @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+        }
+        .data {
+            @include text($smallSize-3, $regular-line-height, $regular-letter-spacing);
+        }
+    } @else {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .title {
+            color: $noActiveElement;
+            @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+        }
+        .data {
+            @include text($smallSize-3, $regular-line-height, $regular-letter-spacing);
+        }
+    }
+}
+
+.character-page {
+    height: 100%;
+    background: $blackTheme;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $blackThemeText;
+    .header {
+        .background {
+            width: 100%;
+            .background__image {
+                height: 218px;
+                background: linear-gradient(
+                        180deg,
+                        rgba(0, 0, 0, 0.65) 0%,
+                        rgba(11, 30, 45, 0) 37.29%,
+                        rgba(11, 30, 45, 0) 68.93%
+                    ),
+                    rgba(11, 30, 45, 0.65);
+                backdrop-filter: blur(4px);
+                background-color: wheat;
+                .arrow {
+                    position: relative;
+                    left: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 48px;
+                    height: 48px;
+                    background-color: $blackTheme;
+                    border-radius: 100px;
+                }
+            }
+        }
+
+        .title {
+            position: relative;
+            top: -70px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 24px;
+            .title__avatar {
+                img {
+                    border: 8px solid #0b1e2d;
+                    border-radius: 100px;
+                    width: 146px;
+                    height: 146px;
+                }
+            }
+            .title__descripion {
+                display: flex;
+                flex-direction: column;
+                gap: 36px;
+                .name {
+                    @include text($bigSize, $biggest-line-height, $regular-letter-spacing);
+                }
+                .live {
+                    color: #43d049;
+                    text-transform: uppercase;
+                    @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                }
+                .dead {
+                    color: #eb5757;
+                    text-transform: uppercase;
+                    @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                }
+                .char-description {
+                    margin: 0 16px;
+                    text-align: start;
+                    @include text($smallSize-2, $regular-line-height, $big-letter-spacing);
+                }
+            }
+        }
+    }
+
+    .character-data {
+        position: relative;
+        top: -46px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 16px;
+        width: 100%;
+        .gender-and-race {
+            display: flex;
+            gap: 118px;
+            .gender {
+                @include name;
+            }
+            .race {
+                @include name;
+            }
+        }
+        .other-data {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            .location {
+                @include name(false);
+            }
+            .position {
+                @include name(false);
+            }
+        }
+    }
+    .border {
+        width: 100%;
+        border: 2px solid #152A3A;
+        margin-bottom: 36px;
+    }
+
+    .episods {
+        width: 100%;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .title{
+                @include text($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+            }
+            .subtitle{
+                color: $noActiveElement;
+                @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+            }
+        }
+        .episods__list {
+            display: flex;
+            flex-direction: column;
+            .episods__item {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 24px;
+                .description{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    p{
+                        width: 100%;
+                    }
+                    p.serial-number{
+                        color: #22A2BDDE;
+                        text-transform: uppercase;
+                        @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                    }
+                    p.series-title{
+                        @include text($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight)
+                    }
+                    p.release-date{
+                        color:$noActiveElement;
+                        @include text($smallSize-3, $regular-line-height, $small-letter-spacing);
+                    }
+                }
+            }
+        }
+    }
+}

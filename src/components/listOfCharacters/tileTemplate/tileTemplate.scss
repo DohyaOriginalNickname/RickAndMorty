@@ -17,6 +17,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
+    overflow-y: scroll;
+    height: 610px;
     .item{
         display: flex;
         flex-direction: column;
@@ -44,6 +46,7 @@
                 @include text($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
             }
             .race{
+                color: $noActiveElement;
                 @include text($smallSize-1, $small-line-height, $big-letter-spacing);
             }
         }
