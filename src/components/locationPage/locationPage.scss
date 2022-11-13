@@ -1,0 +1,119 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.location-page {
+    background: $blackTheme;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $blackThemeText;
+    &__header {
+        z-index: 0;
+        backdrop-filter: blur(4px);
+        background: linear-gradient(180deg, rgba(11, 30, 45, 0) 68.93%, rgba(0, 0, 0, 0.65) 100%),
+            linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(11, 30, 45, 0) 37.29%, rgba(11, 30, 45, 0) 68.93%);
+        .arrow {
+            z-index: 1;
+            position: absolute;
+            left: 16px;
+            top: 16px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            padding: 12px;
+            gap: 10px;
+            background: #152a3a;
+            border-radius: 100px;
+        }
+    }
+
+    .main {
+        position: relative;
+        background: $blackTheme;
+        top: -25px;
+        border-top-left-radius: 26px;
+        border-top-right-radius: 26px;
+        width: 100%;
+        padding: 22px 16px;
+        .location-data {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-bottom: 36px;
+            .main-data {
+                display: flex;
+                flex-direction: column;
+                .title {
+                    color: $blackThemeText;
+                    @include text($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+                }
+                div {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    color: $noActiveElement;
+                    p {
+                        @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+                    }
+                    .dot {
+                        width: 2px;
+                        height: 2px;
+                        background: #6e798c;
+                    }
+                }
+            }
+            .description {
+                @include text($smallSize-2, $regular-line-height, $regular-letter-spacing);
+            }
+        }
+
+        .related-characters {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            .title {
+                @include text($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+            }
+            .list-of-characters {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                &__item {
+                    display: flex;
+                    gap: 18px;
+                    align-items: center;
+                    .description {
+                        width: 100%;
+                        .live {
+                            color: #43d049;
+                            text-transform: uppercase;
+                            @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                        }
+                        .dead {
+                            color: #eb5757;
+                            text-transform: uppercase;
+                            @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                        }
+                        .name {
+                            color: $blackThemeText;
+                            @include text(
+                                $regularSize-1,
+                                $regular-line-height-2,
+                                $big-letter-spacing,
+                                $bold-font-weight
+                            );
+                        }
+                        .race {
+                            color: $noActiveElement;
+                            @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
