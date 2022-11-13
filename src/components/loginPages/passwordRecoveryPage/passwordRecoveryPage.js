@@ -25,7 +25,9 @@ const PasswordRecovery = () => {
                         <input type="password" id="pass" placeholder="Пароль" className="field__pass"/>
                     </div>
                     <div className="button-submit">
-                        <button>Изменить</button>
+                        <Link to={'/'}>
+                            <button>Изменить</button>
+                        </Link>
                     </div>
                 </form>
             </div>
