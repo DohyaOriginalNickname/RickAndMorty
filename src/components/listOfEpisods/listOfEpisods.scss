@@ -23,7 +23,7 @@
             width: 280px;
             color: $noActiveElement;
             background: $blackThemeBorder;
-            @include text($regularSize-1, $regular-line-height-2, $big-letter-spacing);
+            @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing);
         }
     }
     .list-of-seasons {
@@ -44,7 +44,7 @@
             p {
                 width: 76px;
                 text-transform: uppercase;
-                @include text($smallSize-3, $regular-line-height-2, $biggest-letter-spacing, $bold-font-weight);
+                @include text-style($smallSize-3, $regular-line-height-2, $biggest-letter-spacing, $bold-font-weight);
             }
         }
         &__item_active {
@@ -55,7 +55,7 @@
             p {
                 width: 76px;
                 text-transform: uppercase;
-                @include text($smallSize-3, $regular-line-height-2, $biggest-letter-spacing, $bold-font-weight);
+                @include text-style($smallSize-3, $regular-line-height-2, $biggest-letter-spacing, $bold-font-weight);
             }
             .active {
                 width: 70px;
@@ -87,15 +87,15 @@
                 p.serial-number {
                     color: #22a2bdde;
                     text-transform: uppercase;
-                    @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                    @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
                 }
                 p.series-title {
                     color:$blackThemeText;
-                    @include text($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
+                    @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
                 }
                 p.release-date {
                     color: $noActiveElement;
-                    @include text($smallSize-3, $regular-line-height, $small-letter-spacing);
+                    @include text-style($smallSize-3, $regular-line-height, $small-letter-spacing);
                 }
             }
         }

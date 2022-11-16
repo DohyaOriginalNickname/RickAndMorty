@@ -5,10 +5,10 @@
     @if $flex == true{
         .title {
             color: $noActiveElement;
-            @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+            @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
         }
         .data {
-            @include text($smallSize-3, $regular-line-height, $regular-letter-spacing);
+            @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
         }
     } @else {
         display: flex;
@@ -16,10 +16,10 @@
         justify-content: space-between;
         .title {
             color: $noActiveElement;
-            @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+            @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
         }
         .data {
-            @include text($smallSize-3, $regular-line-height, $regular-letter-spacing);
+            @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
         }
     }
 }
@@ -79,22 +79,22 @@
                 flex-direction: column;
                 gap: 36px;
                 .name {
-                    @include text($bigSize, $biggest-line-height, $regular-letter-spacing);
+                    @include text-style($bigSize, $biggest-line-height, $regular-letter-spacing);
                 }
                 .live {
                     color: #43d049;
                     text-transform: uppercase;
-                    @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                    @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
                 }
                 .dead {
                     color: #eb5757;
                     text-transform: uppercase;
-                    @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                    @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
                 }
                 .char-description {
                     margin: 0 16px;
                     text-align: start;
-                    @include text($smallSize-2, $regular-line-height, $big-letter-spacing);
+                    @include text-style($smallSize-2, $regular-line-height, $big-letter-spacing);
                 }
             }
         }
@@ -147,11 +147,11 @@
             justify-content: space-between;
             align-items: center;
             .title{
-                @include text($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+                @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
             }
             .subtitle{
                 color: $noActiveElement;
-                @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+                @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
             }
         }
         .episods__list {
@@ -172,14 +172,14 @@
                     p.serial-number{
                         color: #22A2BDDE;
                         text-transform: uppercase;
-                        @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                        @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
                     }
                     p.series-title{
-                        @include text($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight)
+                        @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight)
                     }
                     p.release-date{
                         color:$noActiveElement;
-                        @include text($smallSize-3, $regular-line-height, $small-letter-spacing);
+                        @include text-style($smallSize-3, $regular-line-height, $small-letter-spacing);
                     }
                 }
             }

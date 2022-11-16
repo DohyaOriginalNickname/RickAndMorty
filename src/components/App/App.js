@@ -8,6 +8,7 @@ import ListOfLocations from "../listOfLocations/listOfLocations";
 import ListOfEpisods from "../listOfEpisods/listOfEpisods";
 import CharacterPage from "../characterPage/characterPage";
 import LocationPage from "../locationPage/locationPage";
+import EpisodePage from "../episodePage/episodePage";
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                     <Route exact path="/listOfLocaions" element={<ListOfLocations/>}/>
                     <Route exact path="/location" element={<LocationPage/>}/>
                     <Route exact path="/listOfEpisods" element={<ListOfEpisods/>}/>
+                    <Route exact path="/episodePage" element={<EpisodePage/>}/>
                 </Routes>
             </div>       
         </Router> 

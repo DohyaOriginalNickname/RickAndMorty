@@ -51,7 +51,7 @@
         .button-submit{
             position: absolute;
             bottom: 25px;
-            @include button;
+            @include button-style;
         }
     }
 }

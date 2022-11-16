@@ -9,7 +9,7 @@
     p{
         width: 282px;
         text-transform: uppercase;
-        @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+        @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
     }
 }
 
@@ -34,20 +34,20 @@
             .live{
                 color: #43D049;
                 text-transform: uppercase;
-                @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
             }
             .dead{
                 color: #EB5757;
                 text-transform: uppercase;
-                @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
             }
             .name{
                 color: $blackThemeText;
-                @include text($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
+                @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
             }
             .race{
                 color: $noActiveElement;
-                @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+                @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
             }
         }
     }

@@ -44,6 +44,17 @@ const ListOfEpisods = () => {
 
     const renderSeasonsList = arraySeasons.map((item, index) => {
         return (
+            index === 0 ?
+            <div
+                className='list-of-seasons__item_active'
+                key={index}
+                ref={el => arrayOfRefs.current[index] = el}
+                onClick={() => classChange(index)}
+            >
+                <p>{item.seasonTitle}</p>
+                <p className='active'></p>
+            </div> 
+            : 
             <div
                 className='list-of-seasons__item'
                 key={index}
@@ -52,13 +63,13 @@ const ListOfEpisods = () => {
             >
                 <p>{item.seasonTitle}</p>
                 <p className='active'></p>
-            </div>
+            </div> 
         )
     })
 
     const renderEpisodsList = arrayEpisods.map((item, index) => {
         return (
-            <Link to={'./episodsPage'} key={index}>
+            <Link to={'/episodePage'} key={index}>
                 <li className="episod">
                     <div>
                         <img src={item.image} alt="character" />

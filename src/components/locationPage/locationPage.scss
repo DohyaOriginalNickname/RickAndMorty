@@ -49,7 +49,7 @@
                 flex-direction: column;
                 .title {
                     color: $blackThemeText;
-                    @include text($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+                    @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
                 }
                 div {
                     display: flex;
@@ -57,7 +57,7 @@
                     gap: 5px;
                     color: $noActiveElement;
                     p {
-                        @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+                        @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
                     }
                     .dot {
                         width: 2px;
@@ -67,7 +67,7 @@
                 }
             }
             .description {
-                @include text($smallSize-2, $regular-line-height, $regular-letter-spacing);
+                @include text-style($smallSize-2, $regular-line-height, $regular-letter-spacing);
             }
         }
 
@@ -76,7 +76,7 @@
             flex-direction: column;
             gap: 24px;
             .title {
-                @include text($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+                @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
             }
             .list-of-characters {
                 display: flex;
@@ -91,16 +91,16 @@
                         .live {
                             color: #43d049;
                             text-transform: uppercase;
-                            @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                            @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
                         }
                         .dead {
                             color: #eb5757;
                             text-transform: uppercase;
-                            @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                            @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
                         }
                         .name {
                             color: $blackThemeText;
-                            @include text(
+                            @include text-style(
                                 $regularSize-1,
                                 $regular-line-height-2,
                                 $big-letter-spacing,
@@ -109,7 +109,7 @@
                         }
                         .race {
                             color: $noActiveElement;
-                            @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+                            @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
                         }
                     }
                 }

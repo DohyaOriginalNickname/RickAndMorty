@@ -7,22 +7,22 @@
     }
     @if $da == false {
         &__login {
-            @include input();
+            @include input-style();
         }
         &__pass {
-            @include input();
+            @include input-style();
         }
     } @else {
         &__login {
-            @include input("../assets/other/userIcon.png");
+            @include input-style("../assets/other/userIcon.png");
         }
         &__pass {
-            @include input("../assets/other/passwordIcon.png");
+            @include input-style("../assets/other/passwordIcon.png");
         }
     }
 }
 
-@mixin input($url: null) {
+@mixin input-style($url: null) {
     @if $url == null {
         padding: 12px 8px 12px 16px;
         width: 319px;
@@ -47,7 +47,7 @@
     }
 }
 
-@mixin button {
+@mixin button-style {
     button {
         background: $activeElement;
         border-radius: 12px;
@@ -57,8 +57,7 @@
     }
 }
 
-
-@mixin text($size, $line-height, $letter-spacing, $weight: $regular-font-weight) {
+@mixin text-style($size, $line-height, $letter-spacing, $weight: $regular-font-weight) {
     font-weight: $weight;
     font-size: $size;
     line-height: $line-height;

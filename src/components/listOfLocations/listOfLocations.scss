@@ -41,7 +41,7 @@
             p {
                 width: 282px;
                 text-transform: uppercase;
-                @include text($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
             }
         }
         .list-locations{
@@ -68,7 +68,7 @@
                     border-bottom-left-radius: 20px;
                     .title{
                         color: $blackThemeText;
-                        @include text($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+                        @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
                     }
                     
                     div{
@@ -77,7 +77,7 @@
                         gap: 5px;
                         p{
                             color:$noActiveElement;
-                            @include text($smallSize-1, $small-line-height, $big-letter-spacing);
+                            @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
                         }
                         .dot{
                             width: 2px;
