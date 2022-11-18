@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
+import { useGetAllEpisodsQuery } from '../../servies/episodsApi';
 import './listOfEpisods.scss'
 
 import Search from '../../assets/other/Search.png'
@@ -13,6 +14,10 @@ import image from '../../assets/Rectangle.png'
 
 const ListOfEpisods = () => {
 
+    const { data, isLoading } = useGetAllEpisodsQuery()
+
+    console.log(isLoading);
+
     const arraySeasons = [
         { seasonTitle: 'сезон 1' },
         { seasonTitle: 'сезон 2' },
@@ -20,19 +25,6 @@ const ListOfEpisods = () => {
         { seasonTitle: 'сезон 4' },
         { seasonTitle: 'сезон 5' },
         { seasonTitle: 'сезон 6' },
-    ]
-    const arrayEpisods = [
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
-        { image, seriaNumber: 'Серия 1', title: 'Пилот', releaseDate: '2 декабря 2013' },
     ]
 
     const arrayOfRefs = useRef([])
@@ -45,45 +37,27 @@ const ListOfEpisods = () => {
     const renderSeasonsList = arraySeasons.map((item, index) => {
         return (
             index === 0 ?
-            <div
-                className='list-of-seasons__item_active'
-                key={index}
-                ref={el => arrayOfRefs.current[index] = el}
-                onClick={() => classChange(index)}
-            >
-                <p>{item.seasonTitle}</p>
-                <p className='active'></p>
-            </div> 
-            : 
-            <div
-                className='list-of-seasons__item'
-                key={index}
-                ref={el => arrayOfRefs.current[index] = el}
-                onClick={() => classChange(index)}
-            >
-                <p>{item.seasonTitle}</p>
-                <p className='active'></p>
-            </div> 
+                <div
+                    className='list-of-seasons__item_active'
+                    key={index}
+                    ref={el => arrayOfRefs.current[index] = el}
+                    onClick={() => classChange(index)}
+                >
+                    <p>{item.seasonTitle}</p>
+                    <p className='active'></p>
+                </div>
+                :
+                <div
+                    className='list-of-seasons__item'
+                    key={index}
+                    ref={el => arrayOfRefs.current[index] = el}
+                    onClick={() => classChange(index)}
+                >
+                    <p>{item.seasonTitle}</p>
+                    <p className='active'></p>
+                </div>
         )
     })
-
-    const renderEpisodsList = arrayEpisods.map((item, index) => {
-        return (
-            <Link to={'/episodePage'} key={index}>
-                <li className="episod">
-                    <div>
-                        <img src={item.image} alt="character" />
-                    </div>
-                    <div className="description">
-                        <p className="serial-number">{item.seriaNumber}</p>
-                        <p className="series-title">{item.title}</p>
-                        <p className="release-date">{item.releaseDate}</p>
-                    </div>
-                </li>
-            </Link>
-        )
-    })
-
 
     return (
         <div className='episods-page'>
@@ -96,7 +70,22 @@ const ListOfEpisods = () => {
             </div>
             <div className='list-of-episods'>
                 <ul>
-                    {renderEpisodsList}
+                    { isLoading ? null : data.results.map((item) => {
+                        return (
+                            <Link to={'/episodePage'} key={item.id}>
+                                <li className="episod">
+                                    <div>
+                                        <img src={image} alt="character" />
+                                    </div>
+                                    <div className="description">
+                                        <p className="serial-number">seria {item.id}</p>
+                                        <p className="series-title">{item.name}</p>
+                                        <p className="release-date">{item.air_date}</p>
+                                    </div>
+                                </li>
+                            </Link>
+                        )
+                    })}
                 </ul>
             </div>
             <div className="navigation-panel">

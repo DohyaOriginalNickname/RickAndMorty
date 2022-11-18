@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useGetAllLocationsQuery } from '../../servies/locationsApi'
 import './listOfLocations.scss'
 
 import Search from '../../assets/other/Search.png'
@@ -13,31 +14,7 @@ import settingsIcon from '../../assets/navigation/nonActiveIcons/nonActiveSettin
 
 const ListOfLocations = () => {
 
-    const array = [
-        { img: image, titleLocation: 'Земля C-137', dimension: 'Измерение С-137' },
-        { img: image, titleLocation: 'Земля C-137', dimension: 'Измерение С-137' },
-        { img: image, titleLocation: 'Земля C-137', dimension: 'Измерение С-137' },
-        { img: image, titleLocation: 'Земля C-137', dimension: 'Измерение С-137' },
-        { img: image, titleLocation: 'Земля C-137', dimension: 'Измерение С-137' },
-    ]
-
-    const elements = array.map((item, index) => {
-        return (
-            <Link to={'/location'} key={index}>
-                <li className='list-locations__item' >
-                    <img src={item.img} alt="" />
-                    <div className='item__description'>
-                        <p className='title'>{item.titleLocation}</p>
-                        <div>
-                            <p>Мир</p>
-                            <p className='dot'></p>
-                            <p>{item.dimension}</p>
-                        </div>
-                    </div>
-                </li>
-            </Link>
-        )
-    })
+    const { data, isLoading } = useGetAllLocationsQuery()
 
     return (
         <div className='locations-page'>
@@ -55,10 +32,26 @@ const ListOfLocations = () => {
             </div>
             <div className="locations-page__list">
                 <div className="count-of-locations">
-                    <p>Всего локаций: 200</p>
+                    <p>Всего локаций: { isLoading ? null : data.info.count }</p>
                 </div>
                 <ul className='list-locations'>
-                    {elements}
+                    {isLoading ? null : data.results.map((item) => {
+                        return (
+                            <Link to={'/location'} key={item.id}>
+                                <li className='list-locations__item' >
+                                    <img src={image} alt="" />
+                                    <div className='item__description'>
+                                        <p className='title'>{item.name}</p>
+                                        <div>
+                                            <p>Мир</p>
+                                            <p className='dot'></p>
+                                            <p>{item.dimension}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </Link>
+                        )
+                    })}
                 </ul>
             </div>
             <div className="navigation-panel">
