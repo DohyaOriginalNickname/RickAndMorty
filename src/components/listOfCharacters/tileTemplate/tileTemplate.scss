@@ -1,7 +1,8 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixins.scss";
 
-.count-of-characters {
+.count-of-characters_tile {
+    padding-left: 7px;
     display: flex;
     gap: 24px;
     align-items: center;
@@ -15,8 +16,9 @@
 
 .tile{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    grid-template-columns: 164px 164px;
+    column-gap: 16px;
+    row-gap: 24px;
     overflow-y: scroll;
     height: 610px;
     .item{
@@ -41,6 +43,11 @@
                 text-transform: uppercase;
                 @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
             }
+            // .unknown{
+            //     color: $noActiveElement;
+            //     text-transform: uppercase;
+            //     @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+            // }
             .name{
                 color: $blackThemeText;
                 @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);

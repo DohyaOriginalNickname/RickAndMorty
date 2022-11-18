@@ -1,22 +1,19 @@
 import { Link } from 'react-router-dom'
-
 import Group from '../../../assets/other/Group.png'
-import Rick from '../../../assets/image.png'
 
 import './listTemplate.scss'
 
 
 const ListTemplate = (props) => {
-
-    const elements = props.arr.map((i,index) => {
+    const elements = props.data.results.map((item) => {
         return (
-            <Link to={"/Character"}>
-                <li className="item" key={index}>
-                    <img src={Rick} alt="character" />
+            <Link to={"/Character"} key={item.id}>
+                <li className="item">
+                    <img src={item.image} alt="character" />
                     <div className="item__description">
-                        <p className="live">{i.live ? 'Живой': 'Мертвый'}</p>
-                        <p className="name">{i.name}</p>
-                        <p className="race">{i.raceAndGender}</p>
+                        <p className={item.status === 'Alive' ? 'live':'dead'}>{item.status} </p>
+                        <p className="name">{item.name}</p>
+                        <p className="race">{item.species}, {item.gender}</p>
                     </div>
                 </li>
             </Link>
@@ -25,9 +22,9 @@ const ListTemplate = (props) => {
 
     return (
         <>
-            <div className="count-of-characters">
-                <p>Всего персонажей:</p>
-                <img src={Group} alt="Group" onClick={() => props.bbb(false)}/>
+            <div className="count-of-characters_list">
+                <p>Всего персонажей: {props.data.info.count}</p>
+                <img src={Group} alt="Group" onClick={() => props.changeList(false)}/>
             </div>
             
                 <ul className="list">

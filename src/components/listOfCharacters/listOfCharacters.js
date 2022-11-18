@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { useGetAllCharacterQuery } from '../../servies/characterApi'
 
 import Search from '../../assets/other/Search.png'
 import Filter from '../../assets/other/Filter.png'
@@ -17,26 +18,11 @@ import "./listOfCharacters.scss"
 const ListOfCharactersPage = () => {
 
     const [value, setValue] = useState(true)
+    const { data, isLoading } = useGetAllCharacterQuery()
 
-    const aaa = [
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-        { live: true, name: "Рик", raceAndGender: "Человек, Мужской" },
-    ]
-
-    const bbb = (param) => {
+    const changeList = (param) => {
         setValue(param)
     }
-
 
     return (
         <div className="characters-page">
@@ -53,7 +39,9 @@ const ListOfCharactersPage = () => {
                 </div>
             </div>
             <div className="characters-page__list">
-                {value ? <ListTemplate arr={aaa} bbb={bbb} /> : <TileTemplate arr={aaa} bbb={bbb} />}
+                {
+                    isLoading ? null : value ? <ListTemplate data={data} changeList={changeList} /> : <TileTemplate data={data} changeList={changeList} />
+                }
             </div>
             <div className="navigation-panel">
                 <div className="navigation-panel__item_select">

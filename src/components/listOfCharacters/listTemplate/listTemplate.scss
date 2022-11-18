@@ -1,7 +1,7 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixins.scss";
 
-.count-of-characters {
+.count-of-characters_list {
     display: flex;
     gap: 24px;
     align-items: center;
@@ -23,6 +23,11 @@
         display: flex;
         gap: 18px;
         align-items: center;
+        img{
+            width: 74px;
+            height: 74px;
+            border-radius: 100px;
+        }
         &__description{
             .live{
                 color: #43D049;
