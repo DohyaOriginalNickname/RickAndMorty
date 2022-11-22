@@ -1,52 +1,34 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixins.scss";
 
-.count-of-characters_list {
+.list__item{
     display: flex;
-    gap: 24px;
+    flex-direction: row;
+    gap: 18px;
     align-items: center;
-    margin-bottom: 28px;
-    p{
-        width: 282px;
-        text-transform: uppercase;
-        @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+    img {
+        width: 74px;
+        height: 74px;
+        border-radius: 100px;
     }
-}
-
-.list{
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    overflow-y: scroll;
-    height: 610px;
-    .item{
-        display: flex;
-        gap: 18px;
-        align-items: center;
-        img{
-            width: 74px;
-            height: 74px;
-            border-radius: 100px;
+    .description {
+        .live {
+            color: #43d049;
+            text-transform: uppercase;
+            @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
         }
-        &__description{
-            .live{
-                color: #43D049;
-                text-transform: uppercase;
-                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
-            }
-            .dead{
-                color: #EB5757;
-                text-transform: uppercase;
-                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
-            }
-            .name{
-                color: $blackThemeText;
-                @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
-            }
-            .race{
-                color: $noActiveElement;
-                @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
-            }
+        .dead {
+            color: #eb5757;
+            text-transform: uppercase;
+            @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+        }
+        .name {
+            color: $blackThemeText;
+            @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
+        }
+        .race {
+            color: $noActiveElement;
+            @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
         }
     }
 }

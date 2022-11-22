@@ -1,16 +1,37 @@
+import { useEffect, useState ,useRef } from 'react'
 import { Link } from 'react-router-dom'
-import List from '../../../assets/other/List.png'
+
 
 import './tileTemplate.scss'
 
 const TileTemplate = (props) => {
+    
+    const refObserver = useRef(null)
 
-    const elements = props.data.results.map((item) => {
+    const options = {
+        root: props.aaa,
+        rootMargin: '0px',
+        threshold: 1.0
+    }
+
+    const callback = (entries, observer) => {
+        if (entries[0].isIntersecting) {
+            props.plusPage()
+        }
+    }
+    const observer = new IntersectionObserver(callback, options)
+
+    useEffect(() => {
+        observer.observe(refObserver.current)
+    }, [])
+
+
+    const elements = props.data.map((item) => {
         return (
             <Link to={"/Character"} key={item.id}>
-                <li className="item">
+                <li className="tile__item">
                     <img src={item.image} alt="character" />
-                    <div className="item__description">
+                    <div className="description">
                         <p className={item.status === 'Alive' ? 'live':'dead'}>{item.status}</p>
                         <p className="name">{item.name}</p>
                         <p className="race">{item.species}, {item.gender}</p>
@@ -22,13 +43,8 @@ const TileTemplate = (props) => {
 
     return (
         <>
-            <div className="count-of-characters_tile">
-                <p>Всего персонажей: {props.data.info.count}</p>
-                <img src={List} alt="Group"  onClick={() => props.changeList(true)} />
-            </div>
-            <div className="tile">
-                {elements}
-            </div>
+            {elements}
+            <div ref={refObserver} className='aaa'></div>
         </>
     )
 }

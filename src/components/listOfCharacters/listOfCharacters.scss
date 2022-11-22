@@ -35,6 +35,33 @@
     &__list {
         display: flex;
         flex-direction: column;
+        .count-of-characters {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            p{
+                width: 282px;
+                text-transform: uppercase;
+                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+            }
+        }
+        .list{
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            overflow-y: scroll;
+            height: 610px;
+        }
+        .tile{
+            display: grid;
+            grid-template-columns: 164px 164px;
+            column-gap: 16px;
+            row-gap: 24px;
+            overflow-y: scroll;
+            height: 610px;
+        }
     }
     
     .navigation-panel{

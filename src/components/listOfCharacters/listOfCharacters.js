@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { useGetAllCharacterQuery } from '../../servies/characterApi'
 
 import Search from '../../assets/other/Search.png'
 import Filter from '../../assets/other/Filter.png'
+
+import Group from '../../assets/other/Group.png'
+import List from '../../assets/other/List.png'
 
 import ListTemplate from './listTemplate/listTemplate'
 import TileTemplate from './tileTemplate/tileTemplate'
@@ -17,11 +20,23 @@ import "./listOfCharacters.scss"
 
 const ListOfCharactersPage = () => {
 
-    const [value, setValue] = useState(true)
-    const { data, isLoading } = useGetAllCharacterQuery()
+    const [ value, setValue] = useState(true)
+    const [ countPage, setCountPage ] = useState(1)
+    const [ array, setArray ] = useState([])
+    
+    const { data , isLoading } = useGetAllCharacterQuery(countPage)
 
-    const changeList = (param) => {
-        setValue(param)
+    const ref = useRef(null)
+
+    useEffect(() => {
+        if (data !== undefined) {
+            setArray([...array, ...data.results])
+            console.log(data.results);
+        }
+    }, [data])
+
+    const plusPage = () => {
+        setCountPage(countPage => countPage + 1)
     }
 
     return (
@@ -39,9 +54,15 @@ const ListOfCharactersPage = () => {
                 </div>
             </div>
             <div className="characters-page__list">
-                {
-                    isLoading ? null : value ? <ListTemplate data={data} changeList={changeList} /> : <TileTemplate data={data} changeList={changeList} />
-                }
+                <div className="count-of-characters">
+                    <p>Всего персонажей: {isLoading ? null : data.info.count}</p>
+                    <img src={value ? List : Group} alt="Group" onClick={() => setValue(!value)} />
+                </div>
+                <ul className={value ? 'list' : 'tile'} ref={ref}>
+                    {
+                        isLoading ? null : value ? <ListTemplate data={array} aaa={ref.current} plusPage={plusPage}  /> : <TileTemplate data={array} aaa={ref.current} plusPage={plusPage} />
+                    }
+                </ul>
             </div>
             <div className="navigation-panel">
                 <div className="navigation-panel__item_select">

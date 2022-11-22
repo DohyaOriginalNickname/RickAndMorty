@@ -16,8 +16,6 @@ const ListOfEpisods = () => {
 
     const { data, isLoading } = useGetAllEpisodsQuery()
 
-    console.log(isLoading);
-
     const arraySeasons = [
         { seasonTitle: 'сезон 1' },
         { seasonTitle: 'сезон 2' },
@@ -89,22 +87,22 @@ const ListOfEpisods = () => {
                 </ul>
             </div>
             <div className="navigation-panel">
-                <div className="navigation-panel__item">
-                    <img src={characterIcon} alt="" />
-                    <p>Персонажи</p>
-                </div>
+                <Link to={'/listOfCharacters'}>
+                    <div className="navigation-panel__item">
+                        <img src={characterIcon} alt="" />
+                        <p>Персонажи</p>
+                    </div>
+                </Link>
                 <Link to={'/listOfLocaions'}>
                     <div className="navigation-panel__item">
                         <img src={locatioIcon} alt="" />
                         <p>Локации</p>
                     </div>
                 </Link>
-                <Link to={'/listOfEpisods'}>
                     <div className="navigation-panel__item_select">
                         <img src={episodeIcon} alt="" />
                         <p>Эпизоды</p>
                     </div>
-                </Link>
                 <Link to={'/settings'}>
                     <div className="navigation-panel__item">
                         <img src={settingsIcon} alt="" />
