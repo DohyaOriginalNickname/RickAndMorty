@@ -5,7 +5,7 @@ export const locationsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://rickandmortyapi.com/api'}),
     endpoints: builder => ({
         getAllLocations: builder.query({
-            query: () => '/location'
+            query: (page = 1) => `/location?page=${page}`
         })
     })
 })

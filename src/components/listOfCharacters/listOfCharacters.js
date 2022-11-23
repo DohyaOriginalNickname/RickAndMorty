@@ -31,7 +31,6 @@ const ListOfCharactersPage = () => {
     useEffect(() => {
         if (data !== undefined) {
             setArray([...array, ...data.results])
-            console.log(data.results);
         }
     }, [data])
 

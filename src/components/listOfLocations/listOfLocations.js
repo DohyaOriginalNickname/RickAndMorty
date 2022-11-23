@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useGetAllLocationsQuery } from '../../servies/locationsApi'
 import './listOfLocations.scss'
@@ -14,7 +15,37 @@ import settingsIcon from '../../assets/navigation/nonActiveIcons/nonActiveSettin
 
 const ListOfLocations = () => {
 
-    const { data, isLoading } = useGetAllLocationsQuery()
+    const [ countPage, setCountPage ] = useState(0)
+    const [ array, setArray ] = useState([])
+
+    const { data, isLoading } = useGetAllLocationsQuery(countPage)
+
+    const refObserver = useRef(null)
+    const ref = useRef(null)
+
+    const options = {
+        root: ref.current,
+        rootMargin: '0px',
+        threshold: 1.0
+    }
+
+    const callback = (entries, observer) => {
+        if (entries[0].isIntersecting) {
+            setCountPage(countPage => countPage + 1)
+        }
+    }
+    const observer = new IntersectionObserver(callback, options)
+
+    useEffect(() => {
+        if (data !== undefined) {
+            setArray([...array, ...data.results])
+        }
+    }, [data])
+
+    useEffect(() => {
+        observer.observe(refObserver.current)
+    }, [])
+
 
     return (
         <div className='locations-page'>
@@ -34,8 +65,8 @@ const ListOfLocations = () => {
                 <div className="count-of-locations">
                     <p>Всего локаций: { isLoading ? null : data.info.count }</p>
                 </div>
-                <ul className='list-locations'>
-                    {isLoading ? null : data.results.map((item) => {
+                <ul className='list-locations' ref={ref}>
+                    {isLoading ? null : array.map((item) => {
                         return (
                             <Link to={'/location'} key={item.id}>
                                 <li className='list-locations__item' >
@@ -52,6 +83,8 @@ const ListOfLocations = () => {
                             </Link>
                         )
                     })}
+
+                    <div ref={refObserver}></div>
                 </ul>
             </div>
             <div className="navigation-panel">
