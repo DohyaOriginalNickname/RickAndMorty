@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useState, useRef, useEffect, useCallback } from 'react'
-import { useGetAllCharacterQuery } from '../../servies/characterApi'
+import { useState, useRef, useEffect } from 'react'
+import { useGetAllCharacterQuery } from '../../serviсes/characterApi'
 
 import Search from '../../assets/other/Search.png'
 import Filter from '../../assets/other/Filter.png'
@@ -30,7 +30,7 @@ const ListOfCharactersPage = () => {
 
     useEffect(() => {
         if (data !== undefined) {
-            setArray([...array, ...data.results])
+            setArray(array => [...array, ...data.results])
         }
     }, [data])
 

@@ -1,8 +1,8 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
-import { characterApi } from '../servies/characterApi';
-import { locationsApi } from '../servies/locationsApi';
-import { episodsApi } from '../servies/episodsApi';
+import { characterApi } from '../serviсes/characterApi';
+import { locationsApi } from '../serviсes/locationsApi';
+import { episodsApi } from '../serviсes/episodsApi';
 
 export const store = configureStore({
   reducer: { [characterApi.reducerPath]: characterApi.reducer, [locationsApi.reducerPath]: locationsApi.reducer, [episodsApi.reducerPath]: episodsApi.reducer },

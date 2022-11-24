@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useGetAllLocationsQuery } from '../../servies/locationsApi'
+import { useGetAllLocationsQuery } from '../../serviсes/locationsApi'
 import './listOfLocations.scss'
 
 import Search from '../../assets/other/Search.png'
@@ -38,7 +38,7 @@ const ListOfLocations = () => {
 
     useEffect(() => {
         if (data !== undefined) {
-            setArray([...array, ...data.results])
+            setArray(array => [...array, ...data.results])
         }
     }, [data])
 

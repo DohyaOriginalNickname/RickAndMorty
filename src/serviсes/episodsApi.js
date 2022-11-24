@@ -5,7 +5,7 @@ export const episodsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://rickandmortyapi.com/api'}),
     endpoints: builder => ({
         getAllEpisods: builder.query({
-            query: () => '/episode'
+            query: (page = 1) => `/episode?page=${page}`
         })
     })
 })
