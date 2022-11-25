@@ -1,4 +1,4 @@
-import { useEffect, useState ,useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { Link } from 'react-router-dom'
 
@@ -27,7 +27,7 @@ const ListTemplate = (props) => {
 
     const elements = props.data.map((item) => {
         return (
-            <Link to={"/Character"} key={item.id}>
+            <Link to={`/Character/${item.id}`} key={item.id}>
                 <li className="list__item">
                     <img src={item.image} alt="character" />
                     <div className="description">

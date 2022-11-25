@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
-import { useGetAllCharacterQuery } from '../../serviсes/characterApi'
+import { useGetAllCharactersQuery } from '../../serviсes/characterApi'
 
 import Search from '../../assets/other/Search.png'
 import Filter from '../../assets/other/Filter.png'
@@ -24,7 +24,7 @@ const ListOfCharactersPage = () => {
     const [ countPage, setCountPage ] = useState(1)
     const [ array, setArray ] = useState([])
     
-    const { data , isLoading } = useGetAllCharacterQuery(countPage)
+    const { data , isLoading } = useGetAllCharactersQuery(countPage)
 
     const ref = useRef(null)
 

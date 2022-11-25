@@ -15,15 +15,15 @@ const App = () => {
         <Router>
             <div className="App">
                 <Routes>
-                    <Route exact path="/" element={<LoginPage/>}/>
-                    <Route exact path="/createAccount" element={<CreateAccountPage/>} />
-                    <Route exact path="/recoveryPassword" element={<PasswordRecovery/>}/> 
-                    <Route exact path="/listOfCharacters" element={<ListOfCharactersPage/>}/>
-                    <Route exact path="/Character" element={<CharacterPage/>}/>
-                    <Route exact path="/listOfLocaions" element={<ListOfLocations/>}/>
-                    <Route exact path="/location" element={<LocationPage/>}/>
-                    <Route exact path="/listOfEpisods" element={<ListOfEpisods/>}/>
-                    <Route exact path="/episodePage" element={<EpisodePage/>}/>
+                    <Route path="/" element={<LoginPage/>}/>
+                    <Route path="/createAccount" element={<CreateAccountPage/>} />
+                    <Route path="/recoveryPassword" element={<PasswordRecovery/>}/> 
+                    <Route path="/listOfCharacters" element={<ListOfCharactersPage/>}/>
+                    <Route path="/Character/:id" element={<CharacterPage/>}/>
+                    <Route path="/listOfLocaions" element={<ListOfLocations/>}/>
+                    <Route path="/location/id" element={<LocationPage/>}/>
+                    <Route path="/listOfEpisods" element={<ListOfEpisods/>}/>
+                    <Route path="/episodePage/:id" element={<EpisodePage/>}/>
                 </Routes>
             </div>       
         </Router> 

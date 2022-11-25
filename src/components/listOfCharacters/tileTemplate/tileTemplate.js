@@ -28,7 +28,7 @@ const TileTemplate = (props) => {
 
     const elements = props.data.map((item) => {
         return (
-            <Link to={"/Character"} key={item.id}>
+            <Link to={`/Character/${item.id}`} key={item.id}>
                 <li className="tile__item">
                     <img src={item.image} alt="character" />
                     <div className="description">

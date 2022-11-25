@@ -6,9 +6,12 @@ export const episodsApi = createApi({
     endpoints: builder => ({
         getAllEpisods: builder.query({
             query: (page = 1) => `/episode?page=${page}`
+        }),
+        getEpisode: builder.query({
+            query: (id) => `/episode/${id}`
         })
     })
 })
 
 
-export const { useGetAllEpisodsQuery } = episodsApi
+export const { useGetAllEpisodsQuery, useGetEpisodeQuery } = episodsApi

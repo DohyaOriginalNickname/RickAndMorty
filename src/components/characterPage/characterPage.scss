@@ -136,7 +136,7 @@
         margin-bottom: 36px;
     }
 
-    .episods {
+    .episodes {
         width: 100%;
         padding: 0 16px;
         display: flex;
@@ -154,10 +154,10 @@
                 @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
             }
         }
-        .episods__list {
+        .episodes__list {
             display: flex;
             flex-direction: column;
-            .episods__item {
+            .episodes__item {
                 display: flex;
                 align-items: center;
                 gap: 16px;
@@ -166,6 +166,7 @@
                     width: 100%;
                     display: flex;
                     flex-direction: column;
+                    color:white;
                     p{
                         width: 100%;
                     }

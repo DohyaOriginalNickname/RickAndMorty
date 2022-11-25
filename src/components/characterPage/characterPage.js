@@ -1,117 +1,123 @@
-import { Link } from 'react-router-dom' 
+import { Link, useParams } from 'react-router-dom'
+import { useGetCharacterQuery } from '../../serviсes/characterApi'
+import { useGetEpisodeQuery } from '../../serviсes/episodsApi'
 
-import Rick from '../../assets/image.png'
 import arrow from '../../assets/other/Arrow.png'
 import arrow2 from '../../assets/other/Arrow2.png'
 import image from '../../assets/Rectangle.png'
 import './characterPage.scss'
+import { useEffect } from 'react'
 
 const CharacterPage = () => {
-    return (
-        <div className='character-page'>
-            <div className="header">
-                <div className="background">
-                    <Link to={"/listOfCharacters"}>
-                        <div className='background__image'>
-                            <img src="" alt="" />
-                            <div className="arrow">
-                                <img src={arrow} alt="" />
+
+    const { id } = useParams()
+    const { data, isLoading } = useGetCharacterQuery(id)
+
+    const renderList = () => {
+        if (!isLoading) {
+            const array = []
+            for (let i = 0; i < data.episode.length; i++) {
+                const id = data.episode[i].slice(-2)
+                array.push(<ListOfEpisods id={id} key={i} />)
+            }
+            return array
+        }
+    }
+
+    if (!isLoading) {
+        return (
+            <div className='character-page'>
+                <div className="header">
+                    <div className="background">
+                        <Link to={"/listOfCharacters"}>
+                            <div className='background__image'>
+                                <img src="" alt="" />
+                                <div className="arrow">
+                                    <img src={arrow} alt="" />
+                                </div>
                             </div>
+                        </Link>
+                    </div>
+                    <div className="title">
+                        <div className='title__avatar'>
+                            <img src={data.image} alt="" />
                         </div>
-                    </Link>
+                        <div className="title__descripion">
+                            <div>
+                                <p className='name'>{data.name}</p>
+                                <p className='live'>{data.status}</p>
+                            </div>
+                            <p className='char-description'>Главный протагонист мультсериала «Рик и Морти». Безумный ученый, чей алкоголизм, безрассудность
+                                и социопатия заставляют беспокоиться семью его дочери.</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="title">
-                    <div className='title__avatar'>
-                        <img src={Rick} alt="" />
-                    </div>
-                    <div className="title__descripion">
-                        <div>
-                            <p className='name'>Рик Санчез</p>
-                            <p className='live'>Живой</p>
+                <div className="character-data">
+                    <div className='gender-and-race'>
+                        <div className='gender'>
+                            <p className="title">Gender</p>
+                            <p className="data">{data.gender}</p>
                         </div>
-                        <p className='char-description'>Главный протагонист мультсериала «Рик и Морти». Безумный ученый, чей алкоголизм, безрассудность
-                            и социопатия заставляют беспокоиться семью его дочери.</p>
+                        <div className='race'>
+                            <p className="title">Spesies</p>
+                            <p className="data">{data.species}</p>
+                        </div>
                     </div>
+                    <div className='other-data'>
+                        <div className='location'>
+                            <div>
+                                <p className="title">Локация</p>
+                                <p className="data">Земля C-137</p>
+                            </div>
+                            <img src={arrow2} alt="" />
+                        </div>
+                        <div className='position'>
+                            <div>
+                                <p className="title">Местоположение</p>
+                                <p className="data">Земля (Измерение подменны)</p>
+                            </div>
+                            <img src={arrow2} alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div className="border"></div>
+                <div className="episodes">
+                    <div>
+                        <p className="title">Эпизоды</p>
+                        <p className="subtitle">Все эпизоды</p>
+                    </div>
+                    <ul className="episodes__list">
+                        {renderList()}
+                    </ul>
                 </div>
             </div>
-            <div className="character-data">
-                <div className='gender-and-race'>
-                    <div className='gender'>
-                        <p className="title">Пол</p>
-                        <p className="data">Мужской</p>
+        )
+    }
+}
+
+
+const ListOfEpisods = (props) => {
+    const id = props.id.replace('/\/', '')
+    const { data, isLoading } = useGetEpisodeQuery(id)
+    if (!isLoading) {
+        return (
+            <Link to={`/episodePage/${id}`}>
+                <li className="episodes__item">
+                    <div>
+                        <img src={image} alt="character" />
                     </div>
-                    <div className='race'>
-                        <p className="title">Раса</p>
-                        <p className="data">Человек</p>
+                    <div className="description">
+                        <p className="serial-number">seria {data.id}</p>
+                        <p className="series-title">{data.name}</p>
+                        <p className="release-date">{data.air_date}</p>
                     </div>
-                </div>
-                <div className='other-data'>
-                    <div className='location'>
-                        <div>
-                            <p className="title">Локация</p>
-                            <p className="data">Земля C-137</p>
-                        </div>
+                    <div>
                         <img src={arrow2} alt="" />
                     </div>
-                    <div className='position'>
-                        <div>
-                            <p className="title">Местоположение</p>
-                            <p className="data">Земля (Измерение подменны)</p>
-                        </div>
-                        <img src={arrow2} alt="" />
-                    </div>
-                </div>
-            </div>
-            <div className="border"></div>
-            <div className="episods">
-                <div>
-                    <p className="title">Эпизоды</p>
-                    <p className="subtitle">Все эпизоды</p>
-                </div>
-                <ul className="episods__list">
-                    <li className="episods__item">
-                        <div>
-                            <img src={image} alt="character" />
-                        </div>
-                        <div className="description">
-                            <p className="serial-number">Серия 1</p>
-                            <p className="series-title">Пилот</p>
-                            <p className="release-date">2 декабря 2013</p>
-                        </div>
-                        <div>
-                            <img src={arrow2} alt="" />
-                        </div>
-                    </li>
-                    <li className="episods__item">
-                        <div>
-                            <img src={image} alt="character" />
-                        </div>
-                        <div className="description">
-                            <p className="serial-number">Серия 1</p>
-                            <p className="series-title">Пилот</p>
-                            <p className="release-date">2 декабря 2013</p>
-                        </div>
-                        <div>
-                            <img src={arrow2} alt="" />
-                        </div>
-                    </li>
-                    <li className="episods__item">
-                        <div>
-                            <img src={image} alt="character" />
-                        </div>
-                        <div className="description">
-                            <p className="serial-number">Серия 1</p>
-                            <p className="series-title">Пилот</p>
-                            <p className="release-date">2 декабря 2013</p>
-                        </div>
-                        <div>
-                            <img src={arrow2} alt="" />
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    )
+                </li>
+            </Link>
+        )
+    }
 }
 
 export default CharacterPage;
