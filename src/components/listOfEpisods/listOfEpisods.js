@@ -69,7 +69,7 @@ const ListOfEpisods = () => {
             array.map((item) => {
                 if (item.episode.slice(2, 3) == id) {
                     return (
-                        <Link to={'/episodePage'} key={item.id}>
+                        <Link to={`/episodePage/${item.id}`} key={item.id}>
                             <li className="episod">
                                 <div>
                                     <img src={image} alt="character" />

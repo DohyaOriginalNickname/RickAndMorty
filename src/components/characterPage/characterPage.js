@@ -17,7 +17,7 @@ const CharacterPage = () => {
         if (!isLoading) {
             const array = []
             for (let i = 0; i < data.episode.length; i++) {
-                const id = data.episode[i].slice(-2)
+                const id = data.episode[i].replace(/[\D]+/g, '')
                 array.push(<ListOfEpisods id={id} key={i} />)
             }
             return array
