@@ -68,7 +68,7 @@ const ListOfLocations = () => {
                 <ul className='list-locations' ref={ref}>
                     {isLoading ? null : array.map((item) => {
                         return (
-                            <Link to={'/location'} key={item.id}>
+                            <Link to={`/location/${item.id}`} key={item.id}>
                                 <li className='list-locations__item' >
                                     <img src={image} alt="" />
                                     <div className='item__description'>

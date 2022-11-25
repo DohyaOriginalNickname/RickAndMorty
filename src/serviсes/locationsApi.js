@@ -6,9 +6,12 @@ export const locationsApi = createApi({
     endpoints: builder => ({
         getAllLocations: builder.query({
             query: (page = 1) => `/location?page=${page}`
+        }),
+        getLocation: builder.query({
+            query: (id) => `/location/${id}`
         })
     })
 })
 
 
-export const { useGetAllLocationsQuery } = locationsApi
+export const { useGetAllLocationsQuery, useGetLocationQuery } = locationsApi
