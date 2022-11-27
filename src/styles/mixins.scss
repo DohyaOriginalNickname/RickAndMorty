@@ -1,4 +1,4 @@
-@mixin field-property($da:false){
+@mixin field-property($da: false) {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -62,4 +62,12 @@
     font-size: $size;
     line-height: $line-height;
     letter-spacing: $letter-spacing;
+}
+
+@mixin list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: scroll;
+    height: 610px;
 }
