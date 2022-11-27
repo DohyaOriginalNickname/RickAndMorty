@@ -33,7 +33,7 @@ const ListOfEpisods = () => {
     useEffect(() => {
         if (data !== undefined) {
             if (countPage <= 3) {
-                setArray(array => [...array, ...data.results])
+                setArray([...array, ...data.results])
                 setPageCount(countPage => countPage + 1)
             }
         }

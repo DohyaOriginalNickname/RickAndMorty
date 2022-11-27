@@ -20,17 +20,17 @@ import "./listOfCharacters.scss"
 
 const ListOfCharactersPage = () => {
 
-    const [ value, setValue] = useState(true)
-    const [ countPage, setCountPage ] = useState(1)
-    const [ array, setArray ] = useState([])
-    
-    const { data , isLoading } = useGetAllCharactersQuery(countPage)
+    const [value, setValue] = useState(true)
+    const [countPage, setCountPage] = useState(1)
+    const [array, setArray] = useState([])
+
+    const { data, isLoading } = useGetAllCharactersQuery(countPage)
 
     const ref = useRef(null)
 
     useEffect(() => {
         if (data !== undefined) {
-            setArray(array => [...array, ...data.results])
+            setArray([...array, ...data.results])
         }
     }, [data])
 

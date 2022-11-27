@@ -6,7 +6,8 @@ import arrow from '../../assets/other/Arrow.png'
 import arrow2 from '../../assets/other/Arrow2.png'
 import image from '../../assets/Rectangle.png'
 import './characterPage.scss'
-import { useEffect } from 'react'
+
+//TODO сделать бэкграунд
 
 const CharacterPage = () => {
 
@@ -29,14 +30,14 @@ const CharacterPage = () => {
             <div className='character-page'>
                 <div className="header">
                     <div className="background">
-                        <Link to={"/listOfCharacters"}>
-                            <div className='background__image'>
-                                <img src="" alt="" />
-                                <div className="arrow">
+                        <div className='background__image'>
+                            <img src="" alt="" />
+                            <div className="arrow">
+                                <Link to={"/listOfCharacters"}>
                                     <img src={arrow} alt="" />
-                                </div>
+                                </Link>
                             </div>
-                        </Link>
+                        </div>
                     </div>
                     <div className="title">
                         <div className='title__avatar'>
@@ -64,20 +65,24 @@ const CharacterPage = () => {
                         </div>
                     </div>
                     <div className='other-data'>
-                        <div className='location'>
-                            <div>
-                                <p className="title">Локация</p>
-                                <p className="data">Земля C-137</p>
+                        <Link to={`/location/${data.origin.url.replace(/[\D]+/g, '')}`}>
+                            <div className='location'>
+                                <div>
+                                    <p className="title">Origin</p>
+                                    <p className="data">{data.origin.name}</p>
+                                </div>
+                                <img src={arrow2} alt="" />
                             </div>
-                            <img src={arrow2} alt="" />
-                        </div>
-                        <div className='position'>
-                            <div>
-                                <p className="title">Местоположение</p>
-                                <p className="data">Земля (Измерение подменны)</p>
+                        </Link>
+                        <Link to={`/location/${data.location.url.replace(/[\D]+/g, '')}`}>
+                            <div className='position'>
+                                <div>
+                                    <p className="title">Location</p>
+                                    <p className="data">{data.location.name}</p>
+                                </div>
+                                <img src={arrow2} alt="" />
                             </div>
-                            <img src={arrow2} alt="" />
-                        </div>
+                        </Link>
                     </div>
                 </div>
                 <div className="border"></div>
@@ -90,7 +95,7 @@ const CharacterPage = () => {
                         {renderList()}
                     </ul>
                 </div>
-            </div>
+            </div >
         )
     }
 }

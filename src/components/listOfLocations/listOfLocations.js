@@ -38,7 +38,7 @@ const ListOfLocations = () => {
 
     useEffect(() => {
         if (data !== undefined) {
-            setArray(array => [...array, ...data.results])
+            setArray([...array, ...data.results])
         }
     }, [data])
 

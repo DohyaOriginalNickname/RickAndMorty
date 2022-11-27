@@ -15,7 +15,6 @@ const LocationPage = () => {
 
     const renderList = () => {
         if (!isLoading) {
-            console.log(data);
             const array = []
             for (let i = 0; i < data.residents.length; i++) {
                 const id = data.residents[i].replace(/[\D]+/g, '')
@@ -75,7 +74,7 @@ const ListOfLocations = (props) => {
                 <li className='list-of-characters__item'>
                     <img src={data.image} alt="character" />
                     <div className="description">
-                        <p className="live">{data.status == "Alive" ? 'Живой' : 'Мертвый'}</p>
+                        <p className={data.status == "Alive" ? 'live' : 'dead'}>{data.status == "Alive" ? 'Alive' : 'Dead'}</p>
                         <p className="name">{data.name}</p>
                         <p className="race">{data.species}</p>
                     </div>

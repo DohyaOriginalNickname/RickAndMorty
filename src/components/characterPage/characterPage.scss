@@ -123,9 +123,11 @@
             flex-direction: column;
             gap: 24px;
             .location {
+                color: white;
                 @include name(false);
             }
             .position {
+                color: white;
                 @include name(false);
             }
         }

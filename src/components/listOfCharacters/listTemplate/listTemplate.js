@@ -43,7 +43,7 @@ const ListTemplate = (props) => {
     return (
         <>
             {elements}
-            <div ref={refObserver} className='aaa'></div>
+            <div ref={refObserver}></div>
         </>
     )
 }
