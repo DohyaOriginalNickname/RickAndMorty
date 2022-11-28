@@ -3,7 +3,7 @@ import './ItemList.scss'
 
 const ItemList = (props) => {
     return (
-        <Link>
+        <Link to={`/character/${props.id}`}>
             <li className="list__item">
                 <img src={props.image} alt="character" />
                 <div className="description">

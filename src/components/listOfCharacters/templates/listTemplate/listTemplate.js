@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
-
 import { Link } from 'react-router-dom'
+
+import ItemList from '../../../UI/ItemList'
 
 import './listTemplate.scss'
 
@@ -25,19 +26,8 @@ const ListTemplate = (props) => {
         observer.observe(refObserver.current)
     }, [])
 
-    const elements = props.data.map((item) => {
-        return (
-            <Link to={`/Character/${item.id}`} key={item.id}>
-                <li className="list__item">
-                    <img src={item.image} alt="character" />
-                    <div className="description">
-                        <p className={item.status === 'Alive' ? 'live' : 'dead'}>{item.status} </p>
-                        <p className="name">{item.name}</p>
-                        <p className="race">{item.species}, {item.gender}</p>
-                    </div>
-                </li>
-            </Link>
-        )
+    const elements = props.data.map(({image,status,name,species,gender,id}) => {
+        return <ItemList key={id} image={image} status={status} name={name} species={species} gender={gender} id={id}/>
     })
 
     return (

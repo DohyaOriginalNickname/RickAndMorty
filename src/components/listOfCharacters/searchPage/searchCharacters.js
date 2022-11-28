@@ -24,13 +24,13 @@ const SearchCharacter = (props) => {
         <>
             <div className="characters-page__search_active">
                 <div>
-                    <img src={arrow} alt="search" />
+                    <img src={arrow} alt="search" onClick={() => props.da()} />
                 </div>
                 <div>
-                    <input type="text" placeholder="Найти персонажа" onChange={changeInputValue} />
+                    <input type="text" placeholder="Найти персонажа" autoFocus onChange={changeInputValue} value={inputValue} />
                 </div>
                 <div>
-                    <img src={Cancel} alt="filter" onClick={() => props.da()}/>
+                    <img src={Cancel} alt="filter" onClick={() => setInputValue('')} />
                 </div>
             </div>
             <div className="search-list">
