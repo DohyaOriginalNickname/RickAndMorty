@@ -64,10 +64,17 @@
     letter-spacing: $letter-spacing;
 }
 
-@mixin list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    overflow-y: scroll;
-    height: 610px;
+@mixin list($gap: true) {
+    @if $gap == true {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        overflow-y: scroll;
+        height: 610px;
+    } @else {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: 610px;
+    }
 }

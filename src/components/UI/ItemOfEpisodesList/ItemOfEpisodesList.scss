@@ -1,0 +1,30 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.episode {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    .description {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        p {
+            width: 100%;
+        }
+        p.serial-number {
+            color: #22a2bdde;
+            text-transform: uppercase;
+            @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+        }
+        p.series-title {
+            color:$blackThemeText;
+            @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
+        }
+        p.release-date {
+            color: $noActiveElement;
+            @include text-style($smallSize-3, $regular-line-height, $small-letter-spacing);
+        }
+    }
+}
