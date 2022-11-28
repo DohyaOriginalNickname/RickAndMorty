@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
-import ItemList from '../../../UI/ItemList'
+import ItemOfCharactersList from '../../../UI/ItemOfCharactersList/ItemOfCharactersList'
 
 import './listTemplate.scss'
 
@@ -27,7 +27,7 @@ const ListTemplate = (props) => {
     }, [])
 
     const elements = props.data.map(({image,status,name,species,gender,id}) => {
-        return <ItemList key={id} image={image} status={status} name={name} species={species} gender={gender} id={id}/>
+        return <ItemOfCharactersList key={id} image={image} status={status} name={name} species={species} gender={gender} id={id}/>
     })
 
     return (

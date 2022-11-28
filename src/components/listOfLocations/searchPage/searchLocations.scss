@@ -1,7 +1,7 @@
 @import "../../../styles/mixins.scss";
 @import "../../../styles/variables.scss";
 
-.characters-page__search_active {
+.locations-page__search_active {
     display: flex;
     align-items: center;
     padding: 12px 15px 12px 16px;
@@ -18,7 +18,7 @@
     }
 }
 
-.search-character-list {
+.search-locations-list {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -27,9 +27,8 @@
         @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
     }
 
-    .found-characters {
+    .found-locations {
         @include list;
         height: 650px;
-        width: 335px;
     }
 }

@@ -1,0 +1,41 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.list-locations__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img{
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+    }
+    
+    .item__description {
+        padding: 12px 16px;
+        width: 343px;
+        height: 68px;
+        background: #152a3a;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        .title{
+            color: $blackThemeText;
+            @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+        }
+        
+        div{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            p{
+                color:$noActiveElement;
+                @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
+            }
+            .dot{
+                width: 2px;
+                height: 2px;
+                background: #6E798C;
+            }
+        }
+        
+    }
+}

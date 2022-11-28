@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Link } from 'react-router-dom'
 import { useGetAllCharactersQuery } from '../../../serviсes/characterApi'
+import './ListCharactersPage.scss'
 
 import ListTemplate from '../templates/listTemplate/listTemplate'
 import TileTemplate from '../templates/tileTemplate/tileTemplate'

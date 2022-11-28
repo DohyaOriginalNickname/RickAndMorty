@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import './ItemList.scss'
+import './ItemOfCharactersList.scss'
 
-const ItemList = (props) => {
+const ItemOfCharactersList = (props) => {
     return (
         <Link to={`/character/${props.id}`}>
             <li className="list__item">
@@ -16,4 +16,4 @@ const ItemList = (props) => {
     )
 }
 
-export default ItemList;
+export default ItemOfCharactersList;

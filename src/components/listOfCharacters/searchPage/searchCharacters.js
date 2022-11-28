@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useGetAllCharactersQuery } from "../../../serviсes/characterApi"
-import ItemList from "../../UI/ItemList"
+import ItemOfCharactersList from "../../UI/ItemOfCharactersList/ItemOfCharactersList"
 
 import './searchCharacters.scss'
 
@@ -17,7 +17,7 @@ const SearchCharacter = (props) => {
     }
 
     const renderList = data !== undefined ? data.results.map(({image,status,name,species,gender,id}) => {
-        return <ItemList key={id} image={image} status={status} name={name} species={species} gender={gender}/>
+        return <ItemOfCharactersList key={id} image={image} status={status} name={name} species={species} gender={gender}/>
     }) : null
 
     return (
@@ -33,8 +33,8 @@ const SearchCharacter = (props) => {
                     <img src={Cancel} alt="filter" onClick={() => setInputValue('')} />
                 </div>
             </div>
-            <div className="search-list">
-                <p>Результаты поиска</p>
+            <div className="search-character-list">
+                <p className="result-title">Результаты поиска</p>
                 <ul className="found-characters">
                     {renderList}
                 </ul>

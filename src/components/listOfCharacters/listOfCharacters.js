@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react'
 
 import SearchCharacter from './searchPage/searchCharacters'
-import ListCharacters from './list/ListPage'
+import ListCharacters from './listPage/ListCharactersPage'
 
 
 import "./listOfCharacters.scss"
