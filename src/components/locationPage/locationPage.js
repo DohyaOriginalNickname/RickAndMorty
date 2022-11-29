@@ -2,11 +2,13 @@ import { Link, useParams } from 'react-router-dom'
 import { useGetLocationQuery } from '../../serviсes/locationsApi'
 import { useGetCharacterQuery } from '../../serviсes/characterApi'
 
+import ItemOfCharactersList from '../UI/ItemOfCharactersList/ItemOfCharactersList'
+
 import './locationPage.scss'
 
 import image from '../../assets/Rectangle2.png'
 import arrow from '../../assets/other/Arrow.png'
-import arrow2 from '../../assets/other/Arrow2.png'
+
 
 const LocationPage = () => {
 
@@ -18,7 +20,7 @@ const LocationPage = () => {
             const array = []
             for (let i = 0; i < data.residents.length; i++) {
                 const id = data.residents[i].replace(/[\D]+/g, '')
-                array.push(<ListOfLocations id={id} key={i} />)
+                array.push(<ListItemOfLocations id={id} key={i} />)
             }
             return array
         }
@@ -66,25 +68,10 @@ const LocationPage = () => {
     }
 }
 
-const ListOfLocations = (props) => {
+const ListItemOfLocations = (props) => {
     const { data, isLoading } = useGetCharacterQuery(props.id)
     if (!isLoading) {
-        return (
-            <Link to={`/character/${props.id}`}>
-                <li className='list-of-characters__item'>
-                    <img src={data.image} alt="character" />
-                    <div className="description">
-                        <p className={data.status == "Alive" ? 'live' : 'dead'}>{data.status == "Alive" ? 'Alive' : 'Dead'}</p>
-                        <p className="name">{data.name}</p>
-                        <p className="race">{data.species}</p>
-                    </div>
-                    <div>
-                        <img src={arrow2} alt="" className='arrow' />
-                    </div>
-                </li>
-            </Link>
-        )
+        return <ItemOfCharactersList id={data.id} image={data.image} status={data.status} name={data.name} species={data.species} gender={data.gender} arrow={true}/>
     }
 }
-
 export default LocationPage;

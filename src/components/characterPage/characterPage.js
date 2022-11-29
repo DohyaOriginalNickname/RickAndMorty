@@ -2,6 +2,8 @@ import { Link, useParams } from 'react-router-dom'
 import { useGetCharacterQuery } from '../../serviсes/characterApi'
 import { useGetEpisodeQuery } from '../../serviсes/episodsApi'
 
+import ItemOfEpisodesList from '../UI/ItemOfEpisodesList/ItemOfEpisodesList'
+
 import arrow from '../../assets/other/Arrow.png'
 import arrow2 from '../../assets/other/Arrow2.png'
 import image from '../../assets/Rectangle.png'
@@ -19,7 +21,7 @@ const CharacterPage = () => {
             const array = []
             for (let i = 0; i < data.episode.length; i++) {
                 const id = data.episode[i].replace(/[\D]+/g, '')
-                array.push(<ListOfEpisods id={id} key={i} />)
+                array.push(<ListItemOfEpisodes id={id} key={i} image={image}/>)
             }
             return array
         }
@@ -101,27 +103,10 @@ const CharacterPage = () => {
 }
 
 
-const ListOfEpisods = (props) => {
-    const id = props.id.replace('/\/', '')
-    const { data, isLoading } = useGetEpisodeQuery(id)
+const ListItemOfEpisodes = (props) => {
+    const { data, isLoading } = useGetEpisodeQuery(props.id)
     if (!isLoading) {
-        return (
-            <Link to={`/episodePage/${id}`}>
-                <li className="episodes__item">
-                    <div>
-                        <img src={image} alt="character" />
-                    </div>
-                    <div className="description">
-                        <p className="serial-number">seria {data.id}</p>
-                        <p className="series-title">{data.name}</p>
-                        <p className="release-date">{data.air_date}</p>
-                    </div>
-                    <div>
-                        <img src={arrow2} alt="" />
-                    </div>
-                </li>
-            </Link>
-        )
+        return <ItemOfEpisodesList id={data.id} image={props.image} name={data.name} air_date={data.air_date} arrow={true}/>
     }
 }
 

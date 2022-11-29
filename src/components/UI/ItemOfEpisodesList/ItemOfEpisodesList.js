@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import './ItemOfEpisodesList.scss'
+import arrow2 from '../../../assets/other/Arrow2.png'
 
 const ItemOfEpisodesList = (props) => {
     return (
@@ -13,6 +14,12 @@ const ItemOfEpisodesList = (props) => {
                     <p className="series-title">{props.name}</p>
                     <p className="release-date">{props.air_date}</p>
                 </div>
+                {
+                    props.arrow ?
+                        <div>
+                            <img src={arrow2} alt="" className='arrow' />
+                        </div> : null
+                }
             </li>
         </Link>
     )

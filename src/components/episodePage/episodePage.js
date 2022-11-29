@@ -2,6 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import { useGetEpisodeQuery } from "../../serviсes/episodsApi";
 import { useGetCharacterQuery } from "../../serviсes/characterApi";
 
+import ItemOfCharactersList from '../UI/ItemOfCharactersList/ItemOfCharactersList'
+
 import arrow from '../../assets/other/Arrow.png'
 import arrow2 from '../../assets/other/Arrow2.png'
 import backgroundImage from '../../assets/Rectangle3.png'
@@ -18,7 +20,7 @@ const EpisodPage = () => {
             const array = []
             for (let i = 0; i < data.characters.length; i++) {
                 const id = data.characters[i].replace(/[\D]+/g, '')
-                array.push(<ListOfCharacters id={id} key={i} />)
+                array.push(<ListItemOfCharacters id={id} key={i}/>)
             }
             return array
         }
@@ -73,24 +75,10 @@ const EpisodPage = () => {
     }
 }
 
-const ListOfCharacters = (props) => {
+const ListItemOfCharacters = (props) => {
     const { data, isLoading } = useGetCharacterQuery(props.id)
     if (!isLoading) {
-        return (
-            <Link to={`/character/${props.id}`}>
-                <li className='list-of-characters__item'>
-                    <img src={data.image} alt="character" />
-                    <div className="description">
-                        <p className="live">{data.status == "Alive" ? 'Живой' : 'Мертвый'}</p>
-                        <p className="name">{data.name}</p>
-                        <p className="race">{data.species}</p>
-                    </div>
-                    <div className="arrow">
-                        <img src={arrow2} alt="" className="arrow"/>
-                    </div>
-                </li>
-            </Link>
-        )
+        return <ItemOfCharactersList id={data.id} image={data.image} status={data.status} name={data.name} species={data.species} arrow={true}/>
     }
 }
 export default EpisodPage;

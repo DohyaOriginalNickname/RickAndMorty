@@ -1,9 +1,8 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixins.scss";
 
-.list__item{
+.item{
     display: flex;
-    flex-direction: row;
     gap: 18px;
     align-items: center;
     img {
@@ -11,7 +10,12 @@
         height: 74px;
         border-radius: 100px;
     }
+    .arrow {
+        width: 20px;
+        height: 20px;
+    }
     .description {
+        width:100%;
         .live {
             color: #43d049;
             text-transform: uppercase;

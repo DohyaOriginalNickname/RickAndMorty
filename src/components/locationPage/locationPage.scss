@@ -82,46 +82,6 @@
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
-                &__item {
-                    display: flex;
-                    gap: 18px;
-                    align-items: center;
-                    img {
-                        width: 74px;
-                        height: 74px;
-                        border-radius: 100px;
-                    }
-                    .arrow {
-                        width: 20px;
-                        height: 20px;
-                    }
-                    .description {
-                        width: 100%;
-                        .live {
-                            color: #43d049;
-                            text-transform: uppercase;
-                            @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
-                        }
-                        .dead {
-                            color: #eb5757;
-                            text-transform: uppercase;
-                            @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
-                        }
-                        .name {
-                            color: $blackThemeText;
-                            @include text-style(
-                                $regularSize-1,
-                                $regular-line-height-2,
-                                $big-letter-spacing,
-                                $bold-font-weight
-                            );
-                        }
-                        .race {
-                            color: $noActiveElement;
-                            @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
-                        }
-                    }
-                }
             }
         }
     }
