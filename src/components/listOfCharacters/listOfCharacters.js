@@ -3,24 +3,30 @@ import { useState, useRef, useEffect } from 'react'
 
 import SearchCharacter from './searchPage/searchCharacters'
 import ListCharacters from './listPage/ListCharactersPage'
+import FiltersPage from './filtersPage/filtersPage'
 
 
 import "./listOfCharacters.scss"
 
 const ListOfCharactersPage = () => {
 
-    const [ da, setDa ] = useState(false)
+    const [searchPage, setSearchPage] = useState(false)
+    const [filterPage, setFilterPage] = useState(false)
 
     const changePage = () => {
-        setDa(!da)
+        setSearchPage(!searchPage)
+    }
+
+    const da = () => {
+        setFilterPage(!filterPage)
     }
 
     return (
         <div className="characters-page">
             {
-                !da ? <ListCharacters da={changePage}/> : <SearchCharacter da={changePage} />
+                !searchPage ? !filterPage ? <ListCharacters changePage={changePage} da={da}/> : <FiltersPage da={da} /> : <SearchCharacter changePage={changePage} />
             }
-        </div> 
+        </div>
     )
 }
 

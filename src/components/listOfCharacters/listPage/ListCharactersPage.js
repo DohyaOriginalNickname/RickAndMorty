@@ -44,11 +44,11 @@ const ListCharacters = (props) => {
                     <img src={Search} alt="search" />
                 </div>
                 <div>
-                    <input type="text" placeholder="Найти персонажа" onFocus={() => props.da()} />
+                    <input type="text" placeholder="Найти персонажа" onFocus={() => props.changePage()} />
                 </div>
                 <div className="border"></div>
                 <div>
-                    <img src={Filter} alt="filter" />
+                    <img src={Filter} alt="filter" onClick={() => props.da()}/>
                 </div>
             </div>
             <div className="characters-page__list">

@@ -29,7 +29,7 @@ const SearchCharacter = (props) => {
         <>
             <div className="characters-page__search_active">
                 <div>
-                    <img src={arrow} alt="search" onClick={() => props.da()} />
+                    <img src={arrow} alt="search" onClick={() => props.changePage()} />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти персонажа" autoFocus onChange={changeInputValue} value={inputValue} />

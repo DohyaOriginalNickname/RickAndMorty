@@ -1,0 +1,85 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/variables.scss";
+
+.header-filters {
+    display: flex;
+    align-items: center;
+    background-color: #152a3a;
+    width: 100%;
+    padding: 12px 15px 12px 16px;
+    gap: 20px;
+    .title {
+        color: $blackThemeText;
+        width: 244px;
+        @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+    }
+    .clear-filter-ready {
+        display: block;
+    }
+    .clear-filter-not-ready {
+        display: none;
+    }
+}
+
+.main-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    .border { border: 1px solid #152a3a; }
+    .sort-block {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        .title {
+            @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+        }
+        .sort-by-alphabetical {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            p {
+                width: 227px;
+            }
+        }
+        .sort {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+            div {
+                display: flex;
+                gap: 18px;
+                color: $blackThemeText;
+                @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
+            }
+        }
+    }
+}
+
+.custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.custom-checkbox + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+.custom-checkbox + label::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    background-position: center center;
+    background-image: url("../../../assets/other/notSelectCheckBox.png");
+}
+
+.custom-checkbox:checked+label::before {
+    background-size: 100%;
+    background-image: url("../../../assets/other/SelectCheckBox.png");
+}
