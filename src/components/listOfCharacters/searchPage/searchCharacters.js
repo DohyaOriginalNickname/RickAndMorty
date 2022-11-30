@@ -6,6 +6,7 @@ import './searchCharacters.scss'
 
 import Cancel from '../../../assets/other/Cancel.png'
 import arrow from '../../../assets/other/Arrow.png'
+import CharacterNotFound from '../../../assets/notFoundImages/CharacterNotFound.png'
 
 const SearchCharacter = (props) => {
 
@@ -16,9 +17,13 @@ const SearchCharacter = (props) => {
         setInputValue(event.target.value)
     }
 
-    const renderList = data !== undefined ? data.results.map(({image,status,name,species,gender,id}) => {
-        return <ItemOfCharactersList key={id} image={image} status={status} name={name} species={species} gender={gender}/>
-    }) : null
+    const renderList = data !== undefined ? data.results.map(({ image, status, name, species, gender, id }) => {
+        return <ItemOfCharactersList key={id} image={image} status={status} name={name} species={species} gender={gender} />
+    }) : 
+        <div className="not-found-characters">
+            <img src={CharacterNotFound} alt="" />
+            <p>Персонаж с таким именем не найден</p>
+        </div>
 
     return (
         <>

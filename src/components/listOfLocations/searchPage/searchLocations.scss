@@ -11,10 +11,9 @@
     background: #152a3a;
     input {
         width: 256px;
-        font-size: $regularSize-1;
-        line-height: 24px;
         color: $blackThemeText;
         background: $blackThemeBorder;
+        @include text-style($regularSize-1, $regular-line-height-2, 0.444444px);
     }
 }
 
@@ -30,5 +29,18 @@
     .found-locations {
         @include list;
         height: 650px;
+    }
+    .not-found-locations {
+        position: relative;
+        top: 20%;
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+        align-items: center;
+        text-align: center;
+        p {
+            width: 216px;
+            @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
+        }
     }
 }

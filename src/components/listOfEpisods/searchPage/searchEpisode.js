@@ -6,6 +6,7 @@ import ItemOfEpisodesList from '../../UI/ItemOfEpisodesList/ItemOfEpisodesList'
 
 import Cancel from '../../../assets/other/Cancel.png'
 import arrow from '../../../assets/other/Arrow.png'
+import EpisodeNotFound from '../../../assets/notFoundImages/EpisodeNotFound.png'
 
 const SearchEpisode = (props) => {
     const [inputValue, setInputValue] = useState('')
@@ -15,9 +16,13 @@ const SearchEpisode = (props) => {
         setInputValue(event.target.value)
     }
 
-    const renderList = data !== undefined ? data.results.map(({name,air_date,id}) => {
-        return <ItemOfEpisodesList key={id} image={props.image} name={name} air_date={air_date} id={id}/>
-    }) : null
+    const renderList = data !== undefined ? data.results.map(({ name, air_date, id }) => {
+        return <ItemOfEpisodesList key={id} image={props.image} name={name} air_date={air_date} id={id} />
+    }) :
+        <div className="not-found-episodes">
+            <img src={EpisodeNotFound} alt="" />
+            <p>Эпизода с таким названием нет</p>
+        </div>
 
     return (
         <>

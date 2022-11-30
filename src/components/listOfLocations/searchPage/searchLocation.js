@@ -6,7 +6,7 @@ import './searchLocations.scss'
 
 import Cancel from '../../../assets/other/Cancel.png'
 import arrow from '../../../assets/other/Arrow.png'
-
+import LocationNotFound from '../../../assets/notFoundImages/LocationNotFound.png'
 
 const SearchLocation = (props) => {
 
@@ -18,9 +18,13 @@ const SearchLocation = (props) => {
         setInputValue(event.target.value)
     }
 
-    const renderList = data !== undefined ? data.results.map(({name,dimension,id}) => {
-        return <ItemOfLocationsList key={id} image={props.image} name={name} dimension={dimension} id={id}/>
-    }) : null
+    const renderList = data !== undefined ? data.results.map(({ name, dimension, id }) => {
+        return <ItemOfLocationsList key={id} image={props.image} name={name} dimension={dimension} id={id} />
+    }) :
+        <div className="not-found-locations">
+            <img src={LocationNotFound} alt="" />
+            <p>Локации с таким названием не найдено</p>
+        </div>
 
     return (
         <>

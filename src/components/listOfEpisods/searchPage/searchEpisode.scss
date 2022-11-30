@@ -12,10 +12,9 @@
     background: #152a3a;
     input {
         width: 256px;
-        font-size: $regularSize-1;
-        line-height: 24px;
         color: $blackThemeText;
         background: $blackThemeBorder;
+        @include text-style($regularSize-1, $regular-line-height-2, 0.444444px);
     }
 }
 
@@ -34,5 +33,19 @@
         @include list(false);
         height: 675px;
         width: 335px;
+    }
+    .not-found-episodes {
+        position: relative;
+        top: 15%;
+        display: flex;
+        flex-direction: column;
+        gap: 44px;
+        align-items: center;
+        text-align: center;
+        p {
+            color: #5b6975;
+            width: 216px;
+            @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
+        }
     }
 }
