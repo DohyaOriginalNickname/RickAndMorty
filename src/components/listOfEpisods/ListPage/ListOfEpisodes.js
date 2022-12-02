@@ -20,6 +20,7 @@ const ListEpisodes = (props) => {
     const arrayOfRefs = useRef([])
     const { data } = useGetAllEpisodesQuery(countPage)
 
+    console.log(countPage);
     const arrayOfSeasons = [
         { seasonTitle: 'сезон 1', id: 1, episods: [] },
         { seasonTitle: 'сезон 2', id: 2, episods: [] },
@@ -33,11 +34,13 @@ const ListEpisodes = (props) => {
         if (data !== undefined) {
             if (countPage <= 3) {
                 setArray([...array, ...data.results])
-                setPageCount(countPage => countPage + 1)
+                countPage === 1 ? setPageCount(2) : setPageCount(countPage => countPage + 1)
+                /* после пере-рендера он не инкременетирует по каким то причинам 1 на 2 а сразу на 3 
+                в следствие чего в api 1 страница эпизодов пропускалась*/
             }
         }
     }, [data])
-    
+
     useEffect(() => {
         if (countPage === 4) {
             for (let i = 0, item = 0; item < arrayOfSeasons.length;) {
@@ -56,7 +59,7 @@ const ListEpisodes = (props) => {
             }
         }
     }, [array])
-    
+
     const classChange = (index) => {
         arrayOfRefs.current.forEach(item => item.className = 'list-of-seasons__item')
         arrayOfRefs.current[index].className = 'list-of-seasons__item_active'
@@ -92,7 +95,7 @@ const ListEpisodes = (props) => {
         return (
             array.map((item) => {
                 if (item.episode.slice(2, 3) == id) {
-                    return <ItemOfEpisodesList key={item.id} id={item.id} image={props.image} name={item.name} air_date={item.air_date}/>
+                    return <ItemOfEpisodesList key={item.id} id={item.id} image={props.image} name={item.name} air_date={item.air_date} />
                 }
             })
         )
