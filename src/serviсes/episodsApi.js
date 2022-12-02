@@ -4,14 +4,17 @@ export const episodsApi = createApi({
     reducerPath: 'episodesApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://rickandmortyapi.com/api'}),
     endpoints: builder => ({
-        getAllEpisods: builder.query({
+        getAllEpisodes: builder.query({
             query: (page = 1) => `/episode?page=${page}`
         }),
         getEpisode: builder.query({
             query: (id) => `/episode/${id}`
+        }),
+        getEpisodeByName: builder.query({
+            query: (inputValue) => `/episode/?name=${inputValue !== '' ? inputValue : undefined}`
         })
     })
 })
 
 
-export const { useGetAllEpisodsQuery, useGetEpisodeQuery } = episodsApi
+export const { useGetAllEpisodesQuery, useGetEpisodeQuery, useGetEpisodeByNameQuery } = episodsApi

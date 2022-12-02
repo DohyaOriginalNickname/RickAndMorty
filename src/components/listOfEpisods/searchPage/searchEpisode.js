@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useGetAllEpisodsQuery } from '../../../serviсes/episodsApi'
+import { useGetEpisodeByNameQuery } from '../../../serviсes/episodsApi'
 import './searchEpisode.scss'
 
 import ItemOfEpisodesList from '../../UI/ItemOfEpisodesList/ItemOfEpisodesList'
@@ -10,7 +10,7 @@ import EpisodeNotFound from '../../../assets/notFoundImages/EpisodeNotFound.png'
 
 const SearchEpisode = (props) => {
     const [inputValue, setInputValue] = useState('')
-    const { data } = useGetAllEpisodsQuery()
+    const { data, error } = useGetEpisodeByNameQuery(inputValue)
 
     const changeInputValue = (event) => {
         setInputValue(event.target.value)
@@ -18,11 +18,7 @@ const SearchEpisode = (props) => {
 
     const renderList = data !== undefined ? data.results.map(({ name, air_date, id }) => {
         return <ItemOfEpisodesList key={id} image={props.image} name={name} air_date={air_date} id={id} />
-    }) :
-        <div className="not-found-episodes">
-            <img src={EpisodeNotFound} alt="" />
-            <p>Эпизода с таким названием нет</p>
-        </div>
+    }) : null
 
     return (
         <>
@@ -40,7 +36,13 @@ const SearchEpisode = (props) => {
             <div className="search-episodes-list">
                 <p className="result-title">Результаты поиска</p>
                 <ul className="found-episodes">
-                    {renderList}
+                    {
+                        !error ? renderList :
+                            <div className="not-found-episodes">
+                                <img src={EpisodeNotFound} alt="" />
+                                <p>Эпизода с таким названием нет</p>
+                            </div>
+                    }
                 </ul>
             </div>
         </>

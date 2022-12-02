@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useGetAllCharactersQuery } from "../../../serviсes/characterApi"
+import { useGetCharacterByNameQuery } from "../../../serviсes/characterApi"
 import ItemOfCharactersList from "../../UI/ItemOfCharactersList/ItemOfCharactersList"
 
 import './searchCharacters.scss'
@@ -11,19 +11,16 @@ import CharacterNotFound from '../../../assets/notFoundImages/CharacterNotFound.
 const SearchCharacter = (props) => {
 
     const [inputValue, setInputValue] = useState('')
-    const { data } = useGetAllCharactersQuery()
+    const { data, error } = useGetCharacterByNameQuery(inputValue)
+
 
     const changeInputValue = (event) => {
         setInputValue(event.target.value)
     }
 
     const renderList = data !== undefined ? data.results.map(({ image, status, name, species, gender, id }) => {
-        return <ItemOfCharactersList key={id} image={image} status={status} name={name} species={species} gender={gender} />
-    }) : 
-        <div className="not-found-characters">
-            <img src={CharacterNotFound} alt="" />
-            <p>Персонаж с таким именем не найден</p>
-        </div>
+        return <ItemOfCharactersList key={id} image={image} status={status} name={name} species={species} gender={gender} id={id}/>
+    }) : null
 
     return (
         <>
@@ -41,7 +38,13 @@ const SearchCharacter = (props) => {
             <div className="search-character-list">
                 <p className="result-title">Результаты поиска</p>
                 <ul className="found-characters">
-                    {renderList}
+                    {
+                        !error ? renderList : 
+                        <div className="not-found-characters">
+                            <img src={CharacterNotFound} alt="" />
+                            <p>Персонаж с таким именем не найден</p>
+                        </div>
+                    }
                 </ul>
             </div>
         </>

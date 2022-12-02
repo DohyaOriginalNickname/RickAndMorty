@@ -9,9 +9,12 @@ export const characterApi = createApi({
         }),
         getCharacter: builder.query({
             query: (id) => `/character/${id}`
+        }),
+        getCharacterByName: builder.query({
+            query: (inputValue) => `/character/?name=${inputValue !== '' ? inputValue : undefined}`
         })
     })
 })
 
 
-export const { useGetAllCharactersQuery, useGetCharacterQuery } = characterApi
+export const { useGetAllCharactersQuery, useGetCharacterQuery, useGetCharacterByNameQuery } = characterApi

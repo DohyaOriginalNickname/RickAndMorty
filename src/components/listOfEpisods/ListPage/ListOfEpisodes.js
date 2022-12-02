@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
-import { useGetAllEpisodsQuery } from '../../../serviсes/episodsApi';
+import { useGetAllEpisodesQuery } from '../../../serviсes/episodsApi';
 import ItemOfEpisodesList from '../../UI/ItemOfEpisodesList/ItemOfEpisodesList';
 
 import './ListOfEpisodes.scss'
@@ -18,7 +18,7 @@ const ListEpisodes = (props) => {
     const [array, setArray] = useState([])
     const [idOfSeason, setId] = useState(1)
     const arrayOfRefs = useRef([])
-    const { data } = useGetAllEpisodsQuery(countPage)
+    const { data } = useGetAllEpisodesQuery(countPage)
 
     const arrayOfSeasons = [
         { seasonTitle: 'сезон 1', id: 1, episods: [] },

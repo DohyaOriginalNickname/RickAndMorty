@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useGetAllLocationsQuery } from '../../../serviсes/locationsApi'
+import { useGetLocationByNameQuery } from '../../../serviсes/locationsApi'
 
 import ItemOfLocationsList from "../../UI/ItemOfLocationsList/ItemOfLocationsList"
 import './searchLocations.scss'
@@ -11,8 +11,7 @@ import LocationNotFound from '../../../assets/notFoundImages/LocationNotFound.pn
 const SearchLocation = (props) => {
 
     const [inputValue, setInputValue] = useState('')
-    const { data } = useGetAllLocationsQuery()
-
+    const { data, error } = useGetLocationByNameQuery(inputValue)
 
     const changeInputValue = (event) => {
         setInputValue(event.target.value)
@@ -20,11 +19,7 @@ const SearchLocation = (props) => {
 
     const renderList = data !== undefined ? data.results.map(({ name, dimension, id }) => {
         return <ItemOfLocationsList key={id} image={props.image} name={name} dimension={dimension} id={id} />
-    }) :
-        <div className="not-found-locations">
-            <img src={LocationNotFound} alt="" />
-            <p>Локации с таким названием не найдено</p>
-        </div>
+    }) : null
 
     return (
         <>
@@ -42,7 +37,13 @@ const SearchLocation = (props) => {
             <div className="search-locations-list">
                 <p className="result-title">Результаты поиска</p>
                 <ul className="found-locations">
-                    {renderList}
+                    {
+                        !error ? renderList :
+                            <div className="not-found-locations">
+                                <img src={LocationNotFound} alt="" />
+                                <p>Локации с таким названием не найдено</p>
+                            </div>
+                    }
                 </ul>
             </div>
         </>

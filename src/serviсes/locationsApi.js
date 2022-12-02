@@ -9,9 +9,12 @@ export const locationsApi = createApi({
         }),
         getLocation: builder.query({
             query: (id) => `/location/${id}`
+        }),
+        getLocationByName: builder.query({
+            query: (inputValue) => `/location/?name=${inputValue !== '' ? inputValue : undefined}`
         })
     })
 })
 
 
-export const { useGetAllLocationsQuery, useGetLocationQuery } = locationsApi
+export const { useGetAllLocationsQuery, useGetLocationQuery, useGetLocationByNameQuery } = locationsApi

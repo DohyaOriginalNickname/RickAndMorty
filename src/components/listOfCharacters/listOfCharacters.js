@@ -1,5 +1,5 @@
 
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 
 import SearchCharacter from './searchPage/searchCharacters'
 import ListCharacters from './listPage/ListCharactersPage'
