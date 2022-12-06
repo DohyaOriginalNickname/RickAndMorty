@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
+import { useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
-import { useGetAllCharactersQuery } from '../../../serviсes/characterApi'
+import { useGetAllCharactersQuery, useGetCharactersByFiltersQuery } from '../../../serviсes/characterApi'
 import './ListCharactersPage.scss'
 
 import ListTemplate from '../templates/listTemplate/listTemplate'
@@ -21,20 +22,35 @@ const ListCharacters = (props) => {
 
     const [template, setTemplate] = useState(true)
     const [countPage, setCountPage] = useState(1)
-    const [array, setArray] = useState([])
+    const [ countFilterPage, setCountFilterPage ] = useState(0)
+    const [AllCharacters, setAllCharacters] = useState([])
+    const [FilteredCharacters, setFilteredCharacters] = useState([])
 
-    const { data, isLoading } = useGetAllCharactersQuery(countPage)
+    const filters = useSelector((state) => state.filter.paramsForCharatersQuery)
+
+    const { data: allCharacters, isLoading } = useGetAllCharactersQuery(countPage)
+    const { data: filteredCharacters } = useGetCharactersByFiltersQuery({obj:filters, page:countFilterPage})
 
     const ref = useRef(null)
 
     useEffect(() => {
-        if (data !== undefined) {
-            setArray([...array, ...data.results])
+        if (allCharacters !== undefined) {
+            setAllCharacters([...AllCharacters, ...allCharacters.results])
         }
-    }, [data])
+    }, [allCharacters])
+
+    useEffect(() => {
+        if (filteredCharacters !== undefined) {
+            setFilteredCharacters([...FilteredCharacters, ...filteredCharacters.results])
+        }
+    }, [filteredCharacters])
 
     const plusPage = () => {
-        setCountPage(countPage => countPage + 1)
+        if (filters.length > 0) {
+            setCountFilterPage(countFilterPage => countFilterPage + 1)
+        }else{
+            setCountPage(countPage => countPage + 1)
+        }
     }
 
     return (
@@ -48,20 +64,20 @@ const ListCharacters = (props) => {
                 </div>
                 <div className="border"></div>
                 <div>
-                    <img src={Filter} alt="filter" onClick={() => props.da()}/>
+                    <img src={Filter} alt="filter" onClick={() => props.da()} />
                 </div>
             </div>
             <div className="characters-page__list">
                 <div className="count-of-characters">
-                    <p>Всего персонажей: {isLoading ? null : data.info.count}</p>
+                    <p>Всего персонажей: {isLoading ? null : filteredCharacters !== undefined ? filteredCharacters.info.count : allCharacters.info.count}</p>
                     <img src={template ? List : Group} alt="Group" onClick={() => setTemplate(!template)} />
                 </div>
                 <ul className={template ? 'list' : 'tile'} ref={ref}>
                     {
-                        isLoading ? null : template ? <ListTemplate data={array} aaa={ref.current} plusPage={plusPage} /> : <TileTemplate data={array} aaa={ref.current} plusPage={plusPage} />
+                        isLoading ? null : template ? <ListTemplate data={filters.length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} /> : <TileTemplate data={filters.length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} />
                     }
                 </ul>
-            </div> 
+            </div>
             <div className="navigation-panel">
                 <div className="navigation-panel__item_select">
                     <img src={characterIcon} alt="" />

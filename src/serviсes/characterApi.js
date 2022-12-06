@@ -12,9 +12,18 @@ export const characterApi = createApi({
         }),
         getCharacterByName: builder.query({
             query: (inputValue) => `/character/?name=${inputValue !== '' ? inputValue : undefined}`
+        }),
+        getCharactersByFilters: builder.query({
+            query: ({obj = [], page = 1}) => {
+                let stringQuery = ''
+                for (let i = 0; i < obj.length; i++) {
+                    stringQuery += obj[i]
+                }
+                return `/character/?page=${page}${stringQuery}`
+            }
         })
     })
 })
 
 
-export const { useGetAllCharactersQuery, useGetCharacterQuery, useGetCharacterByNameQuery } = characterApi
+export const { useGetAllCharactersQuery, useGetCharacterQuery, useGetCharacterByNameQuery, useGetCharactersByFiltersQuery } = characterApi
