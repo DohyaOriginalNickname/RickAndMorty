@@ -9,7 +9,7 @@ const ItemOfLocationsList = (props) => {
                 <div className='item__description'>
                     <p className='title'>{props.name}</p>
                     <div>
-                        <p>Мир</p>
+                        <p>{props.type}</p>
                         <p className='dot'></p>
                         <p>{props.dimension}</p>
                     </div>

@@ -20,7 +20,7 @@ const FiltersPage = (props) => {
         }
     }
 
-    const bbb = (event) => {
+    const changeStatusOfFilters = (event) => {
         if (event.target.value !== undefined) {
             if (event.target.value === 'alive' || event.target.value === 'dead' || event.target.value === 'unknown' ) {
                 dispatch(addCharactersFilters(`&status=${event.target.value}`))
@@ -39,7 +39,7 @@ const FiltersPage = (props) => {
                 <img src={clearFilters} alt="" className={clearFilter ? 'clear-filter-ready' : 'clear-filter-not-ready'}  />
             </div>
 
-            <div className="main-filters" onChange={(e) => aaa(e)} onClick={(e) => bbb(e)}>
+            <div className="main-filters" onChange={(e) => aaa(e)} onClick={(e) => changeStatusOfFilters(e)}>
                 <div className="sort-block">
                     <div className="title">Сортировать</div>
                     <div className="sort-by-alphabetical">

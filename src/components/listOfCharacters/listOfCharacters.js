@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import SearchCharacter from './searchPage/searchCharacters'
 import ListCharacters from './listPage/ListCharactersPage'
-import FiltersPage from './filtersPage/filtersPage'
+import FiltersPage from '../filtersPages/filtersOfCharactersPage/filtersPage'
 
 
 import "./listOfCharacters.scss"

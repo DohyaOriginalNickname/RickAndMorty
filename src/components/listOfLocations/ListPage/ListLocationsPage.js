@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { useGetAllLocationsQuery } from '../../../serviсes/locationsApi'
+import { useGetAllLocationsQuery, useGetLocationsByFiltersQuery } from '../../../serviсes/locationsApi'
 import './ListLocationsPage.scss'
 
 import ItemOfLocationsList from '../../UI/ItemOfLocationsList/ItemOfLocationsList'
@@ -14,16 +15,24 @@ import episodeIcon from '../../../assets/navigation/nonActiveIcons/nonActiveEpis
 import settingsIcon from '../../../assets/navigation/nonActiveIcons/nonActiveSettingsIcon.png'
 
 const ListLocations = (props) => {
-    const [ countPage, setCountPage ] = useState(0)
-    const [ array, setArray ] = useState([])
+    const [countPage, setCountPage] = useState(0)
+    const [countFilteredPage, setCountFilteredPage] = useState(0)
+    const [AllLocations, setAllLocations] = useState([])
+    const [FilteredLocations, setFilteredLocations] = useState([])
+    const filters = useSelector((state) => state.filter.paramsForLocationsQuery)
 
-    const { data, isLoading } = useGetAllLocationsQuery(countPage)
+    const { data: allLocations, isLoading } = useGetAllLocationsQuery(countPage)
+    const { data: filteredLocations } = useGetLocationsByFiltersQuery({ page: countFilteredPage, obj: filters })
 
     const refObserver = useRef(null)
     const ref = useRef(null)
 
-    const renderList = data !== undefined ? array.map(({name,dimension,id}) => {
-        return <ItemOfLocationsList key={id} image={props.image} name={name} dimension={dimension} id={id}/>
+    const renderAllLocationsList = allLocations !== undefined ? AllLocations.map(({ name, dimension, id, type }) => {
+        return <ItemOfLocationsList key={id} image={props.image} name={name} dimension={dimension} id={id} type={type} />
+    }) : null
+
+    const renderFilteredLocationsList = filteredLocations !== undefined ? FilteredLocations.map(({ name, dimension, id, type }) => {
+        return <ItemOfLocationsList key={id} image={props.image} name={name} dimension={dimension} id={id} type={type} />
     }) : null
 
     const options = {
@@ -34,16 +43,26 @@ const ListLocations = (props) => {
 
     const callback = (entries, observer) => {
         if (entries[0].isIntersecting) {
-            setCountPage(countPage => countPage + 1)
+            if (Object.keys(filters).length > 0) {
+                setCountFilteredPage(countFilteredPage => countFilteredPage + 1)
+            } else {
+                setCountPage(countPage => countPage + 1)
+            }
         }
     }
     const observer = new IntersectionObserver(callback, options)
 
     useEffect(() => {
-        if (data !== undefined) {
-            setArray([...array, ...data.results])
+        if (allLocations !== undefined) {
+            setAllLocations([...AllLocations, ...allLocations.results])
         }
-    }, [data])
+    }, [allLocations])
+
+    useEffect(() => {
+        if (filteredLocations !== undefined) {
+            setFilteredLocations([...FilteredLocations, ...filteredLocations.results])
+        }
+    }, [filteredLocations])
 
     useEffect(() => {
         observer.observe(refObserver.current)
@@ -57,19 +76,19 @@ const ListLocations = (props) => {
                     <img src={Search} alt="search" />
                 </div>
                 <div>
-                    <input type="text" placeholder="Найти локацию" onClick={()=>props.da()} />
+                    <input type="text" placeholder="Найти локацию" onClick={() => props.changePage()} />
                 </div>
                 <div className="border"></div>
                 <div>
-                    <img src={Filter} alt="filter" />
+                    <img src={Filter} alt="filter" onClick={() => props.da()} />
                 </div>
             </div>
             <div className="locations-page__list">
                 <div className="count-of-locations">
-                    <p>Всего локаций: {isLoading ? null : data.info.count}</p>
+                    <p>Всего локаций: {isLoading ? null : filteredLocations !== undefined ? filteredLocations.info.count : allLocations.info.count}</p>
                 </div>
                 <ul className='list-locations' ref={ref}>
-                    {renderList}
+                    {Object.keys(filters).length > 0 ? renderFilteredLocationsList : renderAllLocationsList}
                     <div ref={refObserver}></div>
                 </ul>
             </div>

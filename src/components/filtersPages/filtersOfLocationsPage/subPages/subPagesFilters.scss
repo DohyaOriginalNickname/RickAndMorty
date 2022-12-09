@@ -1,0 +1,21 @@
+@import "../../../../styles/mixins.scss";
+@import "../../../../styles/variables.scss";
+
+.list-of-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    padding: 0 16px;
+    color: $blackThemeText;
+    @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
+    .border { border: 1px solid #152a3a; }
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .active-filter {
+        color: $activeElement;
+    }
+}

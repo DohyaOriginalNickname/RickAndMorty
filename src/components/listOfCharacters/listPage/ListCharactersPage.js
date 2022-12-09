@@ -22,14 +22,14 @@ const ListCharacters = (props) => {
 
     const [template, setTemplate] = useState(true)
     const [countPage, setCountPage] = useState(1)
-    const [ countFilterPage, setCountFilterPage ] = useState(0)
+    const [countFilterPage, setCountFilterPage] = useState(0)
     const [AllCharacters, setAllCharacters] = useState([])
     const [FilteredCharacters, setFilteredCharacters] = useState([])
 
     const filters = useSelector((state) => state.filter.paramsForCharatersQuery)
 
     const { data: allCharacters, isLoading } = useGetAllCharactersQuery(countPage)
-    const { data: filteredCharacters } = useGetCharactersByFiltersQuery({obj:filters, page:countFilterPage})
+    const { data: filteredCharacters } = useGetCharactersByFiltersQuery({ obj: filters, page: countFilterPage })
 
     const ref = useRef(null)
 
@@ -46,9 +46,9 @@ const ListCharacters = (props) => {
     }, [filteredCharacters])
 
     const plusPage = () => {
-        if (filters.length > 0) {
+        if (Object.keys(filters).length > 0) {
             setCountFilterPage(countFilterPage => countFilterPage + 1)
-        }else{
+        } else {
             setCountPage(countPage => countPage + 1)
         }
     }
@@ -74,7 +74,7 @@ const ListCharacters = (props) => {
                 </div>
                 <ul className={template ? 'list' : 'tile'} ref={ref}>
                     {
-                        isLoading ? null : template ? <ListTemplate data={filters.length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} /> : <TileTemplate data={filters.length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} />
+                        isLoading ? null : template ? <ListTemplate data={Object.keys(filters).length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} /> : <TileTemplate data={filters.length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} />
                     }
                 </ul>
             </div>

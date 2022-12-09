@@ -14,10 +14,10 @@ export const characterApi = createApi({
             query: (inputValue) => `/character/?name=${inputValue !== '' ? inputValue : undefined}`
         }),
         getCharactersByFilters: builder.query({
-            query: ({obj = [], page = 1}) => {
+            query: ({obj = {}, page = 1}) => {
                 let stringQuery = ''
-                for (let i = 0; i < obj.length; i++) {
-                    stringQuery += obj[i]
+                for (const key in obj) {
+                    stringQuery += obj[key]
                 }
                 return `/character/?page=${page}${stringQuery}`
             }

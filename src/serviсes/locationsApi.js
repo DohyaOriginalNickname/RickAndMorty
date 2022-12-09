@@ -12,9 +12,18 @@ export const locationsApi = createApi({
         }),
         getLocationByName: builder.query({
             query: (inputValue) => `/location/?name=${inputValue !== '' ? inputValue : undefined}`
+        }),
+        getLocationsByFilters: builder.query({
+            query: ({page = 1, obj = {}}) => {
+                let stringQuery = ''
+                for (const key in obj) {
+                    stringQuery += obj[key]
+                }
+                return `/location/?page=${page}${stringQuery}`
+            }
         })
     })
 })
 
 
-export const { useGetAllLocationsQuery, useGetLocationQuery, useGetLocationByNameQuery } = locationsApi
+export const { useGetAllLocationsQuery, useGetLocationQuery, useGetLocationByNameQuery, useGetLocationsByFiltersQuery } = locationsApi

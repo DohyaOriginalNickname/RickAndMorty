@@ -1,0 +1,41 @@
+@import "../../../../styles/mixins.scss";
+@import "../../../../styles/variables.scss";
+
+.main-filters-location {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    .border { border: 1px solid #152a3a; }
+    .sort-block {
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+        .title {
+            text-transform: uppercase;
+            @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+        }
+        .sort-by-alphabetical {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            p {
+                width: 227px;
+            }
+        }
+        .sort {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            div {
+                width: 100%;
+                p:first-child{
+                    color: $blackThemeText;
+                    @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
+                }
+                p:last-child{
+                    @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing)
+                }
+            }
+        }
+    }
+}
