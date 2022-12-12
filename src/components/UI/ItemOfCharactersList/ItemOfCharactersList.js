@@ -9,7 +9,7 @@ const ItemOfCharactersList = (props) => {
                 <img src={props.image} alt="character" />
                 <div className="description">
                     <p className={props.status === 'Alive' ? 'live' : 'dead'}>{props.status} </p>
-                    <p className="name">{props.name}</p>
+                    <p className="name">{props.name.length > 25 ? props.name.slice(0,25) + '...' : props.name}</p>
                     <p className="race">{props.species}, {props.gender}</p>
                 </div>
                 {

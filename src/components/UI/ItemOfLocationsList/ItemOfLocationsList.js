@@ -7,9 +7,9 @@ const ItemOfLocationsList = (props) => {
             <li className='list-locations__item' >
                 <img src={props.image} alt="" />
                 <div className='item__description'>
-                    <p className='title'>{props.name}</p>
+                    <p className='title'>{props.name.length > 25 ? props.name.slice(0,25) + '...' : props.name}</p>
                     <div>
-                        <p>{props.type}</p>
+                        <p>{props.type.length > 15 ? props.type.slice(0,15) + '...' : props.type}</p>
                         <p className='dot'></p>
                         <p>{props.dimension}</p>
                     </div>

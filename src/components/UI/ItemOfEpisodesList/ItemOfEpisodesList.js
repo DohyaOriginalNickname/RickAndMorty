@@ -11,7 +11,7 @@ const ItemOfEpisodesList = (props) => {
                 </div>
                 <div className="description">
                     <p className="serial-number">seria {props.id}</p>
-                    <p className="series-title">{props.name}</p>
+                    <p className="series-title">{props.name.length > 25 ? props.name.slice(0,25) + '...' : props.name}</p>
                     <p className="release-date">{props.air_date}</p>
                 </div>
                 {

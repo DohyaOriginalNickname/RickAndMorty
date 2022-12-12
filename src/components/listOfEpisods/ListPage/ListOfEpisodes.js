@@ -20,7 +20,6 @@ const ListEpisodes = (props) => {
     const arrayOfRefs = useRef([])
     const { data } = useGetAllEpisodesQuery(countPage)
 
-    console.log(countPage);
     const arrayOfSeasons = [
         { seasonTitle: 'сезон 1', id: 1, episods: [] },
         { seasonTitle: 'сезон 2', id: 2, episods: [] },
