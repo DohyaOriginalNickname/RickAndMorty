@@ -1,12 +1,8 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
-
-import ItemOfCharactersList from '../../../UI/ItemOfCharactersList/ItemOfCharactersList'
-
-import './listTemplate.scss'
+import ItemOfCharactersList from '../../UI/ItemOfCharactersList/ItemOfCharactersList'
 
 
-const ListTemplate = (props) => {
+const ListItem = (props) => {
     const refObserver = useRef(null)
 
     const options = {
@@ -27,7 +23,7 @@ const ListTemplate = (props) => {
     }, [])
 
     const elements = props.data.map(({image,status,name,species,gender,id}) => {
-        return <ItemOfCharactersList key={id} image={image} status={status} name={name} species={species} gender={gender} id={id}/>
+        return <ItemOfCharactersList key={id} image={image} status={status} name={name} species={species} gender={gender} id={id} tile={props.template}/>
     })
 
     return (
@@ -38,4 +34,4 @@ const ListTemplate = (props) => {
     )
 }
 
-export default ListTemplate;
+export default ListItem;    

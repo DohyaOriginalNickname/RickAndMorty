@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import { useGetAllCharactersQuery, useGetCharactersByFiltersQuery } from '../../../serviсes/characterApi'
 import './ListCharactersPage.scss'
 
-import ListTemplate from '../templates/listTemplate/listTemplate'
-import TileTemplate from '../templates/tileTemplate/tileTemplate'
+import ListItem from '../ItemList/listItem'
 import Loader from '../../UI/loader/loader'
 
 import Search from '../../../assets/other/Search.png'
@@ -75,7 +74,7 @@ const ListCharacters = (props) => {
                 </div>
                 <ul className={template ? 'list' : 'tile'} ref={ref}>
                     {
-                        isLoadingAllCharacters || isLoadingFilteredCharacters ? <Loader/>: template ? <ListTemplate data={Object.keys(filters).length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} /> : <TileTemplate data={filters.length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} />
+                        isLoadingAllCharacters || isLoadingFilteredCharacters ? <Loader/> : <ListItem data={Object.keys(filters).length > 0 ? FilteredCharacters : AllCharacters} template={template} aaa={ref.current} plusPage={plusPage} /> 
                     }
                 </ul>
             </div>
