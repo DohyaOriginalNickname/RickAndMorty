@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import { useGetAllEpisodesQuery } from '../../../serviсes/episodsApi';
+
 import ItemOfEpisodesList from '../../UI/ItemOfEpisodesList/ItemOfEpisodesList';
+import Loader from '../../UI/loader/loader'
 
 import './ListOfEpisodes.scss'
 
@@ -18,7 +20,7 @@ const ListEpisodes = (props) => {
     const [array, setArray] = useState([])
     const [idOfSeason, setId] = useState(1)
     const arrayOfRefs = useRef([])
-    const { data } = useGetAllEpisodesQuery(countPage)
+    const { data, isLoading } = useGetAllEpisodesQuery(countPage)
 
     const arrayOfSeasons = [
         { seasonTitle: 'сезон 1', id: 1, episods: [] },
@@ -122,7 +124,7 @@ const ListEpisodes = (props) => {
                 <input type="text" placeholder='Найти эпизод' onClick={() => props.da()} />
             </div>
 
-            {renderSeasonsList()}
+            { isLoading ? <Loader/> : renderSeasonsList()}
 
             <div className="navigation-panel">
                 <Link to={'/listOfCharacters'}>

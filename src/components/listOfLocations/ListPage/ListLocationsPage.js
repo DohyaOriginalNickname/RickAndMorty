@@ -5,6 +5,7 @@ import { useGetAllLocationsQuery, useGetLocationsByFiltersQuery } from '../../..
 import './ListLocationsPage.scss'
 
 import ItemOfLocationsList from '../../UI/ItemOfLocationsList/ItemOfLocationsList'
+import Loader from '../../UI/loader/loader'
 
 import Search from '../../../assets/other/Search.png'
 import Filter from '../../../assets/other/Filter.png'
@@ -21,8 +22,8 @@ const ListLocations = (props) => {
     const [FilteredLocations, setFilteredLocations] = useState([])
     const filters = useSelector((state) => state.filter.paramsForLocationsQuery)
 
-    const { data: allLocations, isLoading } = useGetAllLocationsQuery(countPage)
-    const { data: filteredLocations } = useGetLocationsByFiltersQuery({ page: countFilteredPage, obj: filters })
+    const { data: allLocations, isLoading: isLoadingAllLocations } = useGetAllLocationsQuery(countPage)
+    const { data: filteredLocations, isLoading: isLoadingFilteredLocations } = useGetLocationsByFiltersQuery({ page: countFilteredPage, obj: filters })
 
     const refObserver = useRef(null)
     const ref = useRef(null)
@@ -85,10 +86,10 @@ const ListLocations = (props) => {
             </div>
             <div className="locations-page__list">
                 <div className="count-of-locations">
-                    <p>Всего локаций: {isLoading ? null : filteredLocations !== undefined ? filteredLocations.info.count : allLocations.info.count}</p>
+                    <p>Всего локаций: {isLoadingAllLocations ? null : filteredLocations !== undefined ? filteredLocations.info.count : allLocations.info.count}</p>
                 </div>
                 <ul className='list-locations' ref={ref}>
-                    {Object.keys(filters).length > 0 ? renderFilteredLocationsList : renderAllLocationsList}
+                    { isLoadingAllLocations || isLoadingFilteredLocations ? <Loader/> : Object.keys(filters).length > 0 ? renderFilteredLocationsList : renderAllLocationsList}
                     <div ref={refObserver}></div>
                 </ul>
             </div>

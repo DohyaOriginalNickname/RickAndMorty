@@ -6,6 +6,7 @@ import './ListCharactersPage.scss'
 
 import ListTemplate from '../templates/listTemplate/listTemplate'
 import TileTemplate from '../templates/tileTemplate/tileTemplate'
+import Loader from '../../UI/loader/loader'
 
 import Search from '../../../assets/other/Search.png'
 import Filter from '../../../assets/other/Filter.png'
@@ -28,8 +29,8 @@ const ListCharacters = (props) => {
 
     const filters = useSelector((state) => state.filter.paramsForCharatersQuery)
 
-    const { data: allCharacters, isLoading } = useGetAllCharactersQuery(countPage)
-    const { data: filteredCharacters } = useGetCharactersByFiltersQuery({ obj: filters, page: countFilterPage })
+    const { data: allCharacters, isLoading: isLoadingAllCharacters } = useGetAllCharactersQuery(countPage)
+    const { data: filteredCharacters, isLoading: isLoadingFilteredCharacters } = useGetCharactersByFiltersQuery({ obj: filters, page: countFilterPage })
 
     const ref = useRef(null)
 
@@ -69,12 +70,12 @@ const ListCharacters = (props) => {
             </div>
             <div className="characters-page__list">
                 <div className="count-of-characters">
-                    <p>Всего персонажей: {isLoading ? null : filteredCharacters !== undefined ? filteredCharacters.info.count : allCharacters.info.count}</p>
+                    <p>Всего персонажей: {isLoadingAllCharacters ? null : filteredCharacters !== undefined ? filteredCharacters.info.count : allCharacters.info.count}</p>
                     <img src={template ? List : Group} alt="Group" onClick={() => setTemplate(!template)} />
                 </div>
                 <ul className={template ? 'list' : 'tile'} ref={ref}>
                     {
-                        isLoading ? null : template ? <ListTemplate data={Object.keys(filters).length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} /> : <TileTemplate data={filters.length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} />
+                        isLoadingAllCharacters || isLoadingFilteredCharacters ? <Loader/>: template ? <ListTemplate data={Object.keys(filters).length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} /> : <TileTemplate data={filters.length > 0 ? FilteredCharacters : AllCharacters} aaa={ref.current} plusPage={plusPage} />
                     }
                 </ul>
             </div>
