@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    paramsForCharatersQuery: { status: '', gender: '' },
-    paramsForLocationsQuery: { type: '', dimension: '' }
+    paramsForCharatersQuery: {},
+    paramsForLocationsQuery: {}
 }
 
 const slice = createSlice({
@@ -10,7 +10,7 @@ const slice = createSlice({
     initialState,
     reducers: {
         addCharactersFilters: (state, action) => {
-            if (action.payload.includes('type')) {
+            if (action.payload.includes('status')) {
                 state.paramsForCharatersQuery.status = action.payload
             } else {
                 state.paramsForCharatersQuery.gender = action.payload

@@ -22,7 +22,7 @@ const ListCharacters = (props) => {
 
     const [template, setTemplate] = useState(true)
     const [countPage, setCountPage] = useState(1)
-    const [countFilterPage, setCountFilterPage] = useState(0)
+    const [countFilterPage, setCountFilterPage] = useState(1)
     const [AllCharacters, setAllCharacters] = useState([])
     const [FilteredCharacters, setFilteredCharacters] = useState([])
 
@@ -46,7 +46,7 @@ const ListCharacters = (props) => {
     }, [filteredCharacters])
 
     const plusPage = () => {
-        if (Object.keys(filters).length > 0) {
+        if (Object.values(filters).length > 0) {
             setCountFilterPage(countFilterPage => countFilterPage + 1)
         } else {
             setCountPage(countPage => countPage + 1)

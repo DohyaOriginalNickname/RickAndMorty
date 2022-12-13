@@ -44,7 +44,7 @@ const ListLocations = (props) => {
 
     const callback = (entries, observer) => {
         if (entries[0].isIntersecting) {
-            if (Object.keys(filters).length > 0) {
+            if (Object.values(filters).length > 0) {
                 setCountFilteredPage(countFilteredPage => countFilteredPage + 1)
             } else {
                 setCountPage(countPage => countPage + 1)
