@@ -5,7 +5,7 @@ import arrow2 from '../../../assets/other/Arrow2.png'
 const ItemOfCharactersList = (props) => {
     return (
         <Link to={`/character/${props.id}`}>
-            <li className={ props.tile ? "item" : "tile__item"}>
+            <li className={ props.tile !== false ? "item" : "tile__item"}>
                 <img src={props.image} alt="character" />
                 <div className="description">
                     <p className={props.status === 'Alive' ? 'live' : 'dead'}>{props.status} </p>
