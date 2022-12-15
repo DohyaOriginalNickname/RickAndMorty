@@ -5,9 +5,22 @@ import { store } from './store/store';
 
 
 import App from './components/App/App';
-// import LoginPage from './components/loginPages/loginPage/loginPage';
-// import PasswordRecovery from './components/loginPages/passwordRecoveryPage/passwordRecoveryPage';
-// import CreateAccountPage from './components/loginPages/createAccountPage/createAccountPage';
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDUy_JXEOyf9HIN2yR_DTkfmxLa_FwQJNQ",
+  authDomain: "rickandmorty-4928a.firebaseapp.com",
+  databaseURL: "https://rickandmorty-4928a-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "rickandmorty-4928a",
+  storageBucket: "rickandmorty-4928a.appspot.com",
+  messagingSenderId: "407562879008",
+  appId: "1:407562879008:web:c28f20432119172c043c45",
+  measurementId: "G-R5MJW79XSL"
+};
+
+const app = initializeApp(firebaseConfig);
 
 const container = document.getElementById('root');
 const root = createRoot(container);
