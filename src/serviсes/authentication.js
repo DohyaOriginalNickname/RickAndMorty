@@ -15,5 +15,5 @@ export async function createNewUser(name, surname, middleName, email, password) 
 export async function loginUser(email, password) {
     await signInWithEmailAndPassword(getAuth(), email, password)
         .then(userCredential => console.log(userCredential))
-        .catch(err => console.log(err.message))
+        // .catch(err => console.log(err.message))
 }
