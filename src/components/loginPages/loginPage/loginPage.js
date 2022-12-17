@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 import { loginUser } from "../../../serviсes/authentication"
@@ -18,12 +18,15 @@ const LoginPage = () => {
     const closeModal = () => {
         setModal(false)
     }
+    
+    useEffect(()=>{
+        if (login !== '' && password !== '') {
+            setAccess(true)
+        }
+    }, [login, password])
 
     const signIn = () => {
         loginUser(login, password)
-            .then(() => {
-                setAccess(true)
-            })
             .catch(() => {
                 setModal(true)
             })
@@ -47,7 +50,7 @@ const LoginPage = () => {
                         <Link to={'/recoveryPassword'}><p className="recovery-client">Забыли пароль?</p></Link>
                     </div>
                     <div className="button-submit">
-                        <Link to={access ? '/listOfCharacters' : null} ><button onClick={() => signIn()}>Войти</button></Link>
+                        <Link to={access ? '/listOfCharacters' : null} ><button disabled={ login !== '' && password !== '' ? false : true } onClick={() => signIn()}>Войти</button></Link>
                         <p>У вас еще нет аккаунта? <Link to={'/createAccount'}><span>Создать</span></Link></p>
                     </div>
                 </form>
