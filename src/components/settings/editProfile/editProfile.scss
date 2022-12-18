@@ -1,0 +1,59 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.edit-page {
+    height: 100vh;
+    background-color: $blackTheme;
+    color: $noActiveElement;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 15px 16px;
+}
+
+.avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 40px 0 40px 0;
+    img {
+        width: 150px;
+        height: 150px;
+    }
+    p {
+        color: $activeElement;
+        @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
+    }
+}
+
+.data-of-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    > p {
+        @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+        text-transform: uppercase;
+    }
+    .select-of-change {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .select-of-change__item {
+            display: flex;
+            align-items: center;
+            .data-of-select {
+                width: 100%;
+                p:first-child {
+                    color: $blackThemeText;
+                    @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
+                }
+                p:last-child {
+                    @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
+                }
+            }
+        }
+    }
+}

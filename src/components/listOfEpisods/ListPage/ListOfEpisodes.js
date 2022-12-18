@@ -143,7 +143,7 @@ const ListEpisodes = (props) => {
                     <img src={episodeIcon} alt="" />
                     <p>Эпизоды</p>
                 </div>
-                <Link to={'/settings'}>
+                <Link to={'/settingsPage'}>
                     <div className="navigation-panel__item">
                         <img src={settingsIcon} alt="" />
                         <p>Настройки</p>

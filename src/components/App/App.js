@@ -9,6 +9,10 @@ import ListOfEpisods from "../listOfEpisods/listOfEpisods";
 import CharacterPage from "../characterPage/characterPage";
 import LocationPage from "../locationPage/locationPage";
 import EpisodePage from "../episodePage/episodePage";
+import SettingsPage from "../settings/settingsPage/settingsPage";
+import EditProfile from "../settings/editProfile/editProfile";
+import NameChange from "../settings/pages/nameChange/nameChange";
+import PasswordChange from "../settings/pages/passwordChange/passwordChange";
 
 const App = () => {
     return (
@@ -24,6 +28,10 @@ const App = () => {
                     <Route path="/location/:id" element={<LocationPage/>}/>
                     <Route path="/listOfEpisods" element={<ListOfEpisods/>}/>
                     <Route path="/episodePage/:id" element={<EpisodePage/>}/>
+                    <Route path="/settingsPage" element={<SettingsPage/>}/>
+                    <Route path="/changeUserData" element={<EditProfile/>}/>
+                    <Route path="/nameChange" element={<NameChange/>}/>
+                    <Route path="/passwordChange" element={<PasswordChange/>}/>
                 </Routes>
             </div>       
         </Router> 

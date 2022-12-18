@@ -95,7 +95,7 @@ const ListCharacters = (props) => {
                         <p>Эпизоды</p>
                     </div>
                 </Link>
-                <Link to={'/settings'}>
+                <Link to={'/settingsPage'}>
                     <div className="navigation-panel__item">
                         <img src={settingsIcon} alt="" />
                         <p>Настройки</p>
