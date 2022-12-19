@@ -1,7 +1,7 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './settingsPage.scss'
-
 
 import arrow from '../../../assets/other/Arrow.png'
 import avatar from '../../../assets/avatar.png'
@@ -14,7 +14,15 @@ import episodeIcon from '../../../assets/navigation/nonActiveIcons/nonActiveEpis
 import settingsIcon from '../../../assets/navigation/activeIcons/ActiveSettingsIcon.png'
 
 
+
 const SettingsPage = () => {
+
+    const [userData, setUserData] = useState({})
+
+    useEffect(() => {
+        setUserData(JSON.parse(localStorage.user))
+    }, [])
+
     return (
         <div className="settings-page">
 
@@ -28,8 +36,8 @@ const SettingsPage = () => {
                     <div className='profile'>
                         <img src={avatar} alt="" />
                         <div className='profile__info'>
-                            <p>Oleg Belotserkovsky</p>
-                            <p>Rick</p>
+                            <p>{userData.surname} {userData.name} {userData.middleName}</p>
+                            <p>{userData.email}</p>
                         </div>
                     </div>
                     <div>

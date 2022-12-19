@@ -4,9 +4,17 @@ import './editProfile.scss'
 import arrow from '../../../assets/other/Arrow.png'
 import arrow2 from '../../../assets/other/Arrow2.png'
 import avatar from '../../../assets/avatar.png'
+import { useEffect, useState } from 'react';
 
 
 const EditProfile = () => {
+
+    const [userData,setUserData] = useState({})
+
+    useEffect(()=>{
+        setUserData(JSON.parse(localStorage.user))
+    }, [])
+
     return (
         <div className='edit-page'>
             <div className='aaaa'>
@@ -28,7 +36,7 @@ const EditProfile = () => {
                         <div className='select-of-change__item'>
                             <div className='data-of-select'>
                                 <p>Изменить ФИО</p>
-                                <p>Oleg Belotserkovsky</p>
+                                <p>{userData.name} {userData.surname} {userData.middleName}</p>
                             </div>
                             <img src={arrow2} alt="" />
                         </div>
@@ -36,8 +44,7 @@ const EditProfile = () => {
                     <Link to={'/passwordChange'}>
                         <div className='select-of-change__item'>
                             <div className='data-of-select'>
-                                <p>Логин</p>
-                                <p>Rick</p>
+                                <p className='change-pass'>Изменить пароль</p>
                             </div>
                             <img src={arrow2} alt="" />
                         </div>

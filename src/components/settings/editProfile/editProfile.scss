@@ -51,7 +51,12 @@
                     @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
                 }
                 p:last-child {
+                    color: $noActiveElement;
                     @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
+                }
+                p.change-pass {
+                    color: $blackThemeText;
+                    @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
                 }
             }
         }

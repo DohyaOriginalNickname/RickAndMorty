@@ -1,14 +1,22 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
+import { updatePassword } from '../../../serviсes/authentication'
 
 import './passwordRecoveryPage.scss'
 import arrow from '../../../assets/other/Arrow.png'
 
 const PasswordRecovery = () => {
-    return(
+
+    const [email, setEmail] = useState('')
+    const [newPassword, setNewPassword] = useState('')
+
+
+    return (
         <div className="recovery-page">
             <div className="to-back-button">
                 <div>
-                    <Link to={'/'}><img src={arrow} alt="arrow"/></Link>
+                    <Link to={'/'}><img src={arrow} alt="arrow" /></Link>
                 </div>
                 <div className="title">
                     <p>Восстановление</p>
@@ -18,11 +26,11 @@ const PasswordRecovery = () => {
                 <form>
                     <div className="field">
                         <label htmlFor="login">Логин</label>
-                        <input type="text" id="login" placeholder="Логин" className="field__login"/>
+                        <input type="text" id="login" placeholder="Логин" className="field__login" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className="field">
                         <label htmlFor="pass">Пароль</label>
-                        <input type="password" id="pass" placeholder="Пароль" className="field__pass"/>
+                        <input type="password" id="pass" placeholder="Пароль" className="field__pass" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
                     </div>
                     <div className="button-submit">
                         <Link to={'/'}>
