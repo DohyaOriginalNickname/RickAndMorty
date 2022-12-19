@@ -44,38 +44,6 @@
     }
 }
 
-.modal {
-    position: fixed;
-    top: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 30px;
-    gap: 24px;
-    background: #152a3a;
-    border-radius: 12px;
-    pointer-events: all;
-    .modal__info {
-        color: $blackThemeText;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        .modal__title {
-            @include text-style($regularSize-2, $regular-line-height-2, $small-letter-spacing, $bold-font-weight);
-        }
-        .modal__error {
-            @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
-        }
-    }
-    .modal__button {
-        border: 1px solid $activeElement;
-        color: $activeElement;
-        border-radius: 12px;
-        background: #152a3a;
-        width: 100%;
-        height: 40px;
-    }
-}
 
 .modal-bg {
     position: fixed;

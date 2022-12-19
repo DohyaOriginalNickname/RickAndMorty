@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 
 import { loginUser } from "../../../serviсes/authentication"
 
+import Modal from "../../UI/modal/modal"
+
 import title from "../../../assets/loadingPage/title.png"
 import './loginPage.scss'
 
@@ -16,26 +18,23 @@ const LoginPage = () => {
     const [access, setAccess] = useState(false)
 
     const closeModal = () => {
-        setModal(false)
+        setModal(modal => !modal)
     }
-    
-    useEffect(()=>{
-        if (login !== '' && password !== '') {
-            setAccess(true)
-        }
-    }, [login, password])
 
     const signIn = () => {
         loginUser(login, password)
+            .then(() => {
+                setAccess(access => !access)
+            })
             .catch(() => {
-                setModal(true)
+                setModal(modal => !modal)
             })
     }
 
     return (
         <>
-            <div className={modal ? 'modal-bg' : null }></div>
-            <div className={ modal ? "sign-in-page no-touch" : "sign-in-page"}>
+            <div className={modal ? 'modal-bg' : null}></div>
+            <div className={modal ? "sign-in-page no-touch" : "sign-in-page"}>
                 <div >
                     <img src={title} alt="title" className="sign-in-page__title" />
                 </div>
@@ -50,7 +49,7 @@ const LoginPage = () => {
                         <Link to={'/recoveryPassword'}><p className="recovery-client">Забыли пароль?</p></Link>
                     </div>
                     <div className="button-submit">
-                        <Link to={access ? '/listOfCharacters' : null} ><button disabled={ login !== '' && password !== '' ? false : true } onClick={() => signIn()}>Войти</button></Link>
+                        <Link to={access ? '/listOfCharacters' : null} ><button disabled={login !== '' && password !== '' ? false : true} onClick={() => signIn()}>Войти</button></Link>
                         <p>У вас еще нет аккаунта? <Link to={'/createAccount'}><span>Создать</span></Link></p>
                     </div>
                 </form>
@@ -63,18 +62,5 @@ const LoginPage = () => {
 }
 
 
-const Modal = (props) => {
-    return (
-        <div className="modal">
-            <div className="modal__info">
-                <p className="modal__title">Ошибка</p>
-                <p className="modal__error">Введен  неверные логин или пароль</p>
-            </div>
-            <div>
-                <button className="modal__button" onClick={() => props.active()}>Ок</button>
-            </div>
-        </div>
-    )
-}
 
 export default LoginPage;
