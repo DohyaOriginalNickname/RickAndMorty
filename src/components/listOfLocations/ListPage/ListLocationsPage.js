@@ -6,6 +6,7 @@ import './ListLocationsPage.scss'
 
 import ItemOfLocationsList from '../../UI/ItemOfLocationsList/ItemOfLocationsList'
 import Loader from '../../UI/loader/loader'
+import NotFoundByFilter from "../../filtersPages/notFoundByFilter/notFoundByFilter"
 
 import Search from '../../../assets/other/Search.png'
 import Filter from '../../../assets/other/Filter.png'
@@ -23,7 +24,7 @@ const ListLocations = (props) => {
     const filters = useSelector((state) => state.filter.paramsForLocationsQuery)
 
     const { data: allLocations, isLoading: isLoadingAllLocations } = useGetAllLocationsQuery(countPage)
-    const { data: filteredLocations, isLoading: isLoadingFilteredLocations } = useGetLocationsByFiltersQuery({ page: countFilteredPage, obj: filters })
+    const { data: filteredLocations, isLoading: isLoadingFilteredLocations, error: errorFilter  } = useGetLocationsByFiltersQuery({ page: countFilteredPage, obj: filters })
 
     const refObserver = useRef(null)
     const ref = useRef(null)
@@ -89,7 +90,7 @@ const ListLocations = (props) => {
                     <p>Всего локаций: {isLoadingAllLocations ? null : filteredLocations !== undefined ? filteredLocations.info.count : allLocations.info.count}</p>
                 </div>
                 <ul className='list-locations' ref={ref}>
-                    { isLoadingAllLocations || isLoadingFilteredLocations ? <Loader/> : Object.keys(filters).length > 0 ? renderFilteredLocationsList : renderAllLocationsList}
+                    { errorFilter  ? <NotFoundByFilter/> : isLoadingAllLocations || isLoadingFilteredLocations ? <Loader/> : Object.keys(filters).length > 0 ? renderFilteredLocationsList : renderAllLocationsList}
                     <div ref={refObserver}></div>
                 </ul>
             </div>

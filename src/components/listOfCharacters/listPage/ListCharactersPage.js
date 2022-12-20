@@ -6,6 +6,7 @@ import './ListCharactersPage.scss'
 
 import ListItem from '../ItemList/listItem'
 import Loader from '../../UI/loader/loader'
+import NotFoundByFilter from "../../filtersPages/notFoundByFilter/notFoundByFilter"
 
 import Search from '../../../assets/other/Search.png'
 import Filter from '../../../assets/other/Filter.png'
@@ -29,7 +30,7 @@ const ListCharacters = (props) => {
     const filters = useSelector((state) => state.filter.paramsForCharatersQuery)
 
     const { data: allCharacters, isLoading: isLoadingAllCharacters } = useGetAllCharactersQuery(countPage)
-    const { data: filteredCharacters, isLoading: isLoadingFilteredCharacters } = useGetCharactersByFiltersQuery({ obj: filters, page: countFilterPage })
+    const { data: filteredCharacters, isLoading: isLoadingFilteredCharacters, error: errorFilter } = useGetCharactersByFiltersQuery({ obj: filters, page: countFilterPage })
 
     const ref = useRef(null)
 
@@ -74,7 +75,7 @@ const ListCharacters = (props) => {
                 </div>
                 <ul className={template ? 'list' : 'tile'} ref={ref}>
                     {
-                        isLoadingAllCharacters || isLoadingFilteredCharacters ? <Loader/> : <ListItem data={Object.keys(filters).length > 0 ? FilteredCharacters : AllCharacters} template={template} aaa={ref.current} plusPage={plusPage} /> 
+                        errorFilter  ? <NotFoundByFilter/> : isLoadingAllCharacters || isLoadingFilteredCharacters ? <Loader/> : <ListItem data={Object.keys(filters).length > 0 ? FilteredCharacters : AllCharacters} template={template} aaa={ref.current} plusPage={plusPage} /> 
                     }
                 </ul>
             </div>

@@ -1,0 +1,6 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.not-found-by-filters {
+    @include not-found(15%, 20px);
+}

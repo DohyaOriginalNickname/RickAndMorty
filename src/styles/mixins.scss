@@ -78,3 +78,17 @@
         height: 610px;
     }
 }
+
+@mixin not-found($top, $gap) {
+    position: relative;
+    top: $top;
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+    align-items: center;
+    text-align: center;
+    p {
+        width: 216px;
+        @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
+    }
+}

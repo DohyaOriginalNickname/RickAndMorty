@@ -31,16 +31,6 @@
         height: 650px;
     }
     .not-found-locations {
-        position: relative;
-        top: 20%;
-        display: flex;
-        flex-direction: column;
-        gap: 64px;
-        align-items: center;
-        text-align: center;
-        p {
-            width: 216px;
-            @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
-        }
+        @include not-found(20%, 64px);
     }
 }
