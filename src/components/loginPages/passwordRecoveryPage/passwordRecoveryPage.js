@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { updatePassword } from '../../../serviсes/authentication'
+//import { changePasswordByEmail } from '../../../serviсes/authentication'
 
 import './passwordRecoveryPage.scss'
 import arrow from '../../../assets/other/Arrow.png'
@@ -11,6 +11,9 @@ const PasswordRecovery = () => {
     const [email, setEmail] = useState('')
     const [newPassword, setNewPassword] = useState('')
 
+    // const aaa = () => {
+    //     changePasswordByEmail(email, newPassword)
+    // }
 
     return (
         <div className="recovery-page">
@@ -34,7 +37,7 @@ const PasswordRecovery = () => {
                     </div>
                     <div className="button-submit">
                         <Link to={'/'}>
-                            <button>Изменить</button>
+                            <button disabled={email === '' && newPassword === '' ? true : false} >Изменить</button>
                         </Link>
                     </div>
                 </form>

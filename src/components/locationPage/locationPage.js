@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useGetLocationQuery } from '../../serviсes/locationsApi'
 import { useGetCharacterQuery } from '../../serviсes/characterApi'
 
@@ -14,6 +14,7 @@ const LocationPage = () => {
 
     const { id } = useParams()
     const { data, isLoading } = useGetLocationQuery(id)
+    const navigate = useNavigate()
 
     const renderList = () => {
         if (!isLoading) {
@@ -33,11 +34,9 @@ const LocationPage = () => {
                     <div className='background'>
                         <img src={image} alt="" />
                     </div>
-                    <Link to={'/listOfLocaions'}>
-                        <div className='arrow'>
-                            <img src={arrow} alt="" />
-                        </div>
-                    </Link>
+                    <div className='arrow' onClick={() => navigate(-1)}>
+                        <img src={arrow} alt="" />
+                    </div>
                     <div className='something'></div>
                 </div>
                 <div className="main">
@@ -71,7 +70,7 @@ const LocationPage = () => {
 const ListItemOfLocations = (props) => {
     const { data, isLoading } = useGetCharacterQuery(props.id)
     if (!isLoading) {
-        return <ItemOfCharactersList id={data.id} image={data.image} status={data.status} name={data.name} species={data.species} gender={data.gender} arrow={true}/>
+        return <ItemOfCharactersList id={data.id} image={data.image} status={data.status} name={data.name} species={data.species} gender={data.gender} arrow={true} />
     }
 }
 export default LocationPage;

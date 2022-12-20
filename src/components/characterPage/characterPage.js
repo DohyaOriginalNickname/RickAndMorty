@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useGetCharacterQuery } from '../../serviсes/characterApi'
 import { useGetEpisodeQuery } from '../../serviсes/episodsApi'
 
@@ -15,13 +15,14 @@ const CharacterPage = () => {
 
     const { id } = useParams()
     const { data, isLoading } = useGetCharacterQuery(id)
+    const navigate = useNavigate()
 
     const renderList = () => {
         if (!isLoading) {
             const array = []
             for (let i = 0; i < data.episode.length; i++) {
                 const id = data.episode[i].replace(/[\D]+/g, '')
-                array.push(<ListItemOfEpisodes id={id} key={i} image={image}/>)
+                array.push(<ListItemOfEpisodes id={id} key={i} image={image} />)
             }
             return array
         }
@@ -34,10 +35,8 @@ const CharacterPage = () => {
                     <div className="background">
                         <div className='background__image'>
                             <img src="" alt="" />
-                            <div className="arrow">
-                                <Link to={"/listOfCharacters"}>
-                                    <img src={arrow} alt="" />
-                                </Link>
+                            <div className="arrow" onClick={() => navigate(-1)}>
+                                <img src={arrow} alt="" />
                             </div>
                         </div>
                     </div>
@@ -106,7 +105,7 @@ const CharacterPage = () => {
 const ListItemOfEpisodes = (props) => {
     const { data, isLoading } = useGetEpisodeQuery(props.id)
     if (!isLoading) {
-        return <ItemOfEpisodesList id={data.id} image={props.image} name={data.name} air_date={data.air_date} arrow={true}/>
+        return <ItemOfEpisodesList id={data.id} image={props.image} name={data.name} air_date={data.air_date} arrow={true} />
     }
 }
 

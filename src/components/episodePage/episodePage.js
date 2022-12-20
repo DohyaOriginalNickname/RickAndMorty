@@ -1,11 +1,10 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useGetEpisodeQuery } from "../../serviсes/episodsApi";
 import { useGetCharacterQuery } from "../../serviсes/characterApi";
 
 import ItemOfCharactersList from '../UI/ItemOfCharactersList/ItemOfCharactersList'
 
 import arrow from '../../assets/other/Arrow.png'
-import arrow2 from '../../assets/other/Arrow2.png'
 import backgroundImage from '../../assets/Rectangle3.png'
 import playButton from '../../assets/PlayButton.png'
 
@@ -14,30 +13,28 @@ const EpisodPage = () => {
 
     const { id } = useParams()
     const { data, isLoading } = useGetEpisodeQuery(id)
+    const navigate = useNavigate()
 
     const renderList = () => {
         if (!isLoading) {
             const array = []
             for (let i = 0; i < data.characters.length; i++) {
                 const id = data.characters[i].replace(/[\D]+/g, '')
-                array.push(<ListItemOfCharacters id={id} key={i}/>)
+                array.push(<ListItemOfCharacters id={id} key={i} />)
             }
             return array
         }
     }
     if (!isLoading) {
-        console.log(data);
         return (
             <div className="episode-page">
                 <div className="episode-page__header">
                     <div className="background">
                         <img src={backgroundImage} alt="" />
                     </div>
-                    <Link to={'/listOfEpisods'}>
-                        <div className='arrow'>
-                            <img src={arrow} alt="" />
-                        </div>
-                    </Link>
+                    <div className='arrow' onClick={() => navigate(-1)}>
+                        <img src={arrow} alt="" />
+                    </div>
                 </div>
 
                 <div className="episode-page__main">
@@ -78,7 +75,7 @@ const EpisodPage = () => {
 const ListItemOfCharacters = (props) => {
     const { data, isLoading } = useGetCharacterQuery(props.id)
     if (!isLoading) {
-        return <ItemOfCharactersList id={data.id} image={data.image} status={data.status} name={data.name} species={data.species} arrow={true}/>
+        return <ItemOfCharactersList id={data.id} image={data.image} status={data.status} name={data.name} species={data.species} arrow={true} />
     }
 }
 export default EpisodPage;
