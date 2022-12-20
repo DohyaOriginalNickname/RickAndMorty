@@ -5,7 +5,7 @@ const Modal = (props) => {
         <div className="modal">
             <div className="modal__info">
                 <p className="modal__title">Ошибка</p>
-                <p className="modal__error">Введен  неверные логин или пароль</p>
+                <p className="modal__error">{props.errorMessage}</p>
             </div>
             <div>
                 <button className="modal__button" onClick={() => props.active()}>Ок</button>

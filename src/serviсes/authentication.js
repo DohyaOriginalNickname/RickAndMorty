@@ -20,7 +20,7 @@ export async function loginUser(email, password) {
                 .then(user => {
                     Object.keys(user.val()).forEach(key => {
                         const userData = user.val()[key]
-                        localStorage.setItem('user', JSON.stringify({ name: userData.name, middleName: userData.middleName, surname: userData.surname, email: userData.email, password: userData.password }))
+                        localStorage.setItem('user', JSON.stringify({ ...userData }))
                     })
                 })
         })
@@ -42,21 +42,17 @@ export async function changeUserData(obj) {
 
 export async function changeUserPassword(oldPass, newPass) {
     const currentUser = getAuth().currentUser
-    const userData = JSON.parse(localStorage.getItem('user'))
-    if (userData.password === oldPass) {
-        await updatePassword(currentUser, newPass)
-            .then(() => {
-                get(child(ref(getDatabase()), `/users/${currentUser.uid}/`))
-                    .then(user => {
-                        Object.keys(user.val()).forEach(key => {
-                            const userData = user.val()[key]
-                            set(ref(getDatabase(), `users/${currentUser.uid}/${key}`), {
-                                ...userData, password: newPass
-                            })
-                            localStorage.setItem('user', JSON.stringify({ ...userData, password: newPass }))
+    await updatePassword(currentUser, newPass)
+        .then(() => {
+            get(child(ref(getDatabase()), `/users/${currentUser.uid}/`))
+                .then(user => {
+                    Object.keys(user.val()).forEach(key => {
+                        const userData = user.val()[key]
+                        set(ref(getDatabase(), `users/${currentUser.uid}/${key}`), {
+                            ...userData, password: newPass
                         })
+                        localStorage.setItem('user', JSON.stringify({ ...userData, password: newPass }))
                     })
-            })
-            .catch(err => console.log(err.message))
-    }
+                })
+        })
 }

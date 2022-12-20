@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 
 import { loginUser } from "../../../serviсes/authentication"
 
@@ -16,6 +16,11 @@ const LoginPage = () => {
     const [password, setPassword] = useState('')
     const [modal, setModal] = useState(false)
     const [access, setAccess] = useState(false)
+    const [recoveryPassword, setRecoveryPassword] = useState(false)
+
+    const navigate = useNavigate()
+
+    const errorMessage = 'Введен  неверные логин или пароль'
 
     const closeModal = () => {
         setModal(modal => !modal)
@@ -25,9 +30,11 @@ const LoginPage = () => {
         loginUser(login, password)
             .then(() => {
                 setAccess(access => !access)
+                navigate('/listOfCharacters')
             })
             .catch(() => {
                 setModal(modal => !modal)
+                setRecoveryPassword(true)
             })
     }
 
@@ -46,15 +53,15 @@ const LoginPage = () => {
                     <div className="field">
                         <label htmlFor="pass">Пароль</label>
                         <input type="password" id="pass" placeholder="Пароль" className="field__pass" value={password} onChange={(event) => setPassword(event.target.value)} />
-                        <Link to={'/recoveryPassword'}><p className="recovery-client">Забыли пароль?</p></Link>
+                        {recoveryPassword ? <Link to={'/recoveryPassword'}><p className="recovery-client">Забыли пароль?</p></Link> : null}
                     </div>
                     <div className="button-submit">
-                        <Link to={access ? '/listOfCharacters' : null} ><button disabled={login !== '' && password !== '' ? false : true} onClick={() => signIn()}>Войти</button></Link>
+                        <button disabled={login !== '' && password !== '' ? false : true} onClick={() => signIn()}>Войти</button>
                         <p>У вас еще нет аккаунта? <Link to={'/createAccount'}><span>Создать</span></Link></p>
                     </div>
                 </form>
 
-                {modal ? <Modal active={closeModal} /> : null}
+                {modal ? <Modal active={closeModal} errorMessage={errorMessage} /> : null}
 
             </div>
         </>

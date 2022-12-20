@@ -3,7 +3,7 @@
 
 .modal {
     position: fixed;
-    top: 50%;
+    top: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,6 +12,7 @@
     background: #152a3a;
     border-radius: 12px;
     pointer-events: all;
+    margin: 0 15px 0 15px ;
     .modal__info {
         color: $blackThemeText;
         display: flex;
