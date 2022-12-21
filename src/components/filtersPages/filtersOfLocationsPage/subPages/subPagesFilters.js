@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { useDispatch } from 'react-redux'
+import { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { addLocationsFilters } from '../../../../store/slice'
 
 import arrow from '../../../../assets/other/Arrow.png'
@@ -8,10 +8,32 @@ import './subPagesFilters.scss'
 
 const FilterTypePage = (props) => {
 
+    const [elements, setElements] = useState([])
     const arrayOfRefs = useRef([])
     const dispatch = useDispatch()
+    const filter = useSelector(state => state.filter.paramsForLocationsQuery)
+
     const filtersOfTypeLocation = ['Planet', 'Microverse', 'Space station', 'Fantasy town', 'Resort', 'TV', 'Dream', 'Dimension', 'Mount', 'Consciouness', 'liquid', 'Diegesis', 'Spacecraft', 'unknown']
     const filtersOfDimensionLocation = ['Dimension 35-C', 'dimension C-137', 'Dimension C-500A', 'Dimension J19ζ7', 'Fantasy Dimension', 'Replacment dimension']
+
+    useEffect(() => {
+        const array = props.num === 1 ?
+            filtersOfTypeLocation.map((item, refIndex) => {
+                if (Object.keys(filter).length !== 0 && filter.type !== undefined && filter.type.slice(6) === item) {
+                    return <li key={refIndex} ref={el => arrayOfRefs.current[refIndex] = el} onClick={() => changeActiveFilter(refIndex)} className='active-filter' >{item}</li>
+                } else {
+                    return <li key={refIndex} ref={el => arrayOfRefs.current[refIndex] = el} onClick={() => changeActiveFilter(refIndex)} >{item}</li>
+                }
+            })
+            : filtersOfDimensionLocation.map((item, refIndex) => {
+                if (Object.keys(filter).length !== 0 && filter.dimension !== undefined && filter.dimension.slice(11) === item) {
+                    return <li key={refIndex} ref={el => arrayOfRefs.current[refIndex] = el} onClick={() => changeActiveFilter(refIndex)} className='active-filter' >{item}</li>
+                } else {
+                    return <li key={refIndex} ref={el => arrayOfRefs.current[refIndex] = el} onClick={() => changeActiveFilter(refIndex)} >{item}</li>
+                }
+            })
+        setElements([...array])
+    }, [])
 
     const changeActiveFilter = (idRef) => {
         arrayOfRefs.current.forEach(item => item.classList.remove('active-filter'))
@@ -24,9 +46,21 @@ const FilterTypePage = (props) => {
         }
     }
 
-    const elements = props.num === 1 ?
-        filtersOfTypeLocation.map((item, refIndex) => <li key={refIndex} ref={el => arrayOfRefs.current[refIndex] = el} onClick={() => changeActiveFilter(refIndex)} >{item}</li>)
-        : filtersOfDimensionLocation.map((item, refIndex) => <li key={refIndex} ref={el => arrayOfRefs.current[refIndex] = el} onClick={() => changeActiveFilter(refIndex)} >{item}</li>)
+    const aaa = () => {
+        if (props.num === 1) {
+            if (filter.type) {
+                return filter.type.slice(6)
+            } else {
+                return "Не выбрано"
+            }
+        } else {
+            if (filter.dimension) {
+                return filter.dimension.slice(11)
+            } else {
+                return "Не выбрано"
+            }
+        }
+    }
 
     return (
         <>
@@ -36,7 +70,7 @@ const FilterTypePage = (props) => {
             </div>
 
             <div className='list-of-filter'>
-                <p>Не выбрано</p>
+                <p>{Object.keys(filter).length !== 0 ? aaa() : "Не выбрано"}</p>
                 <div className='border'></div>
                 <ul>
                     {elements}

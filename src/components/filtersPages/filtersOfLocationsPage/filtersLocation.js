@@ -3,7 +3,7 @@ import { useState } from "react"
 import MainPage from './mainPage/filtersPage'
 import SubPagesFilters from './subPages/subPagesFilters'
 
-const Aaa = (props) => {
+const FilterPage = (props) => {
 
     const [page, setPage] = useState(0)
 
@@ -19,4 +19,4 @@ const Aaa = (props) => {
     )
 }
 
-export default Aaa;
+export default FilterPage;

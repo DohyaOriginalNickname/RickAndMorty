@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addCharactersFilters } from '../../../store/slice'
+import { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addCharactersFilters, clearCharactersFilters } from '../../../store/slice'
 
 import './filtersPage.scss'
 
@@ -11,21 +11,49 @@ import EndTo from '../../../assets/other/EndTo.png'
 
 const FiltersPage = (props) => {
 
-    const [clearFilter, setClearFilter] = useState(false)
+    const [arrayOfFilters, setArrayOfFilters] = useState([])
+    const refs = useRef([])
     const dispatch = useDispatch()
+    const filter = useSelector((state) => state.filter.paramsForCharatersQuery)
 
-    const aaa = (event) => {
-        if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') {
-            setClearFilter(true)
-        }
+    const DataOfFilters = ['alive', 'dead', 'unknown', 'male', 'female', 'genderless']
+
+    const clearOfFilters = () => {
+        dispatch(clearCharactersFilters())
+        refs.current.forEach(item => item.checked = false)
     }
+
+    useEffect(() => {
+        const data = DataOfFilters.map((item, index) => {
+            if (filter.status !== undefined && filter.gender !== undefined) {
+                if (filter.status.slice(8) === item || filter.gender.slice(8) === item) {
+                    return (
+                        <li key={index}>
+                            <input type="checkbox" name={item} id={item} value={item} ref={el => refs.current[index] = el} defaultChecked className="custom-checkbox" />
+                            <label htmlFor={item}></label>
+                            <p>{item}</p>
+                        </li>
+                    )
+                }
+            }
+            return (
+                <li key={index}>
+                    <input type="checkbox" name={item} id={item} value={item} ref={el => refs.current[index] = el} className="custom-checkbox" />
+                    <label htmlFor={item}></label>
+                    <p>{item}</p>
+                </li>
+            )
+        })
+        setArrayOfFilters([...data])
+    }, [])
+
 
     const changeStatusOfFilters = (event) => {
         if (event.target.value !== undefined) {
-            if (event.target.value === 'alive' || event.target.value === 'dead' || event.target.value === 'unknown' ) {
+            if (event.target.value === 'alive' || event.target.value === 'dead' || event.target.value === 'unknown') {
                 dispatch(addCharactersFilters(`&status=${event.target.value}`))
             }
-            if (event.target.value === 'male' || event.target.value === 'female' || event.target.value === 'genderless' ) {
+            if (event.target.value === 'male' || event.target.value === 'female' || event.target.value === 'genderless') {
                 dispatch(addCharactersFilters(`&gender=${event.target.value}`))
             }
         }
@@ -36,10 +64,10 @@ const FiltersPage = (props) => {
             <div className="header-filters">
                 <img src={arrow} alt="" onClick={() => props.da()} />
                 <p className="title">Фильтры</p>
-                <img src={clearFilters} alt="" className={clearFilter ? 'clear-filter-ready' : 'clear-filter-not-ready'}  />
+                <img src={clearFilters} alt="" className={Object.keys(filter).length > 0 ? 'clear-filter-ready' : 'clear-filter-not-ready'} onClick={() => clearOfFilters()} />
             </div>
 
-            <div className="main-filters" onChange={(e) => aaa(e)} onClick={(e) => changeStatusOfFilters(e)}>
+            <div className="main-filters" onClick={(e) => changeStatusOfFilters(e)}>
                 <div className="sort-block">
                     <div className="title">Сортировать</div>
                     <div className="sort-by-alphabetical">
@@ -51,44 +79,16 @@ const FiltersPage = (props) => {
                 <div className="border"></div>
                 <div className="sort-block">
                     <div className="title">Статус</div>
-                    <div className="sort">
-                        <div>
-                            <input type="checkbox" name="Alive" id="Живой" value="alive" className="custom-checkbox" />
-                            <label htmlFor="Живой"></label>
-                            <p>Живой</p>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="Dead" id="Мертвый" value="dead" className="custom-checkbox" />
-                            <label htmlFor="Мертвый"></label>
-                            <p>Мертвый</p>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="unknown" id="Неизвестно" value="unknown" className="custom-checkbox" />
-                            <label htmlFor="Неизвестно"></label>
-                            <p>Неизвестно</p>
-                        </div>
-                    </div>
+                    <ul className="sort">
+                        {arrayOfFilters.slice(0, 3)}
+                    </ul>
                 </div>
                 <div className="border"></div>
                 <div className="sort-block">
                     <div className="title">Пол</div>
-                    <div className="sort">
-                        <div>
-                            <input type="checkbox" name="" id="Мужской" value="male" className="custom-checkbox" />
-                            <label htmlFor="Мужской"></label>
-                            <p>Мужской</p>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="" id="Женский" value="female" className="custom-checkbox" />
-                            <label htmlFor="Женский"></label>
-                            <p>Женский</p>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="" id="Бесполый" value="genderless" className="custom-checkbox" />
-                            <label htmlFor="Бесполый"></label>
-                            <p>Бесполый</p>
-                        </div>
-                    </div>
+                    <ul className="sort">
+                        {arrayOfFilters.slice(3)}
+                    </ul>
                 </div>
             </div>
         </>

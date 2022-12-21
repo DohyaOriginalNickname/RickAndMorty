@@ -11,9 +11,17 @@ const slice = createSlice({
     reducers: {
         addCharactersFilters: (state, action) => {
             if (action.payload.includes('status')) {
-                state.paramsForCharatersQuery.status = action.payload
+                if (state.paramsForCharatersQuery.hasOwnProperty('status')) {
+                    delete state.paramsForCharatersQuery.status
+                } else {
+                    state.paramsForCharatersQuery.status = action.payload
+                }
             } else {
-                state.paramsForCharatersQuery.gender = action.payload
+                if (state.paramsForCharatersQuery.hasOwnProperty('gender')) {
+                    delete state.paramsForCharatersQuery.gender
+                } else {
+                    state.paramsForCharatersQuery.gender = action.payload
+                }
             }
         },
         addLocationsFilters: (state, action) => {
@@ -22,9 +30,15 @@ const slice = createSlice({
             } else {
                 state.paramsForLocationsQuery.dimension = action.payload
             }
+        },
+        clearCharactersFilters: (state) => {
+            state.paramsForCharatersQuery = {}
+        },
+        clearLocationsFilters: (state) => {
+            state.paramsForLocationsQuery = {}
         }
     }
 })
 
-export const { addCharactersFilters, addLocationsFilters } = slice.actions
+export const { addCharactersFilters, addLocationsFilters, clearCharactersFilters, clearLocationsFilters } = slice.actions
 export default slice.reducer

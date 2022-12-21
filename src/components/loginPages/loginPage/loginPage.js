@@ -26,7 +26,8 @@ const LoginPage = () => {
         setModal(modal => !modal)
     }
 
-    const signIn = () => {
+    const signIn = (e) => {
+        e.preventDefault()
         loginUser(login, password)
             .then(() => {
                 setAccess(access => !access)
@@ -56,7 +57,7 @@ const LoginPage = () => {
                         {recoveryPassword ? <Link to={'/recoveryPassword'}><p className="recovery-client">Забыли пароль?</p></Link> : null}
                     </div>
                     <div className="button-submit">
-                        <button disabled={login !== '' && password !== '' ? false : true} onClick={() => signIn()}>Войти</button>
+                        <button disabled={login !== '' && password !== '' ? false : true} onClick={(e) => signIn(e)}>Войти</button>
                         <p>У вас еще нет аккаунта? <Link to={'/createAccount'}><span>Создать</span></Link></p>
                     </div>
                 </form>

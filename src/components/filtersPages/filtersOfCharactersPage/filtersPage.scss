@@ -31,6 +31,7 @@
         flex-direction: column;
         gap: 24px;
         .title {
+            text-transform: uppercase;
             @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
         }
         .sort-by-alphabetical {
@@ -38,7 +39,9 @@
             align-items: center;
             gap: 24px;
             p {
+                color: $blackThemeText;
                 width: 227px;
+                @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
             }
         }
         .sort {
@@ -46,7 +49,7 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 24px;
-            div {
+            li {
                 display: flex;
                 gap: 18px;
                 color: $blackThemeText;

@@ -1,5 +1,6 @@
-import { useState } from 'react'
-
+import { useDispatch } from 'react-redux'
+import { clearLocationsFilters } from '../../../../store/slice'
+import { useSelector } from 'react-redux'
 import './filtersPage.scss'
 
 import arrow from '../../../../assets/other/Arrow.png'
@@ -10,12 +11,11 @@ import EndTo from '../../../../assets/other/EndTo.png'
 
 const FiltersOfLocationsPage = (props) => {
 
-    const [ clearFilter, setClearFilter ] = useState(false)
+    const dispatch = useDispatch()
+    const filter = useSelector(state => state.filter.paramsForLocationsQuery)
 
-    const aaa = (event) => {
-        if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') {
-            setClearFilter(!clearFilter)
-        }
+    const clearOfFilters = () => {
+        dispatch(clearLocationsFilters())
     }
 
     return (
@@ -23,10 +23,10 @@ const FiltersOfLocationsPage = (props) => {
             <div className="header-filters">
                 <img src={arrow} alt="" onClick={() => props.da()}/>
                 <p className="title">Фильтры</p>
-                <img src={clearFilters} alt="" className={clearFilter ? 'clear-filter-ready' : 'clear-filter-not-ready'} />
+                <img src={clearFilters} alt="" className={ Object.keys(filter).length > 0 ? 'clear-filter-ready' : 'clear-filter-not-ready'} onClick={() => clearOfFilters()}/>
             </div>
 
-            <div className="main-filters-location" onChange={(e) => aaa(e)}>
+            <div className="main-filters-location">
                 <div className="sort-block">
                     <div className="title">Сортировать</div>
                     <div className="sort-by-alphabetical">
@@ -40,7 +40,7 @@ const FiltersOfLocationsPage = (props) => {
                     <div className='title'>Сортировать по</div>
                     <div className='sort' onClick={() => props.changePage(1)}>
                         <div>
-                            <p>Тип</p>
+                            <p>{filter.type ? filter.type.slice(6) : 'Тип'}</p>
                             <p>Выберите тип локации</p>
                         </div>
                         <img src={arrow2} alt="" />
@@ -49,7 +49,7 @@ const FiltersOfLocationsPage = (props) => {
                 <div className='sort-block'>
                     <div className='sort' onClick={() => props.changePage(2)}>
                         <div>
-                            <p>Измерение</p>
+                            <p>{filter.dimension ? filter.dimension.slice(11) : 'Измерение'}</p>
                             <p>Выберите измерения локации</p>
                         </div>
                         <img src={arrow2} alt="" />
