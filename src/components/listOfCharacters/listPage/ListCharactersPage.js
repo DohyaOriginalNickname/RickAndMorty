@@ -48,9 +48,13 @@ const ListCharacters = (props) => {
 
     const plusPage = () => {
         if (Object.values(filters).length > 0) {
-            setCountFilterPage(countFilterPage => countFilterPage + 1)
+            if (filteredCharacters.info.next !== null) {
+                setCountFilterPage(countFilterPage => countFilterPage + 1)
+            }
         } else {
-            setCountPage(countPage => countPage + 1)
+            if (allCharacters.info.next !== null) {
+                setCountPage(countPage => countPage + 1)
+            }
         }
     }
 

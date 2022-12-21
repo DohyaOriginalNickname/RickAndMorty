@@ -46,9 +46,13 @@ const ListLocations = (props) => {
     const callback = (entries, observer) => {
         if (entries[0].isIntersecting) {
             if (Object.values(filters).length > 0) {
-                setCountFilteredPage(countFilteredPage => countFilteredPage + 1)
+                if (filteredLocations.info.next !== null) {
+                    setCountFilteredPage(countFilteredPage => countFilteredPage + 1)
+                }
             } else {
-                setCountPage(countPage => countPage + 1)
+                if (allLocations.info.next !== null) {
+                    setCountPage(countPage => countPage + 1)
+                }
             }
         }
     }
