@@ -11,7 +11,7 @@ export const episodsApi = createApi({
             query: (id) => `/episode/${id}`
         }),
         getEpisodeByName: builder.query({
-            query: (inputValue) => `/episode/?name=${inputValue !== '' ? inputValue : undefined}`
+            query: ({inputValue, page = 1}) => `/episode/?page=${page}&name=${inputValue !== '' ? inputValue : undefined}`
         })
     })
 })

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useGetEpisodeByNameQuery } from '../../../serviсes/episodsApi'
 import './searchEpisode.scss'
 
@@ -9,16 +9,55 @@ import arrow from '../../../assets/other/Arrow.png'
 import EpisodeNotFound from '../../../assets/notFoundImages/EpisodeNotFound.png'
 
 const SearchEpisode = (props) => {
+
     const [inputValue, setInputValue] = useState('')
-    const { data, error } = useGetEpisodeByNameQuery(inputValue)
+    const [countPage, setCountPage] = useState(1)
+    const [foundEpisodes, setFoundEpisodes] = useState([])
+    const { data, error } = useGetEpisodeByNameQuery({ inputValue, page: countPage })
+
+    const refObserver = useRef(null)
+    const ref = useRef(null)
+
+    useEffect(() => {
+        if (data !== undefined) {
+            sessionStorage.setItem('data-info', JSON.stringify(data.info))
+            setFoundEpisodes([...foundEpisodes, ...data.results])
+        }
+    }, [data])
 
     const changeInputValue = (event) => {
         setInputValue(event.target.value)
+        setCountPage(1)
+        setFoundEpisodes([])
+    }
+    
+    const plusPage = () => {
+        const aaa = JSON.parse(sessionStorage.getItem('data-info'))
+        if (aaa.next !== null) {
+            setCountPage(countPage => countPage + 1)
+        }
     }
 
-    const renderList = data !== undefined ? data.results.map(({ name, air_date, id }) => {
+    const renderList = data !== undefined ? foundEpisodes.map(({ name, air_date, id }) => {
         return <ItemOfEpisodesList key={id} image={props.image} name={name} air_date={air_date} id={id} />
     }) : null
+
+    const options = {
+        root: ref.current,
+        rootMargin: '0px',
+        threshold: 1.0
+    }
+
+    const callback = (entries, observer) => {
+        if (entries[0].isIntersecting) {
+            plusPage()
+        }
+    }
+    const observer = new IntersectionObserver(callback, options)
+
+    useEffect(() => {
+        observer.observe(refObserver.current)
+    }, [])
 
     return (
         <>
@@ -35,7 +74,7 @@ const SearchEpisode = (props) => {
             </div>
             <div className="search-episodes-list">
                 <p className="result-title">Результаты поиска</p>
-                <ul className="found-episodes">
+                <ul className="found-episodes" ref={ref}>
                     {
                         !error ? renderList :
                             <div className="not-found-episodes">
@@ -43,6 +82,7 @@ const SearchEpisode = (props) => {
                                 <p>Эпизода с таким названием нет</p>
                             </div>
                     }
+                    <div ref={refObserver}></div>
                 </ul>
             </div>
         </>

@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const characterApi = createApi({
     reducerPath: 'characterApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://rickandmortyapi.com/api'}),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://rickandmortyapi.com/api' }),
     endpoints: builder => ({
         getAllCharacters: builder.query({
             query: (page = 1) => `/character/?page=${page}`
@@ -11,10 +11,10 @@ export const characterApi = createApi({
             query: (id) => `/character/${id}`
         }),
         getCharacterByName: builder.query({
-            query: (inputValue) => `/character/?name=${inputValue !== '' ? inputValue : undefined}`
+            query: ({ inputValue, page = 1 }) => `/character/?page=${page}&name=${inputValue !== '' ? inputValue : undefined}`
         }),
         getCharactersByFilters: builder.query({
-            query: ({obj = {}, page = 1}) => {
+            query: ({ obj = {}, page = 1 }) => {
                 let stringQuery = ''
                 for (const key in obj) {
                     stringQuery += obj[key]

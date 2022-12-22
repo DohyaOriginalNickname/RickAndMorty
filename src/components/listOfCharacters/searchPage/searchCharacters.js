@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useGetCharacterByNameQuery } from "../../../serviсes/characterApi"
 import ItemOfCharactersList from "../../UI/ItemOfCharactersList/ItemOfCharactersList"
+import ListItem from "../ItemList/listItem"
 
 import './searchCharacters.scss'
 
@@ -11,16 +12,31 @@ import CharacterNotFound from '../../../assets/notFoundImages/CharacterNotFound.
 const SearchCharacter = (props) => {
 
     const [inputValue, setInputValue] = useState('')
-    const { data, error } = useGetCharacterByNameQuery(inputValue)
+    const [countPage, setCountPage] = useState(0)
+    const [searchChar, setSearchChar] = useState([])
+    const { data, error } = useGetCharacterByNameQuery({ inputValue, page: countPage })
 
+    const ref = useRef(null)
+
+    useEffect(() => {
+        if (data !== undefined) {
+            sessionStorage.setItem('data-info', JSON.stringify(data.info))
+            setSearchChar([...searchChar, ...data.results])
+        }
+    }, [data])
+
+    const plusPage = () => {
+        const aaa = JSON.parse(sessionStorage.getItem('data-info')) 
+        if (aaa.next !== null) {
+            setCountPage(countPage => countPage + 1)
+        }
+    }
 
     const changeInputValue = (event) => {
         setInputValue(event.target.value)
+        setSearchChar([])
+        setCountPage(0)
     }
-
-    const renderList = data !== undefined ? data.results.map(({ image, status, name, species, gender, id }) => {
-        return <ItemOfCharactersList key={id} image={image} status={status} name={name} species={species} gender={gender} id={id}/>
-    }) : null
 
     return (
         <>
@@ -29,7 +45,7 @@ const SearchCharacter = (props) => {
                     <img src={arrow} alt="search" onClick={() => props.changePage()} />
                 </div>
                 <div>
-                    <input type="text" placeholder="Найти персонажа" autoFocus onChange={changeInputValue} value={inputValue} />
+                    <input type="text" placeholder="Найти персонажа" autoFocus onChange={(e) => changeInputValue(e)} value={inputValue} />
                 </div>
                 <div>
                     <img src={Cancel} alt="filter" onClick={() => setInputValue('')} />
@@ -37,13 +53,17 @@ const SearchCharacter = (props) => {
             </div>
             <div className="search-character-list">
                 <p className="result-title">Результаты поиска</p>
-                <ul className="found-characters">
+                <ul className="found-characters" ref={ref}>
                     {
-                        !error ? renderList : 
-                        <div className="not-found-characters">
-                            <img src={CharacterNotFound} alt="" />
-                            <p>Персонаж с таким именем не найден</p>
-                        </div>
+                        data !== undefined ? !error ? <ListItem data={searchChar} plusPage={plusPage} aaa={ref.current} /> :
+                            <div className="not-found-characters">
+                                <img src={CharacterNotFound} alt="" />
+                                <p>Персонаж с таким именем не найден</p>
+                            </div> :
+                            <div className="not-found-characters">
+                                <img src={CharacterNotFound} alt="" />
+                                <p>Персонаж с таким именем не найден</p>
+                            </div>
                     }
                 </ul>
             </div>
