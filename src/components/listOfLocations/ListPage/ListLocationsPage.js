@@ -17,14 +17,14 @@ import episodeIcon from '../../../assets/navigation/nonActiveIcons/nonActiveEpis
 import settingsIcon from '../../../assets/navigation/nonActiveIcons/nonActiveSettingsIcon.png'
 
 const ListLocations = (props) => {
-    const [countPage, setCountPage] = useState(0)
-    const [countFilteredPage, setCountFilteredPage] = useState(0)
+    const [countPage, setCountPage] = useState(1)
+    const [countFilteredPage, setCountFilteredPage] = useState(1)
     const [AllLocations, setAllLocations] = useState([])
     const [FilteredLocations, setFilteredLocations] = useState([])
     const filters = useSelector((state) => state.filter.paramsForLocationsQuery)
 
     const { data: allLocations, isLoading: isLoadingAllLocations } = useGetAllLocationsQuery(countPage)
-    const { data: filteredLocations, isLoading: isLoadingFilteredLocations, error: errorFilter  } = useGetLocationsByFiltersQuery({ page: countFilteredPage, obj: filters })
+    const { data: filteredLocations, isLoading: isLoadingFilteredLocations, error: errorFilter } = useGetLocationsByFiltersQuery({ page: countFilteredPage, obj: filters })
 
     const refObserver = useRef(null)
     const ref = useRef(null)
@@ -45,14 +45,12 @@ const ListLocations = (props) => {
 
     const callback = (entries, observer) => {
         if (entries[0].isIntersecting) {
-            if (Object.values(filters).length > 0) {
-                if (filteredLocations.info.next !== null) {
+            if (Object.values(filters).length > 0 && filteredLocations !== undefined) {
+                if (!isLoadingFilteredLocations && filteredLocations.info.next !== null) {
                     setCountFilteredPage(countFilteredPage => countFilteredPage + 1)
                 }
             } else {
-                if (allLocations.info.next !== null) {
-                    setCountPage(countPage => countPage + 1)
-                }
+                setCountPage(countPage => countPage + 1)
             }
         }
     }
@@ -94,7 +92,7 @@ const ListLocations = (props) => {
                     <p>Всего локаций: {isLoadingAllLocations ? null : filteredLocations !== undefined ? filteredLocations.info.count : allLocations.info.count}</p>
                 </div>
                 <ul className='list-locations' ref={ref}>
-                    { errorFilter  ? <NotFoundByFilter/> : isLoadingAllLocations || isLoadingFilteredLocations ? <Loader/> : Object.keys(filters).length > 0 ? renderFilteredLocationsList : renderAllLocationsList}
+                    {errorFilter ? <NotFoundByFilter /> : isLoadingAllLocations || isLoadingFilteredLocations ? <Loader /> : Object.keys(filters).length > 0 ? renderFilteredLocationsList : renderAllLocationsList}
                     <div ref={refObserver}></div>
                 </ul>
             </div>
