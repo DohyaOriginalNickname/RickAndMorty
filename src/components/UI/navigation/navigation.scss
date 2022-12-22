@@ -1,0 +1,31 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+
+.navigation-panel{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    padding: 8px 10px 12px;
+    background: #152A3A;
+    box-shadow: 0px -4px 30px rgba(0, 0, 0, 0.08);
+    &__item{
+        width: 88.75px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: $noActiveElement;
+    }
+    &__item_select{
+        width: 88.75px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #43D049;
+    }
+}

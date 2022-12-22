@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Navigation from '../../UI/navigation/navigation';
 
 import './settingsPage.scss'
 
@@ -7,13 +8,6 @@ import arrow from '../../../assets/other/Arrow.png'
 import avatar from '../../../assets/avatar.png'
 import palitra from '../../../assets/other/palitra.png'
 import arrow2 from '../../../assets/other/Arrow2.png'
-
-import characterIcon from '../../../assets/navigation/nonActiveIcons/nonActiveCharactersIcon.png'
-import locatioIcon from '../../../assets/navigation/nonActiveIcons/nonActiveLocationIcon.png'
-import episodeIcon from '../../../assets/navigation/nonActiveIcons/nonActiveEpisodeIcon.png'
-import settingsIcon from '../../../assets/navigation/activeIcons/ActiveSettingsIcon.png'
-
-
 
 const SettingsPage = () => {
 
@@ -87,31 +81,8 @@ const SettingsPage = () => {
                 </div>
 
                 {modal ? <ChangeThemeModal cancel={cancel} /> : null}
-
-                <div className="navigation-panel">
-                    <Link to={'/listOfCharacters'}>
-                        <div className="navigation-panel__item">
-                            <img src={characterIcon} alt="" />
-                            <p>Персонажи</p>
-                        </div>
-                    </Link>
-                    <Link to={'/listOfLocaions'}>
-                        <div className="navigation-panel__item">
-                            <img src={locatioIcon} alt="" />
-                            <p>Локации</p>
-                        </div>
-                    </Link>
-                    <Link to={'/listOfEpisods'}>
-                        <div className="navigation-panel__item">
-                            <img src={episodeIcon} alt="" />
-                            <p>Эпизоды</p>
-                        </div>
-                    </Link>
-                    <div className="navigation-panel__item_select">
-                        <img src={settingsIcon} alt="" />
-                        <p>Настройки</p>
-                    </div>
-                </div>
+                
+                <Navigation/>
             </div>
         </>
     )

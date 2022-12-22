@@ -1,23 +1,18 @@
 import { useState, useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
-import { Link } from 'react-router-dom'
 import { useGetAllCharactersQuery, useGetCharactersByFiltersQuery } from '../../../serviсes/characterApi'
 import './ListCharactersPage.scss'
 
 import ListItem from '../ItemList/listItem'
 import Loader from '../../UI/loader/loader'
 import NotFoundByFilter from "../../filtersPages/notFoundByFilter/notFoundByFilter"
+import Navigation from "../../UI/navigation/navigation"
 
 import Search from '../../../assets/other/Search.png'
 import Filter from '../../../assets/other/Filter.png'
 
 import Group from '../../../assets/other/Group.png'
 import List from '../../../assets/other/List.png'
-
-import characterIcon from '../../../assets/navigation/activeIcons/ActiveCharactersIcon.png'
-import locatioIcon from '../../../assets/navigation/nonActiveIcons/nonActiveLocationIcon.png'
-import episodeIcon from '../../../assets/navigation/nonActiveIcons/nonActiveEpisodeIcon.png'
-import settingsIcon from '../../../assets/navigation/nonActiveIcons/nonActiveSettingsIcon.png'
 
 const ListCharacters = (props) => {
 
@@ -83,30 +78,7 @@ const ListCharacters = (props) => {
                     }
                 </ul>
             </div>
-            <div className="navigation-panel">
-                <div className="navigation-panel__item_select">
-                    <img src={characterIcon} alt="" />
-                    <p>Персонажи</p>
-                </div>
-                <Link to={'/listOfLocaions'}>
-                    <div className="navigation-panel__item">
-                        <img src={locatioIcon} alt="" />
-                        <p>Локации</p>
-                    </div>
-                </Link>
-                <Link to={'/listOfEpisods'}>
-                    <div className="navigation-panel__item">
-                        <img src={episodeIcon} alt="" />
-                        <p>Эпизоды</p>
-                    </div>
-                </Link>
-                <Link to={'/settingsPage'}>
-                    <div className="navigation-panel__item">
-                        <img src={settingsIcon} alt="" />
-                        <p>Настройки</p>
-                    </div>
-                </Link>
-            </div>
+            <Navigation/>
         </>
     )
 }

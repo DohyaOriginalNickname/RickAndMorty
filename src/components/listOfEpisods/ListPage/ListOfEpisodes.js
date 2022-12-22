@@ -1,18 +1,13 @@
-import { Link } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import { useGetAllEpisodesQuery } from '../../../serviсes/episodsApi';
 
 import ItemOfEpisodesList from '../../UI/ItemOfEpisodesList/ItemOfEpisodesList';
 import Loader from '../../UI/loader/loader'
+import Navigation from '../../UI/navigation/navigation';
 
 import './ListOfEpisodes.scss'
 
 import Search from '../../../assets/other/Search.png'
-
-import characterIcon from '../../../assets/navigation/nonActiveIcons/nonActiveCharactersIcon.png'
-import locatioIcon from '../../../assets/navigation/nonActiveIcons/nonActiveLocationIcon.png'
-import episodeIcon from '../../../assets/navigation/activeIcons/ActiveEpisodeIcon.png'
-import settingsIcon from '../../../assets/navigation/nonActiveIcons/nonActiveSettingsIcon.png'
 
 const ListEpisodes = (props) => {
 
@@ -126,30 +121,7 @@ const ListEpisodes = (props) => {
 
             { isLoading ? <Loader/> : renderSeasonsList()}
 
-            <div className="navigation-panel">
-                <Link to={'/listOfCharacters'}>
-                    <div className="navigation-panel__item">
-                        <img src={characterIcon} alt="" />
-                        <p>Персонажи</p>
-                    </div>
-                </Link>
-                <Link to={'/listOfLocaions'}>
-                    <div className="navigation-panel__item">
-                        <img src={locatioIcon} alt="" />
-                        <p>Локации</p>
-                    </div>
-                </Link>
-                <div className="navigation-panel__item_select">
-                    <img src={episodeIcon} alt="" />
-                    <p>Эпизоды</p>
-                </div>
-                <Link to={'/settingsPage'}>
-                    <div className="navigation-panel__item">
-                        <img src={settingsIcon} alt="" />
-                        <p>Настройки</p>
-                    </div>
-                </Link>
-            </div>
+            <Navigation/>
         </>
     )
 }
