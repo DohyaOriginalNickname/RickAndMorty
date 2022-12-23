@@ -7,7 +7,8 @@ import ItemOfCharactersList from '../UI/ItemOfCharactersList/ItemOfCharactersLis
 import './locationPage.scss'
 
 import image from '../../assets/Rectangle2.png'
-import arrow from '../../assets/other/Arrow.png'
+import ArrowBlackTheme from '../../assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from '../../assets/other/whiteThemeItems/Arrow.png'
 
 
 const LocationPage = () => {
@@ -34,8 +35,8 @@ const LocationPage = () => {
                     <div className='background'>
                         <img src={image} alt="" />
                     </div>
-                    <div className='arrow' onClick={() => navigate(-1)}>
-                        <img src={arrow} alt="" />
+                    <div className={localStorage.getItem('theme') === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
+                        <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
                     </div>
                     <div className='something'></div>
                 </div>

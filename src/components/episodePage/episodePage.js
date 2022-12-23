@@ -4,7 +4,9 @@ import { useGetCharacterQuery } from "../../serviсes/characterApi";
 
 import ItemOfCharactersList from '../UI/ItemOfCharactersList/ItemOfCharactersList'
 
-import arrow from '../../assets/other/Arrow.png'
+import ArrowBlackTheme from '../../assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from '../../assets/other/whiteThemeItems/Arrow.png'
+
 import backgroundImage from '../../assets/Rectangle3.png'
 import playButton from '../../assets/PlayButton.png'
 
@@ -32,8 +34,8 @@ const EpisodPage = () => {
                     <div className="background">
                         <img src={backgroundImage} alt="" />
                     </div>
-                    <div className='arrow' onClick={() => navigate(-1)}>
-                        <img src={arrow} alt="" />
+                    <div className={localStorage.getItem('theme') === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
+                        <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
                     </div>
                 </div>
 
@@ -55,7 +57,7 @@ const EpisodPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="border"></div>
+                        <div className={localStorage.getItem('theme') === 'dark' ? "border-black" : "border-light"}></div>
 
                         <div className="realeted-characters">
                             <div className="title">
@@ -75,7 +77,7 @@ const EpisodPage = () => {
 const ListItemOfCharacters = (props) => {
     const { data, isLoading } = useGetCharacterQuery(props.id)
     if (!isLoading) {
-        return <ItemOfCharactersList id={data.id} image={data.image} status={data.status} name={data.name} species={data.species} arrow={true} />
+        return <ItemOfCharactersList id={data.id} image={data.image} status={data.status} gender={data.gender} name={data.name} species={data.species} arrow={true} />
     }
 }
 export default EpisodPage;

@@ -4,10 +4,16 @@ import Navigation from '../../UI/navigation/navigation';
 
 import './settingsPage.scss'
 
-import arrow from '../../../assets/other/Arrow.png'
+import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
+import ArrowBlackTheme2 from '../../../assets/other/blackThemeItems/Arrow2.png'
+import palitraBlackTheme from '../../../assets/other/blackThemeItems/palitra.png'
+
+import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
+import ArrowWhiteTheme2 from '../../../assets/other/whiteThemeItems/Arrow2.png'
+import palitraWhiteTheme from '../../../assets/other/whiteThemeItems/Palitra.png'
+
 import avatar from '../../../assets/avatar.png'
-import palitra from '../../../assets/other/palitra.png'
-import arrow2 from '../../../assets/other/Arrow2.png'
+
 
 const SettingsPage = () => {
 
@@ -29,7 +35,7 @@ const SettingsPage = () => {
             <div className={modal ? "settings-page no-touch" : "settings-page"}>
 
                 <div className='aaaa'>
-                    <img src={arrow} alt="arrow" />
+                    <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                     <p>Настройки</p>
                 </div>
 
@@ -50,28 +56,28 @@ const SettingsPage = () => {
                     </div>
 
                     <div className='others-settings'>
-                        <div className="border"></div>
+                        <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
 
                         <div className='change-theme'>
                             <p>Внешний вид</p>
                             <div className='select-theme' onClick={() => setModal(modal => !modal)}>
-                                <img src={palitra} alt="" />
+                                <img src={localStorage.getItem('theme') === 'dark' ? palitraBlackTheme : palitraWhiteTheme} alt="" />
                                 <div className='info-of-theme'>
                                     <p>Темная тема</p>
                                     <p>Включена</p>
                                 </div>
-                                <img src={arrow2} alt="" />
+                                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                             </div>
                         </div>
 
-                        <div className="border"></div>
+                        <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
 
                         <div className='about'>
                             <p>О приложении</p>
                             <p>Зигерионцы помещают Джерри и Рика в симуляцию, чтобы узнать секрет изготовления концен-трирован- ной темной материи.</p>
                         </div>
 
-                        <div className="border"></div>
+                        <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
 
                         <div className='version'>
                             <p>Версия приложения</p>

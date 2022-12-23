@@ -4,7 +4,8 @@ import { addCharactersFilters, clearCharactersFilters } from '../../../store/sli
 
 import './filtersPage.scss'
 
-import arrow from '../../../assets/other/Arrow.png'
+import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
 import clearFilters from '../../../assets/other/ClearFilters.png'
 import StartTo from '../../../assets/other/StartTo.png'
 import EndTo from '../../../assets/other/EndTo.png'
@@ -61,8 +62,8 @@ const FiltersPage = (props) => {
 
     return (
         <>
-            <div className="header-filters">
-                <img src={arrow} alt="" onClick={() => props.da()} />
+            <div className={localStorage.getItem('theme') === 'dark' ? "header-filters dark-theme-secondary" : "header-filters"}>
+                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" onClick={() => props.da()} />
                 <p className="title">Фильтры</p>
                 <img src={clearFilters} alt="" className={Object.keys(filter).length > 0 ? 'clear-filter-ready' : 'clear-filter-not-ready'} onClick={() => clearOfFilters()} />
             </div>
@@ -76,14 +77,14 @@ const FiltersPage = (props) => {
                         <img src={EndTo} alt="" />
                     </div>
                 </div>
-                <div className="border"></div>
+                <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
                 <div className="sort-block">
                     <div className="title">Статус</div>
                     <ul className="sort">
                         {arrayOfFilters.slice(0, 3)}
                     </ul>
                 </div>
-                <div className="border"></div>
+                <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
                 <div className="sort-block">
                     <div className="title">Пол</div>
                     <ul className="sort">

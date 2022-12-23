@@ -5,8 +5,12 @@ import ListItem from "../ItemList/listItem"
 
 import './searchCharacters.scss'
 
-import Cancel from '../../../assets/other/Cancel.png'
-import arrow from '../../../assets/other/Arrow.png'
+import CancelBlackTheme from '../../../assets/other/blackThemeItems/Cancel.png'
+import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
+
+import CancelWhiteTheme from '../../../assets/other/whiteThemeItems/Cancel.png'
+import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
+
 import CharacterNotFound from '../../../assets/notFoundImages/CharacterNotFound.png'
 
 const SearchCharacter = (props) => {
@@ -26,7 +30,7 @@ const SearchCharacter = (props) => {
     }, [data])
 
     const plusPage = () => {
-        const aaa = JSON.parse(sessionStorage.getItem('data-info')) 
+        const aaa = JSON.parse(sessionStorage.getItem('data-info'))
         if (aaa.next !== null) {
             setCountPage(countPage => countPage + 1)
         }
@@ -40,15 +44,15 @@ const SearchCharacter = (props) => {
 
     return (
         <>
-            <div className="characters-page__search_active">
+            <div className={localStorage.getItem('theme') === 'dark' ? "characters-page__search_active dark-theme-secondary" : "characters-page__search_active light-theme-secondary"}>
                 <div>
-                    <img src={arrow} alt="search" onClick={() => props.changePage()} />
+                    <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.changePage()} />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти персонажа" autoFocus onChange={(e) => changeInputValue(e)} value={inputValue} />
                 </div>
                 <div>
-                    <img src={Cancel} alt="filter" onClick={() => setInputValue('')} />
+                    <img src={localStorage.getItem('theme') === 'dark' ? CancelBlackTheme : CancelWhiteTheme} alt="filter" onClick={() => setInputValue('')} />
                 </div>
             </div>
             <div className="search-character-list">

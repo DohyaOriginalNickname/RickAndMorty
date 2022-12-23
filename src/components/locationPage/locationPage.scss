@@ -2,18 +2,18 @@
 @import "../../styles/mixins.scss";
 
 .location-page {
-    background: $blackTheme;
+    background: inherit;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: $blackThemeText;
+    color: inherit;
     &__header {
         z-index: 0;
         backdrop-filter: blur(4px);
         background: linear-gradient(180deg, rgba(11, 30, 45, 0) 68.93%, rgba(0, 0, 0, 0.65) 100%),
             linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(11, 30, 45, 0) 37.29%, rgba(11, 30, 45, 0) 68.93%);
-        .arrow {
+        .arrow-white {
             z-index: 1;
             position: absolute;
             left: 16px;
@@ -26,14 +26,30 @@
             height: 48px;
             padding: 12px;
             gap: 10px;
-            background: #152a3a;
+            background: $secondary-black-theme;
+            border-radius: 100px;
+        }
+        .arrow-black {
+            z-index: 1;
+            position: absolute;
+            left: 16px;
+            top: 16px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            padding: 12px;
+            gap: 10px;
+            background: $whiteTheme;
             border-radius: 100px;
         }
     }
 
     .main {
         position: relative;
-        background: $blackTheme;
+        background: inherit;
         top: -25px;
         border-top-left-radius: 26px;
         border-top-right-radius: 26px;
@@ -48,7 +64,7 @@
                 display: flex;
                 flex-direction: column;
                 .title {
-                    color: $blackThemeText;
+                    color: inherit;
                     @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
                 }
                 div {
@@ -82,6 +98,9 @@
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
+                a{
+                    color: inherit;
+                }
             }
         }
     }

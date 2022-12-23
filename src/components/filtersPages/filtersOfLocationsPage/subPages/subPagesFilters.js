@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addLocationsFilters } from '../../../../store/slice'
 
-import arrow from '../../../../assets/other/Arrow.png'
+import ArrowBlackTheme from '../../../../assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from '../../../../assets/other/whiteThemeItems/Arrow.png'
 
 import './subPagesFilters.scss'
 
@@ -65,13 +66,13 @@ const FilterTypePage = (props) => {
     return (
         <>
             <div className="header-filters">
-                <img src={arrow} alt="" onClick={() => props.changePage(0)} />
+                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" onClick={() => props.changePage(0)} />
                 <p className="title">{props.num === 1 ? 'Выберите тип' : 'Выберите измерение'}</p>
             </div>
 
             <div className='list-of-filter'>
                 <p>{Object.keys(filter).length !== 0 ? aaa() : "Не выбрано"}</p>
-                <div className='border'></div>
+                <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
                 <ul>
                     {elements}
                 </ul>

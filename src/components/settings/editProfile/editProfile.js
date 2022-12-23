@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 
 import './editProfile.scss'
-import arrow from '../../../assets/other/Arrow.png'
-import arrow2 from '../../../assets/other/Arrow2.png'
+import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
+import ArrowBlackTheme2 from '../../../assets/other/blackThemeItems/Arrow2.png'
+
+import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
+import ArrowWhiteTheme2 from '../../../assets/other/whiteThemeItems/Arrow2.png'
 import avatar from '../../../assets/avatar.png'
 import { useEffect, useState } from 'react';
 
@@ -19,7 +22,7 @@ const EditProfile = () => {
         <div className='edit-page'>
             <div className='aaaa'>
                 <Link to={'/settingsPage'}>
-                    <img src={arrow} alt="arrow" />
+                    <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                 </Link>
                 <p>Редактировать</p>
             </div>
@@ -38,7 +41,7 @@ const EditProfile = () => {
                                 <p>Изменить ФИО</p>
                                 <p>{userData.name} {userData.surname} {userData.middleName}</p>
                             </div>
-                            <img src={arrow2} alt="" />
+                            <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                         </div>
                     </Link>
                     <Link to={'/passwordChange'}>
@@ -46,7 +49,7 @@ const EditProfile = () => {
                             <div className='data-of-select'>
                                 <p className='change-pass'>Изменить пароль</p>
                             </div>
-                            <img src={arrow2} alt="" />
+                            <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                         </div>
                     </Link>
                 </div>

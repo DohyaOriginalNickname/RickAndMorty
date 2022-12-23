@@ -3,8 +3,8 @@
 
 .name-change-page {
     height: 100vh;
-    background-color: $blackTheme;
-    color: $noActiveElement;
+    background-color: inherit;
+    color: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@
         flex-direction: column;
         gap: 15px;
         .field {
-            @include field-property;
+            @include field-property($background:$secondary-white-theme, $color:$whiteThemeText);
         }
     }
 

@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
+import './App.scss'
+
 import LoginPage from "../loginPages/loginPage/loginPage";
 import CreateAccountPage from "../loginPages/createAccountPage/createAccountPage";
 import PasswordRecovery from "../loginPages/passwordRecoveryPage/passwordRecoveryPage";
@@ -14,10 +16,15 @@ import EditProfile from "../settings/editProfile/editProfile";
 import NameChange from "../settings/pages/nameChange/nameChange";
 import PasswordChange from "../settings/pages/passwordChange/passwordChange";
 
+
+if (localStorage.getItem('theme') === null) {
+    localStorage.setItem('theme', 'dark')
+}
+
 const App = () => {
     return (
         <Router>
-            <div className="App">
+            <div className={localStorage.getItem('theme') === 'dark' ? "App-dark" :"App-light"}>
                 <Routes>
                     <Route path="/" element={<LoginPage/>}/>
                     <Route path="/createAccount" element={<CreateAccountPage/>} />

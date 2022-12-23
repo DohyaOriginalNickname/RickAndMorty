@@ -8,11 +8,10 @@
     gap: 20px;
     width: 375px;
     height: 48px;
-    background: #152a3a;
     input {
         width: 256px;
-        color: $blackThemeText;
-        background: $blackThemeBorder;
+        color: inherit;
+        background: inherit;
         @include text-style($regularSize-1, $regular-line-height-2, 0.444444px);
     }
 }
@@ -22,6 +21,7 @@
     flex-direction: column;
     gap: 24px;
     .result-title {
+        color: $noActiveElement;
         text-transform: uppercase;
         @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
     }
@@ -31,6 +31,7 @@
         height: 650px;
     }
     .not-found-locations {
+        color: $noActiveElement;
         @include not-found(20%, 64px);
     }
 }

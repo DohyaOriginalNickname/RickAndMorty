@@ -19,7 +19,7 @@
             @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
         }
         p.series-title {
-            color:$blackThemeText;
+            color:inherit;
             @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
         }
         p.release-date {

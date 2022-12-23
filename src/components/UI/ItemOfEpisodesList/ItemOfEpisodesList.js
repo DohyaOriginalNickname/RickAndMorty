@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import './ItemOfEpisodesList.scss'
-import arrow2 from '../../../assets/other/Arrow2.png'
+import ArrowBlackTheme2 from '../../../assets/other/blackThemeItems/Arrow2.png'
+import ArrowWhiteTheme2 from '../../../assets/other/whiteThemeItems/Arrow2.png'
 
 const ItemOfEpisodesList = (props) => {
     return (
@@ -17,7 +18,7 @@ const ItemOfEpisodesList = (props) => {
                 {
                     props.arrow ?
                         <div>
-                            <img src={arrow2} alt="" className='arrow' />
+                            <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" className='arrow' />
                         </div> : null
                 }
             </li>

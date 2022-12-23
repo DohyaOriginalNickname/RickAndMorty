@@ -72,7 +72,7 @@ const ListEpisodes = (props) => {
                     onClick={() => classChange(item.id)}
                 >
                     <p>{item.seasonTitle}</p>
-                    <p className='active'></p>
+                    <p className={localStorage.getItem('theme') === 'dark' ? 'active-dark' : 'active-light'}></p>
                 </div>
                 :
                 <div
@@ -82,7 +82,7 @@ const ListEpisodes = (props) => {
                     onClick={() => classChange(item.id)}
                 >
                     <p>{item.seasonTitle}</p>
-                    <p className='active'></p>
+                    <p className={localStorage.getItem('theme') === 'dark' ? 'active-dark' : 'active-light'}></p>
                 </div>
         )
     })
@@ -114,7 +114,7 @@ const ListEpisodes = (props) => {
 
     return (
         <>
-            <div className='episodes-page__search'>
+            <div className={localStorage.getItem('theme') === 'dark' ? 'episodes-page__search dark-theme-secondary' : 'episodes-page__search light-theme-secondary'}>
                 <img src={Search} alt="" />
                 <input type="text" placeholder='Найти эпизод' onClick={() => props.da()} />
             </div>

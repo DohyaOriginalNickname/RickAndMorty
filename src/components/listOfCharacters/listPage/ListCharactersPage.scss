@@ -9,18 +9,22 @@
     height: 48px;
     padding: 12px 17px;
     gap: 10px;
-    background: #152A3A;
     border-radius: 100px;
     input{
         width: 200px;
         font-size: $regularSize-1;
         line-height: 24px;
         color: $noActiveElement;
-        background: $blackThemeBorder;
+        background: inherit;
     }
-    .border {
+    .border-dark {
         width: 24px;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        transform: rotate(90deg);
+    }
+    .border-light {
+        width: 24px;
+        border: 1px solid #BDBDBD;
         transform: rotate(90deg);
     }
 }
@@ -35,6 +39,7 @@
         justify-content: center;
         margin-bottom: 28px;
         p{
+            color: $noActiveElement;
             width: 282px;
             text-transform: uppercase;
             @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
@@ -46,6 +51,9 @@
         gap: 24px;
         overflow-y: scroll;
         height: 610px;
+        a{
+            color: inherit;
+        }
     }
     .tile{
         display: grid;
@@ -54,5 +62,8 @@
         row-gap: 24px;
         overflow-y: scroll;
         height: 610px;
+        a{
+            color: inherit;
+        }
     }
 }

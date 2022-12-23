@@ -4,8 +4,12 @@ import { useGetEpisodeQuery } from '../../serviсes/episodsApi'
 
 import ItemOfEpisodesList from '../UI/ItemOfEpisodesList/ItemOfEpisodesList'
 
-import arrow from '../../assets/other/Arrow.png'
-import arrow2 from '../../assets/other/Arrow2.png'
+import ArrowBlackTheme from '../../assets/other/blackThemeItems/Arrow.png'
+import ArrowBlackTheme2 from '../../assets/other/blackThemeItems/Arrow2.png'
+
+import ArrowWhiteTheme from '../../assets/other/whiteThemeItems/Arrow.png'
+import ArrowWhiteTheme2 from '../../assets/other/whiteThemeItems/Arrow2.png'
+
 import image from '../../assets/Rectangle.png'
 import './characterPage.scss'
 
@@ -35,14 +39,14 @@ const CharacterPage = () => {
                     <div className="background">
                         <div className='background__image'>
                             <img src="" alt="" />
-                            <div className="arrow" onClick={() => navigate(-1)}>
-                                <img src={arrow} alt="" />
+                            <div className={localStorage.getItem('theme') === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
+                                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
                             </div>
                         </div>
                     </div>
                     <div className="title">
                         <div className='title__avatar'>
-                            <img src={data.image} alt="" />
+                            <img className={localStorage.getItem('theme') === 'dark' ? "avatar-black-theme" : "avatar-white-theme"} src={data.image} alt="" />
                         </div>
                         <div className="title__descripion">
                             <div>
@@ -72,7 +76,7 @@ const CharacterPage = () => {
                                     <p className="title">Origin</p>
                                     <p className="data">{data.origin.name}</p>
                                 </div>
-                                <img src={arrow2} alt="" />
+                                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                             </div>
                         </Link>
                         <Link to={`/location/${data.location.url.replace(/[\D]+/g, '')}`}>
@@ -81,12 +85,12 @@ const CharacterPage = () => {
                                     <p className="title">Location</p>
                                     <p className="data">{data.location.name}</p>
                                 </div>
-                                <img src={arrow2} alt="" />
+                                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                             </div>
                         </Link>
                     </div>
                 </div>
-                <div className="border"></div>
+                <div className={localStorage.getItem('theme') === 'dark' ? "border-black" : "border-light"}></div>
                 <div className="episodes">
                     <div>
                         <p className="title">Эпизоды</p>

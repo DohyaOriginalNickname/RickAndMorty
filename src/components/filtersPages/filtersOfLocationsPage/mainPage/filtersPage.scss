@@ -5,12 +5,12 @@
     display: flex;
     flex-direction: column;
     gap: 36px;
-    .border { border: 1px solid #152a3a; }
     .sort-block {
         display: flex;
         flex-direction: column;
         gap: 36px;
         .title {
+            color: $noActiveElement;
             text-transform: uppercase;
             @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
         }
@@ -29,10 +29,11 @@
             div {
                 width: 100%;
                 p:first-child{
-                    color: $blackThemeText;
+                    color: inherit;
                     @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
                 }
                 p:last-child{
+                    color: $noActiveElement;
                     @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing)
                 }
             }

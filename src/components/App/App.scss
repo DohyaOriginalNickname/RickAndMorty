@@ -1,0 +1,26 @@
+@import "../../styles/variables.scss";
+
+.App {
+    &-dark {
+        background-color: $primary-black-theme;
+        color: $blackThemeText;
+    }
+    &-light {
+        background-color: $whiteTheme;
+        color: $whiteThemeText;
+    }
+}
+
+.dark-theme-secondary {
+    background: $secondary-black-theme;
+}
+.light-theme-secondary {
+    background: $secondary-white-theme;
+}
+
+.dark-theme-border {
+    border: 1px solid $secondary-black-theme;
+}
+.light-theme-border {
+    border: 1px solid $secondary-white-theme;
+}

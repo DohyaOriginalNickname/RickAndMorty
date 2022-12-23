@@ -4,7 +4,8 @@ import { changeUserData } from '../../../../serviсes/authentication';
 
 import Modal from '../../../UI/modal/modal';
 import './nameChange.scss'
-import arrow from '../../../../assets/other/Arrow.png'
+import ArrowBlackTheme from '../../../../assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from '../../../../assets/other/whiteThemeItems/Arrow.png'
 
 const NameChange = () => {
 
@@ -35,7 +36,7 @@ const NameChange = () => {
 
                 <div className='aaaa'>
                     <Link to={'/changeUserData'}>
-                        <img src={arrow} alt="arrow" />
+                        <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                     </Link>
                     <p>Изменить ФИО</p>
                 </div>

@@ -8,13 +8,12 @@
     height: 48px;
     padding: 12px 17px;
     gap: 10px;
-    background: #152a3a;
     border-radius: 100px;
     margin-bottom: 10px;
     input {
         width: 280px;
         color: $noActiveElement;
-        background: $blackThemeBorder;
+        background: inherit;
         @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing);
     }
 }
@@ -49,10 +48,16 @@
             text-transform: uppercase;
             @include text-style($smallSize-3, $regular-line-height-2, $biggest-letter-spacing, $bold-font-weight);
         }
-        .active {
+        .active-dark {
             width: 70px;
             height: 2px;
-            background: #ffffff;
+            background: $blackThemeText;
+            border-radius: 100px;
+        }
+        .active-light {
+            width: 70px;
+            height: 2px;
+            background: $whiteThemeText;
             border-radius: 100px;
         }
     }
@@ -64,4 +69,7 @@
     height: 604px;
     padding: 0 16px;
     overflow-y: scroll;
+    a{
+        color: inherit;
+    }
 }

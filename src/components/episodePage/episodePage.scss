@@ -2,18 +2,18 @@
 @import "../../styles/mixins.scss";
 
 .episode-page {
-    background: $blackTheme;
+    background: inherit;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: $blackThemeText;
+    color: inherit;
     &__header {
         z-index: 0;
         backdrop-filter: blur(4px);
         background: linear-gradient(180deg, rgba(11, 30, 45, 0) 68.93%, rgba(0, 0, 0, 0.65) 100%),
             linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(11, 30, 45, 0) 37.29%, rgba(11, 30, 45, 0) 68.93%);
-        .arrow {
+        .arrow-white {
             z-index: 1;
             position: absolute;
             left: 16px;
@@ -26,7 +26,23 @@
             height: 48px;
             padding: 12px;
             gap: 10px;
-            background: #152a3a;
+            background: $secondary-black-theme;
+            border-radius: 100px;
+        }
+        .arrow-black {
+            z-index: 1;
+            position: absolute;
+            left: 16px;
+            top: 16px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            padding: 12px;
+            gap: 10px;
+            background: $whiteTheme;
             border-radius: 100px;
         }
     }
@@ -36,7 +52,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background: $blackTheme;
+        background: inherit;
         top: -25px;
         border-top-left-radius: 26px;
         border-top-right-radius: 26px;
@@ -68,6 +84,7 @@
                     }
                     p:last-child {
                         color: $activeElement;
+                        text-transform: uppercase;
                         @include text-style($smallerSize, $small-line-height, $small-letter-spacing, $bold-font-weight);
                     }
                 }
@@ -90,9 +107,14 @@
                 }
             }
 
-            .border {
-                border: 2px solid #152a3a;
+            .border-black {
                 width: 100%;
+                border: 2px solid $secondary-black-theme;
+                margin-bottom: 36px;
+            }
+            .border-light {
+                width: 100%;
+                border: 2px solid $secondary-white-theme;
                 margin-bottom: 36px;
             }
 
@@ -114,55 +136,8 @@
                     display: flex;
                     flex-direction: column;
                     gap: 24px;
-                    &__item {
-                        display: flex;
-                        gap: 18px;
-                        align-items: center;
-                        img {
-                            width: 74px;
-                            height: 74px;
-                            border-radius: 100px;
-                        }
-                        .arrow {
-                            width: 20px;
-                            height: 20px;
-                        }
-                        .description {
-                            width: 100%;
-                            .live {
-                                color: #43d049;
-                                text-transform: uppercase;
-                                @include text-style(
-                                    $smallerSize,
-                                    $small-line-height,
-                                    $biggest-letter-spacing,
-                                    $bold-font-weight
-                                );
-                            }
-                            .dead {
-                                color: #eb5757;
-                                text-transform: uppercase;
-                                @include text-style(
-                                    $smallerSize,
-                                    $small-line-height,
-                                    $biggest-letter-spacing,
-                                    $bold-font-weight
-                                );
-                            }
-                            .name {
-                                color: $blackThemeText;
-                                @include text-style(
-                                    $regularSize-1,
-                                    $regular-line-height-2,
-                                    $big-letter-spacing,
-                                    $bold-font-weight
-                                );
-                            }
-                            .race {
-                                color: $noActiveElement;
-                                @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
-                            }
-                        }
+                    a{
+                        color: inherit;
                     }
                 }
             }

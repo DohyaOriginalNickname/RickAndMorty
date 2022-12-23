@@ -4,16 +4,12 @@ import { Link } from 'react-router-dom'
 //import { changePasswordByEmail } from '../../../serviсes/authentication'
 
 import './passwordRecoveryPage.scss'
-import arrow from '../../../assets/other/Arrow.png'
+import arrow from '../../../assets/other/blackThemeItems/Arrow.png'
 
 const PasswordRecovery = () => {
 
     const [email, setEmail] = useState('')
     const [newPassword, setNewPassword] = useState('')
-
-    // const aaa = () => {
-    //     changePasswordByEmail(email, newPassword)
-    // }
 
     return (
         <div className="recovery-page">

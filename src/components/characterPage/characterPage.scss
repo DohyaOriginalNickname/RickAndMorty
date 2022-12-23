@@ -1,8 +1,8 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 
-@mixin name ($flex: true) {
-    @if $flex == true{
+@mixin name($flex: true) {
+    @if $flex == true {
         .title {
             color: $noActiveElement;
             @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
@@ -26,11 +26,11 @@
 
 .character-page {
     height: 100%;
-    background: $blackTheme;
+    background: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: $blackThemeText;
+    color: inherit;
     .header {
         .background {
             width: 100%;
@@ -45,7 +45,7 @@
                     rgba(11, 30, 45, 0.65);
                 backdrop-filter: blur(4px);
                 background-color: wheat;
-                .arrow {
+                .arrow-white {
                     position: relative;
                     left: 16px;
                     display: flex;
@@ -53,7 +53,18 @@
                     justify-content: center;
                     width: 48px;
                     height: 48px;
-                    background-color: $blackTheme;
+                    background-color: $primary-black-theme;
+                    border-radius: 100px;
+                }
+                .arrow-black {
+                    position: relative;
+                    left: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 48px;
+                    height: 48px;
+                    background-color: $whiteTheme;
                     border-radius: 100px;
                 }
             }
@@ -67,8 +78,14 @@
             text-align: center;
             gap: 24px;
             .title__avatar {
-                img {
-                    border: 8px solid #0b1e2d;
+                .avatar-white-theme{
+                    border: 8px solid $whiteTheme;
+                    border-radius: 100px;
+                    width: 146px;
+                    height: 146px;
+                }
+                .avatar-black-theme{
+                    border: 8px solid $secondary-black-theme;
                     border-radius: 100px;
                     width: 146px;
                     height: 146px;
@@ -122,19 +139,27 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
+            a {
+                color: inherit;
+            }
             .location {
-                color: white;
+                color: inherit;
                 @include name(false);
             }
             .position {
-                color: white;
+                color: inherit;
                 @include name(false);
             }
         }
     }
-    .border {
+    .border-black {
         width: 100%;
-        border: 2px solid #152A3A;
+        border: 2px solid $secondary-black-theme;
+        margin-bottom: 36px;
+    }
+    .border-light {
+        width: 100%;
+        border: 2px solid $secondary-white-theme;
         margin-bottom: 36px;
     }
 
@@ -144,14 +169,14 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
-        div{
+        div {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            .title{
+            .title {
                 @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
             }
-            .subtitle{
+            .subtitle {
                 color: $noActiveElement;
                 @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
             }
@@ -159,29 +184,42 @@
         .episodes__list {
             display: flex;
             flex-direction: column;
+            a {
+                color: inherit;
+            }
             .episodes__item {
                 display: flex;
                 align-items: center;
                 gap: 16px;
                 margin-bottom: 24px;
-                .description{
+                .description {
                     width: 100%;
                     display: flex;
                     flex-direction: column;
-                    color:white;
-                    p{
+                    color: inherit;
+                    p {
                         width: 100%;
                     }
-                    p.serial-number{
-                        color: #22A2BDDE;
+                    p.serial-number {
+                        color: #22a2bdde;
                         text-transform: uppercase;
-                        @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                        @include text-style(
+                            $smallerSize,
+                            $small-line-height,
+                            $biggest-letter-spacing,
+                            $bold-font-weight
+                        );
                     }
-                    p.series-title{
-                        @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight)
+                    p.series-title {
+                        @include text-style(
+                            $regularSize-1,
+                            $regular-line-height-2,
+                            $big-letter-spacing,
+                            $bold-font-weight
+                        );
                     }
-                    p.release-date{
-                        color:$noActiveElement;
+                    p.release-date {
+                        color: $noActiveElement;
                         @include text-style($smallSize-3, $regular-line-height, $small-letter-spacing);
                     }
                 }

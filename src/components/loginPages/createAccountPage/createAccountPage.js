@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { createNewUser } from '../../../serviсes/authentication'
 
-import arrow from '../../../assets/other/bigArrow.png'
+import arrow from '../../../assets/other/blackThemeItems/bigArrow.png'
 
 import './createAccountPage.scss'
 const CreateAccountPage = () => {

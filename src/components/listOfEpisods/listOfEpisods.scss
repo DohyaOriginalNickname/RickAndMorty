@@ -2,11 +2,11 @@
 @import "../../styles/mixins.scss";
 
 .episodes-page {
-    background-color: $blackTheme;
+    background-color: inherit;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px 0;
-    color: $blackThemeText;
+    color: inherit;
 }

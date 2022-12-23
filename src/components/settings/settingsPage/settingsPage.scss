@@ -3,8 +3,8 @@
 
 .settings-page {
     height: 100vh;
-    background-color: $blackTheme;
-    color: $noActiveElement;
+    background-color: inherit;
+    color: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    color: $blackThemeText;
+    color: inherit;
     width: 100%;
     p {
         @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
@@ -37,10 +37,11 @@
             gap: 16px;
             .profile__info {
                 p:first-child {
-                    color: $blackThemeText;
+                    color: inherit;
                     @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
                 }
                 p:last-child {
+                    color: $noActiveElement;
                     @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
                 }
             }
@@ -49,7 +50,7 @@
             border: 1px solid $activeElement;
             color: $activeElement;
             border-radius: 12px;
-            background: $blackTheme;
+            background: inherit;
             width: 100%;
             height: 40px;
         }
@@ -63,6 +64,7 @@
             flex-direction: column;
             gap: 24px;
             > p {
+                color: $noActiveElement;
                 @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
                 text-transform: uppercase;
             }
@@ -73,10 +75,11 @@
                 .info-of-theme {
                     width: 100%;
                     p:first-child {
-                        color: $blackThemeText;
+                        color: inherit;
                         @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
                     }
                     p:last-child {
+                        color: $noActiveElement;
                         @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
                     }
                 }
@@ -88,6 +91,7 @@
             flex-direction: column;
             gap: 24px;
             p:first-child {
+                color: $noActiveElement;
                 @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
                 text-transform: uppercase;
             }
@@ -101,16 +105,13 @@
             flex-direction: column;
             gap: 24px;
             p:first-child {
+                color: $noActiveElement;
                 @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
                 text-transform: uppercase;
             }
             p:last-child {
                 @include text-style($smallSize-2, $regular-line-height, $regular-letter-spacing);
             }
-        }
-
-        .border {
-            border: 1px solid #152a3a;
         }
     }
 }
@@ -123,10 +124,10 @@
     justify-content: center;
     padding: 20px;
     gap: 24px;
-    background: #152a3a;
+    background: inherit;
     border-radius: 10px;
     pointer-events: all;
-    color: $blackThemeText;
+    color: inherit;
     .title {
         @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
     }

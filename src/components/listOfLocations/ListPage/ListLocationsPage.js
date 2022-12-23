@@ -70,14 +70,14 @@ const ListLocations = (props) => {
 
     return (
         <>
-            <div className="locations-page__search">
+            <div className={localStorage.getItem('theme') === 'dark' ? "locations-page__search dark-theme-secondary" : "locations-page__search light-theme-secondary"}>
                 <div>
                     <img src={Search} alt="search" />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти локацию" onClick={() => props.changePage()} />
                 </div>
-                <div className="border"></div>
+                <div className={localStorage.getItem('theme') === 'dark' ? "border-dark" : "border-light"}></div>
                 <div>
                     <img src={Filter} alt="filter" onClick={() => props.da()} />
                 </div>

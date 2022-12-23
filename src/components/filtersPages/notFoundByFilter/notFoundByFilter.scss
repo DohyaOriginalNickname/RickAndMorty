@@ -2,5 +2,6 @@
 @import '../../../styles/variables.scss';
 
 .not-found-by-filters {
+    color: $noActiveElement;
     @include not-found(15%, 20px);
 }

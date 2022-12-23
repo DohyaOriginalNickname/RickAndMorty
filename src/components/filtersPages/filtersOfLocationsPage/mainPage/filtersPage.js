@@ -3,8 +3,12 @@ import { clearLocationsFilters } from '../../../../store/slice'
 import { useSelector } from 'react-redux'
 import './filtersPage.scss'
 
-import arrow from '../../../../assets/other/Arrow.png'
-import arrow2 from '../../../../assets/other/Arrow2.png'
+import ArrowBlackTheme from '../../../../assets/other/blackThemeItems/Arrow.png'
+import ArrowBlackTheme2 from '../../../../assets/other/blackThemeItems/Arrow2.png'
+
+import ArrowWhiteTheme from '../../../../assets/other/whiteThemeItems/Arrow.png'
+import ArrowWhiteTheme2 from '../../../../assets/other/whiteThemeItems/Arrow2.png'
+
 import clearFilters from '../../../../assets/other/ClearFilters.png'
 import StartTo from '../../../../assets/other/StartTo.png'
 import EndTo from '../../../../assets/other/EndTo.png'
@@ -21,7 +25,7 @@ const FiltersOfLocationsPage = (props) => {
     return (
         <>
             <div className="header-filters">
-                <img src={arrow} alt="" onClick={() => props.da()}/>
+                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" onClick={() => props.da()}/>
                 <p className="title">Фильтры</p>
                 <img src={clearFilters} alt="" className={ Object.keys(filter).length > 0 ? 'clear-filter-ready' : 'clear-filter-not-ready'} onClick={() => clearOfFilters()}/>
             </div>
@@ -35,7 +39,7 @@ const FiltersOfLocationsPage = (props) => {
                         <img src={EndTo} alt="" />
                     </div>
                 </div>
-                <div className="border"></div>
+                <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
                 <div className='sort-block'>
                     <div className='title'>Сортировать по</div>
                     <div className='sort' onClick={() => props.changePage(1)}>
@@ -43,7 +47,7 @@ const FiltersOfLocationsPage = (props) => {
                             <p>{filter.type ? filter.type.slice(6) : 'Тип'}</p>
                             <p>Выберите тип локации</p>
                         </div>
-                        <img src={arrow2} alt="" />
+                        <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                     </div>
                 </div>
                 <div className='sort-block'>
@@ -52,7 +56,7 @@ const FiltersOfLocationsPage = (props) => {
                             <p>{filter.dimension ? filter.dimension.slice(11) : 'Измерение'}</p>
                             <p>Выберите измерения локации</p>
                         </div>
-                        <img src={arrow2} alt="" />
+                        <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                     </div>
                 </div>
             </div>

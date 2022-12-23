@@ -3,8 +3,8 @@
 
 .edit-page {
     height: 100vh;
-    background-color: $blackTheme;
-    color: $noActiveElement;
+    background-color: inherit;
+    color: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,6 +34,7 @@
     gap: 24px;
     width: 100%;
     > p {
+        color: $noActiveElement;
         @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
         text-transform: uppercase;
     }
@@ -41,13 +42,16 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+        a {
+            color: inherit;
+        }
         .select-of-change__item {
             display: flex;
             align-items: center;
             .data-of-select {
                 width: 100%;
                 p:first-child {
-                    color: $blackThemeText;
+                    color: inherit;
                     @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
                 }
                 p:last-child {
@@ -55,7 +59,7 @@
                     @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
                 }
                 p.change-pass {
-                    color: $blackThemeText;
+                    color: inherit;
                     @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
                 }
             }
