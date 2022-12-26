@@ -10,11 +10,10 @@ export async function name(file, userData) {
 
     await get(child(refDatabase(getDatabase()), `users/${currentUser}/`))
         .then(user => {
-            console.log(user);
             Object.keys(user.val()).forEach(key => {
                 const userData = user.val()[key]
                 set(refDatabase(getDatabase(), `users/${userData.uid}/${key}`), { ...userData, imageSrc })
-                localStorage.setItem('user', JSON.stringify({ ...userData, imageSrc }))
+                sessionStorage.setItem('user', JSON.stringify({ ...userData, imageSrc }))
             })
         })
 }

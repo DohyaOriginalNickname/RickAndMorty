@@ -20,11 +20,11 @@ const EditProfile = () => {
     const [context, setContext] = useContext(Context)
 
     useEffect(()=>{
-        setUserData(JSON.parse(localStorage.user))
+        setUserData(JSON.parse(sessionStorage.user))
     }, [])
 
     const changeFile = (e) => {
-        name(e.target.files[0], JSON.parse(localStorage.getItem('user')))
+        name(e.target.files[0], JSON.parse(sessionStorage.getItem('user')))
     } 
 
     return (

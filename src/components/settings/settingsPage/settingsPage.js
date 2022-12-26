@@ -28,7 +28,7 @@ const SettingsPage = () => {
     }
 
     useEffect(() => {
-        setUserData(JSON.parse(localStorage.user))
+        setUserData(JSON.parse(sessionStorage.user))
     }, [])
 
 

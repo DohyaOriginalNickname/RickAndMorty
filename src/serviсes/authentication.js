@@ -5,7 +5,7 @@ import { getDatabase, ref, set, push, get, child } from "firebase/database";
 export async function createNewUser(name, surname, middleName, email, password) {
     await createUserWithEmailAndPassword(getAuth(), email, password)
         .then(user => {
-            localStorage.setItem('user', JSON.stringify({ name, middleName, surname, email, password, uid: user.user.uid }))
+            sessionStorage.setItem('user', JSON.stringify({ name, middleName, surname, email, password, uid: user.user.uid }))
             set(push(ref(getDatabase(), `users/${user.user.uid}`), {
                 name, surname, middleName, email, password, uid: user.user.uid
             }));
@@ -20,7 +20,7 @@ export async function loginUser(email, password) {
                 .then(user => {
                     Object.keys(user.val()).forEach(key => {
                         const userData = user.val()[key]
-                        localStorage.setItem('user', JSON.stringify({ ...userData }))
+                        sessionStorage.setItem('user', JSON.stringify({ ...userData }))
                     })
                 })
         })
@@ -35,7 +35,7 @@ export async function changeUserData(obj) {
                 set(ref(getDatabase(), `users/${currentUser}/${key}`), {
                     ...userData, name: obj.newName, middleName: obj.newMiddleName, surname: obj.newSurname,
                 })
-                localStorage.setItem('user', JSON.stringify({ name: obj.name, middleName: obj.middleName, surname: obj.surname, ...userData }))
+                sessionStorage.setItem('user', JSON.stringify({ name: obj.name, middleName: obj.middleName, surname: obj.surname, ...userData }))
             })
         })
 }
@@ -51,7 +51,7 @@ export async function changeUserPassword(oldPass, newPass) {
                         set(ref(getDatabase(), `users/${currentUser.uid}/${key}`), {
                             ...userData, password: newPass
                         })
-                        localStorage.setItem('user', JSON.stringify({ ...userData, password: newPass }))
+                        sessionStorage.setItem('user', JSON.stringify({ ...userData, password: newPass }))
                     })
                 })
         })
