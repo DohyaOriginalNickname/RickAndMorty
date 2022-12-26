@@ -21,10 +21,16 @@
     img {
         width: 150px;
         height: 150px;
+        border-radius: 50%;
     }
-    p {
+    label {
         color: $activeElement;
         @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
+    }
+    input {
+        opacity: 0;
+        position: absolute;
+        z-index: -1;
     }
 }
 

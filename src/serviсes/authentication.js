@@ -5,12 +5,12 @@ import { getDatabase, ref, set, push, get, child } from "firebase/database";
 export async function createNewUser(name, surname, middleName, email, password) {
     await createUserWithEmailAndPassword(getAuth(), email, password)
         .then(user => {
+            localStorage.setItem('user', JSON.stringify({ name, middleName, surname, email, password, uid: user.user.uid }))
             set(push(ref(getDatabase(), `users/${user.user.uid}`), {
-                name, surname, middleName, email, password
+                name, surname, middleName, email, password, uid: user.user.uid
             }));
         })
         .catch(err => console.log(err))
-    localStorage.setItem('user', JSON.stringify({ name, middleName, surname, email, password }))
 }
 
 export async function loginUser(email, password) {

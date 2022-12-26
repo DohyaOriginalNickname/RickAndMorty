@@ -37,7 +37,7 @@ const SettingsPage = () => {
             <div className={modal ? 'modal-bg' : null}></div>
             <div className={modal ? "settings-page no-touch" : "settings-page"}>
 
-                <div className='aaaa'>
+                <div className='exit'>
                     <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                     <p>Настройки</p>
                 </div>
@@ -45,7 +45,7 @@ const SettingsPage = () => {
                 <div className='all-settings'>
                     <div className='main-settings'>
                         <div className='profile'>
-                            <img src={avatar} alt="" />
+                            <img src={userData.imageSrc ? userData.imageSrc : avatar} alt="" />
                             <div className='profile__info'>
                                 <p>{userData.surname} {userData.name} {userData.middleName}</p>
                                 <p>{userData.email}</p>

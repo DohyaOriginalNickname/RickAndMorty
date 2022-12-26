@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../../ThemeContext/themeContext';
 
+import { name } from '../../../serviсes/storage';
+
 import './editProfile.scss'
 import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
 import ArrowBlackTheme2 from '../../../assets/other/blackThemeItems/Arrow2.png'
@@ -21,9 +23,13 @@ const EditProfile = () => {
         setUserData(JSON.parse(localStorage.user))
     }, [])
 
+    const changeFile = (e) => {
+        name(e.target.files[0], JSON.parse(localStorage.getItem('user')))
+    } 
+
     return (
         <div className='edit-page'>
-            <div className='aaaa'>
+            <div className='exit'>
                 <Link to={'/settingsPage'}>
                     <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                 </Link>
@@ -31,8 +37,9 @@ const EditProfile = () => {
             </div>
 
             <div className='avatar'>
-                <img src={avatar} alt="" />
-                <p>Изменить фото</p>
+                <img src={userData.imageSrc ? userData.imageSrc : avatar} alt="" />
+                <input type="file" accept='image/*' id='file' onChange={(e) => changeFile(e)}/>
+                <label htmlFor='file'>Изменить фото</label>
             </div>
 
             <div className='data-of-profile'>
