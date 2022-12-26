@@ -1,5 +1,6 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import { useGetAllEpisodesQuery } from '../../../serviсes/episodsApi';
+import { Context } from '../../ThemeContext/themeContext';
 
 import ItemOfEpisodesList from '../../UI/ItemOfEpisodesList/ItemOfEpisodesList';
 import Loader from '../../UI/loader/loader'
@@ -14,6 +15,8 @@ const ListEpisodes = (props) => {
     const [countPage, setPageCount] = useState(1)
     const [array, setArray] = useState([])
     const [idOfSeason, setId] = useState(1)
+    const [context, setContext] = useContext(Context)
+    
     const arrayOfRefs = useRef([])
     const { data, isLoading } = useGetAllEpisodesQuery(countPage)
 
@@ -72,7 +75,7 @@ const ListEpisodes = (props) => {
                     onClick={() => classChange(item.id)}
                 >
                     <p>{item.seasonTitle}</p>
-                    <p className={localStorage.getItem('theme') === 'dark' ? 'active-dark' : 'active-light'}></p>
+                    <p className={context === 'dark' ? 'active-dark' : 'active-light'}></p>
                 </div>
                 :
                 <div
@@ -82,7 +85,7 @@ const ListEpisodes = (props) => {
                     onClick={() => classChange(item.id)}
                 >
                     <p>{item.seasonTitle}</p>
-                    <p className={localStorage.getItem('theme') === 'dark' ? 'active-dark' : 'active-light'}></p>
+                    <p className={context === 'dark' ? 'active-dark' : 'active-light'}></p>
                 </div>
         )
     })
@@ -114,7 +117,7 @@ const ListEpisodes = (props) => {
 
     return (
         <>
-            <div className={localStorage.getItem('theme') === 'dark' ? 'episodes-page__search dark-theme-secondary' : 'episodes-page__search light-theme-secondary'}>
+            <div className={context === 'dark' ? 'episodes-page__search dark-theme-secondary' : 'episodes-page__search light-theme-secondary'}>
                 <img src={Search} alt="" />
                 <input type="text" placeholder='Найти эпизод' onClick={() => props.da()} />
             </div>

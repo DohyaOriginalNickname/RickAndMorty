@@ -1,6 +1,8 @@
+import { useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useGetCharacterQuery } from '../../serviсes/characterApi'
 import { useGetEpisodeQuery } from '../../serviсes/episodsApi'
+import { Context } from '../ThemeContext/themeContext';
 
 import ItemOfEpisodesList from '../UI/ItemOfEpisodesList/ItemOfEpisodesList'
 
@@ -19,6 +21,7 @@ const CharacterPage = () => {
 
     const { id } = useParams()
     const { data, isLoading } = useGetCharacterQuery(id)
+    const [context, setContext] = useContext(Context)
     const navigate = useNavigate()
 
     const renderList = () => {
@@ -39,14 +42,14 @@ const CharacterPage = () => {
                     <div className="background">
                         <div className='background__image'>
                             <img src="" alt="" />
-                            <div className={localStorage.getItem('theme') === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
-                                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
+                            <div className={context === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
+                                <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
                             </div>
                         </div>
                     </div>
                     <div className="title">
                         <div className='title__avatar'>
-                            <img className={localStorage.getItem('theme') === 'dark' ? "avatar-black-theme" : "avatar-white-theme"} src={data.image} alt="" />
+                            <img className={context === 'dark' ? "avatar-black-theme" : "avatar-white-theme"} src={data.image} alt="" />
                         </div>
                         <div className="title__descripion">
                             <div>
@@ -76,7 +79,7 @@ const CharacterPage = () => {
                                     <p className="title">Origin</p>
                                     <p className="data">{data.origin.name}</p>
                                 </div>
-                                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
+                                <img src={context === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                             </div>
                         </Link>
                         <Link to={`/location/${data.location.url.replace(/[\D]+/g, '')}`}>
@@ -85,12 +88,12 @@ const CharacterPage = () => {
                                     <p className="title">Location</p>
                                     <p className="data">{data.location.name}</p>
                                 </div>
-                                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
+                                <img src={context === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                             </div>
                         </Link>
                     </div>
                 </div>
-                <div className={localStorage.getItem('theme') === 'dark' ? "border-black" : "border-light"}></div>
+                <div className={context === 'dark' ? "border-black" : "border-light"}></div>
                 <div className="episodes">
                     <div>
                         <p className="title">Эпизоды</p>

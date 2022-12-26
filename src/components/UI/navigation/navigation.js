@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { NavLink } from 'react-router-dom'
+import { Context } from '../../ThemeContext/themeContext';
 
 import './navigation.scss';
 
@@ -19,37 +21,38 @@ import settingsIcon from '../../../assets/navigation/nonActiveIcons/nonActiveSet
 
 
 const Navigation = () => {
+    const [context, setContext] = useContext(Context)
     return (
-        <nav className={localStorage.getItem('theme') === 'dark' ? "navigation-panel dark-theme-secondary" : "navigation-panel light-theme-secondary"}>
+        <nav className={context === 'dark' ? "navigation-panel dark-theme-secondary" : "navigation-panel light-theme-secondary"}>
             <NavLink to={'/listOfCharacters'}>
                 {({ isActive }) => (
                     <div className={isActive ? "navigation-panel__item_select" : "navigation-panel__item"}>
-                        <img src={isActive ? localStorage.getItem('theme') === 'dark' ? characterActiveIconBlackTheme : characterActiveIconWhiteTheme : characterIcon} alt="" />
-                        <p className={localStorage.getItem('theme') === 'dark' ? 'dark-theme' : 'light-theme'}>Персонажи</p>
+                        <img src={isActive ? context === 'dark' ? characterActiveIconBlackTheme : characterActiveIconWhiteTheme : characterIcon} alt="" />
+                        <p className={context === 'dark' ? 'dark-theme' : 'light-theme'}>Персонажи</p>
                     </div>
                 )}
             </NavLink>
             <NavLink to={'/listOfLocaions'}>
                 {({ isActive }) => (
                     <div className={isActive ? "navigation-panel__item_select" : "navigation-panel__item"}>
-                        <img src={isActive ? localStorage.getItem('theme') === 'dark' ? locationActiveIconBlackTheme : locationActiveIconWhiteTheme : locationIcon} alt="" />
-                        <p className={localStorage.getItem('theme') === 'dark' ? 'dark-theme' : 'light-theme'}>Локации</p>
+                        <img src={isActive ? context === 'dark' ? locationActiveIconBlackTheme : locationActiveIconWhiteTheme : locationIcon} alt="" />
+                        <p className={context === 'dark' ? 'dark-theme' : 'light-theme'}>Локации</p>
                     </div>
                 )}
             </NavLink>
             <NavLink to={'/listOfEpisods'}>
                 {({ isActive }) => (
                     <div className={isActive ? "navigation-panel__item_select" : "navigation-panel__item"}>
-                        <img src={isActive ? localStorage.getItem('theme') === 'dark' ? episodeActiveIconBlackTheme : episodeActiveIconWhiteTheme : episodeIcon} alt="" />
-                        <p className={localStorage.getItem('theme') === 'dark' ? 'dark-theme' : 'light-theme'}>Эпизоды</p>
+                        <img src={isActive ? context === 'dark' ? episodeActiveIconBlackTheme : episodeActiveIconWhiteTheme : episodeIcon} alt="" />
+                        <p className={context === 'dark' ? 'dark-theme' : 'light-theme'}>Эпизоды</p>
                     </div>
                 )}
             </NavLink>
             <NavLink to={'/settingsPage'}>
                 {({ isActive }) => (
                     <div className={isActive ? "navigation-panel__item_select" : "navigation-panel__item"}>
-                        <img src={isActive ? localStorage.getItem('theme') === 'dark' ? settingsActiveIconBlackTheme : settingsActiveIconWhiteTheme : settingsIcon} alt="" />
-                        <p className={localStorage.getItem('theme') === 'dark' ? 'dark-theme' : 'light-theme'}>Настройки</p>
+                        <img src={isActive ? context === 'dark' ? settingsActiveIconBlackTheme : settingsActiveIconWhiteTheme : settingsIcon} alt="" />
+                        <p className={context === 'dark' ? 'dark-theme' : 'light-theme'}>Настройки</p>
                     </div>
                 )}
             </NavLink>

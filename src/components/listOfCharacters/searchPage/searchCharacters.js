@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useContext } from "react"
 import { useGetCharacterByNameQuery } from "../../../serviсes/characterApi"
-import ItemOfCharactersList from "../../UI/ItemOfCharactersList/ItemOfCharactersList"
+import { Context } from '../../ThemeContext/themeContext';
 import ListItem from "../ItemList/listItem"
 
 import './searchCharacters.scss'
@@ -18,6 +18,7 @@ const SearchCharacter = (props) => {
     const [inputValue, setInputValue] = useState('')
     const [countPage, setCountPage] = useState(0)
     const [searchChar, setSearchChar] = useState([])
+    const [context, setContext] = useContext(Context)
     const { data, error } = useGetCharacterByNameQuery({ inputValue, page: countPage })
 
     const ref = useRef(null)
@@ -44,15 +45,15 @@ const SearchCharacter = (props) => {
 
     return (
         <>
-            <div className={localStorage.getItem('theme') === 'dark' ? "characters-page__search_active dark-theme-secondary" : "characters-page__search_active light-theme-secondary"}>
+            <div className={context === 'dark' ? "characters-page__search_active dark-theme-secondary" : "characters-page__search_active light-theme-secondary"}>
                 <div>
-                    <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.changePage()} />
+                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.changePage()} />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти персонажа" autoFocus onChange={(e) => changeInputValue(e)} value={inputValue} />
                 </div>
                 <div>
-                    <img src={localStorage.getItem('theme') === 'dark' ? CancelBlackTheme : CancelWhiteTheme} alt="filter" onClick={() => setInputValue('')} />
+                    <img src={context === 'dark' ? CancelBlackTheme : CancelWhiteTheme} alt="filter" onClick={() => setInputValue('')} />
                 </div>
             </div>
             <div className="search-character-list">

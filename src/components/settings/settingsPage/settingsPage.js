@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../../UI/navigation/navigation';
+
+import { Context } from '../../ThemeContext/themeContext';
 
 import './settingsPage.scss'
 
@@ -19,6 +21,7 @@ const SettingsPage = () => {
 
     const [userData, setUserData] = useState({})
     const [modal, setModal] = useState(false)
+    const [context, setContext] = useContext(Context)
 
     const cancel = () => {
         setModal(modal => !modal)
@@ -35,7 +38,7 @@ const SettingsPage = () => {
             <div className={modal ? "settings-page no-touch" : "settings-page"}>
 
                 <div className='aaaa'>
-                    <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
+                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                     <p>Настройки</p>
                 </div>
 
@@ -56,28 +59,28 @@ const SettingsPage = () => {
                     </div>
 
                     <div className='others-settings'>
-                        <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                        <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
 
                         <div className='change-theme'>
                             <p>Внешний вид</p>
                             <div className='select-theme' onClick={() => setModal(modal => !modal)}>
-                                <img src={localStorage.getItem('theme') === 'dark' ? palitraBlackTheme : palitraWhiteTheme} alt="" />
+                                <img src={context === 'dark' ? palitraBlackTheme : palitraWhiteTheme} alt="" />
                                 <div className='info-of-theme'>
                                     <p>Темная тема</p>
-                                    <p>Включена</p>
+                                    <p>{context === 'dark' ? 'Включена' : 'Выключена'}</p>
                                 </div>
-                                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
+                                <img src={context === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                             </div>
                         </div>
 
-                        <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                        <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
 
                         <div className='about'>
                             <p>О приложении</p>
                             <p>Зигерионцы помещают Джерри и Рика в симуляцию, чтобы узнать секрет изготовления концен-трирован- ной темной материи.</p>
                         </div>
 
-                        <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                        <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
 
                         <div className='version'>
                             <p>Версия приложения</p>
@@ -87,8 +90,8 @@ const SettingsPage = () => {
                 </div>
 
                 {modal ? <ChangeThemeModal cancel={cancel} /> : null}
-                
-                <Navigation/>
+
+                <Navigation />
             </div>
         </>
     )
@@ -96,19 +99,28 @@ const SettingsPage = () => {
 
 
 const ChangeThemeModal = (props) => {
+
+    const [context, setContext] = useContext(Context)
+    const themes = ['Выключенна', 'Включенна', 'Следовать настройкам системы', 'В режиме энергосбережения']
+
+    const changeTheme = (event) => {
+        setContext(event.target.value)
+        localStorage.setItem('theme', event.target.value)
+    }
+
     return (
         <div className='change-theme-modal'>
             <div className='title'>
                 <p>Темная тема</p>
             </div>
 
-            <ul className='select-list'>
+            <ul className='select-list' onClick={(e) => changeTheme(e)}>
                 <li>
-                    <input type="radio" name='theme' value="off" id='off' />
+                    <input type="radio" name='theme' value="light" id='off' />
                     <label htmlFor='off'>Выключенна</label>
                 </li>
                 <li>
-                    <input type="radio" name='theme' value="on" id='on' />
+                    <input type="radio" name='theme' value="dark" id='on' />
                     <label htmlFor='on'>Включенна</label>
                 </li>
                 <li>

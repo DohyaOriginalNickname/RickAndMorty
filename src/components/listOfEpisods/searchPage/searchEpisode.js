@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useContext } from 'react'
 import { useGetEpisodeByNameQuery } from '../../../serviсes/episodsApi'
+import { Context } from '../../ThemeContext/themeContext';
 import './searchEpisode.scss'
 
 import ItemOfEpisodesList from '../../UI/ItemOfEpisodesList/ItemOfEpisodesList'
@@ -17,6 +18,8 @@ const SearchEpisode = (props) => {
     const [inputValue, setInputValue] = useState('')
     const [countPage, setCountPage] = useState(1)
     const [foundEpisodes, setFoundEpisodes] = useState([])
+    const [context, setContext] = useContext(Context)
+    
     const { data, error } = useGetEpisodeByNameQuery({ inputValue, page: countPage })
 
     const refObserver = useRef(null)
@@ -65,15 +68,15 @@ const SearchEpisode = (props) => {
 
     return (
         <>
-            <div className={localStorage.getItem('theme') === 'dark' ? "episodes-page__search_active dark-theme-secondary" : "episodes-page__search_active light-theme-secondary"}>
+            <div className={context === 'dark' ? "episodes-page__search_active dark-theme-secondary" : "episodes-page__search_active light-theme-secondary"}>
                 <div>
-                    <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.da()} />
+                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.da()} />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти локацию" autoFocus onChange={changeInputValue} value={inputValue} />
                 </div>
                 <div>
-                    <img src={localStorage.getItem('theme') === 'dark' ? CancelBlackTheme : CancelWhiteTheme} alt="filter" onClick={() => setInputValue('')} />
+                    <img src={context === 'dark' ? CancelBlackTheme : CancelWhiteTheme} alt="filter" onClick={() => setInputValue('')} />
                 </div>
             </div>
             <div className="search-episodes-list">

@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCharactersFilters, clearCharactersFilters } from '../../../store/slice'
+import { Context } from '../../ThemeContext/themeContext';
 
 import './filtersPage.scss'
 
@@ -13,6 +14,7 @@ import EndTo from '../../../assets/other/EndTo.png'
 const FiltersPage = (props) => {
 
     const [arrayOfFilters, setArrayOfFilters] = useState([])
+    const [context, setContext] = useContext(Context)
     const refs = useRef([])
     const dispatch = useDispatch()
     const filter = useSelector((state) => state.filter.paramsForCharatersQuery)
@@ -62,8 +64,8 @@ const FiltersPage = (props) => {
 
     return (
         <>
-            <div className={localStorage.getItem('theme') === 'dark' ? "header-filters dark-theme-secondary" : "header-filters"}>
-                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" onClick={() => props.da()} />
+            <div className={context === 'dark' ? "header-filters dark-theme-secondary" : "header-filters"}>
+                <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" onClick={() => props.da()} />
                 <p className="title">Фильтры</p>
                 <img src={clearFilters} alt="" className={Object.keys(filter).length > 0 ? 'clear-filter-ready' : 'clear-filter-not-ready'} onClick={() => clearOfFilters()} />
             </div>
@@ -77,14 +79,14 @@ const FiltersPage = (props) => {
                         <img src={EndTo} alt="" />
                     </div>
                 </div>
-                <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
                 <div className="sort-block">
                     <div className="title">Статус</div>
                     <ul className="sort">
                         {arrayOfFilters.slice(0, 3)}
                     </ul>
                 </div>
-                <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
                 <div className="sort-block">
                     <div className="title">Пол</div>
                     <ul className="sort">

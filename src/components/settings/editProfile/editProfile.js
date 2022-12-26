@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Context } from '../../ThemeContext/themeContext';
 
 import './editProfile.scss'
 import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
@@ -13,6 +15,7 @@ import { useEffect, useState } from 'react';
 const EditProfile = () => {
 
     const [userData,setUserData] = useState({})
+    const [context, setContext] = useContext(Context)
 
     useEffect(()=>{
         setUserData(JSON.parse(localStorage.user))
@@ -22,7 +25,7 @@ const EditProfile = () => {
         <div className='edit-page'>
             <div className='aaaa'>
                 <Link to={'/settingsPage'}>
-                    <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
+                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                 </Link>
                 <p>Редактировать</p>
             </div>
@@ -41,7 +44,7 @@ const EditProfile = () => {
                                 <p>Изменить ФИО</p>
                                 <p>{userData.name} {userData.surname} {userData.middleName}</p>
                             </div>
-                            <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
+                            <img src={context === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                         </div>
                     </Link>
                     <Link to={'/passwordChange'}>
@@ -49,7 +52,7 @@ const EditProfile = () => {
                             <div className='data-of-select'>
                                 <p className='change-pass'>Изменить пароль</p>
                             </div>
-                            <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
+                            <img src={context === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" />
                         </div>
                     </Link>
                 </div>

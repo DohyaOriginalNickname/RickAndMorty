@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addLocationsFilters } from '../../../../store/slice'
+import { Context } from '../../../ThemeContext/themeContext';
 
 import ArrowBlackTheme from '../../../../assets/other/blackThemeItems/Arrow.png'
 import ArrowWhiteTheme from '../../../../assets/other/whiteThemeItems/Arrow.png'
@@ -11,6 +12,7 @@ const FilterTypePage = (props) => {
 
     const [elements, setElements] = useState([])
     const arrayOfRefs = useRef([])
+    const [context, setContext] = useContext(Context)
     const dispatch = useDispatch()
     const filter = useSelector(state => state.filter.paramsForLocationsQuery)
 
@@ -66,13 +68,13 @@ const FilterTypePage = (props) => {
     return (
         <>
             <div className="header-filters">
-                <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" onClick={() => props.changePage(0)} />
+                <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" onClick={() => props.changePage(0)} />
                 <p className="title">{props.num === 1 ? 'Выберите тип' : 'Выберите измерение'}</p>
             </div>
 
             <div className='list-of-filter'>
                 <p>{Object.keys(filter).length !== 0 ? aaa() : "Не выбрано"}</p>
-                <div className={localStorage.getItem('theme') === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
                 <ul>
                     {elements}
                 </ul>

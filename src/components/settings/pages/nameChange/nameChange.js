@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { changeUserData } from '../../../../serviсes/authentication';
+import { Context } from '../../../ThemeContext/themeContext';
 
 import Modal from '../../../UI/modal/modal';
 import './nameChange.scss'
@@ -13,6 +14,7 @@ const NameChange = () => {
     const [newMiddleName, setMiddleName] = useState('')
     const [newSurname, setNewSurname] = useState('')
     const [modal, setModal] = useState('')
+    const [context, setContext] = useContext(Context)
 
     const errorMessage = 'Проверьте подключение к интернету или проверьте вводимые поля'
 
@@ -36,7 +38,7 @@ const NameChange = () => {
 
                 <div className='aaaa'>
                     <Link to={'/changeUserData'}>
-                        <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
+                        <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                     </Link>
                     <p>Изменить ФИО</p>
                 </div>

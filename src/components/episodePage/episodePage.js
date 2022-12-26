@@ -1,6 +1,8 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useGetEpisodeQuery } from "../../serviсes/episodsApi";
 import { useGetCharacterQuery } from "../../serviсes/characterApi";
+import { Context } from '../ThemeContext/themeContext';
 
 import ItemOfCharactersList from '../UI/ItemOfCharactersList/ItemOfCharactersList'
 
@@ -15,6 +17,7 @@ const EpisodPage = () => {
 
     const { id } = useParams()
     const { data, isLoading } = useGetEpisodeQuery(id)
+    const [context, setContext] = useContext(Context)
     const navigate = useNavigate()
 
     const renderList = () => {
@@ -34,8 +37,8 @@ const EpisodPage = () => {
                     <div className="background">
                         <img src={backgroundImage} alt="" />
                     </div>
-                    <div className={localStorage.getItem('theme') === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
-                        <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
+                    <div className={context === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
+                        <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
                     </div>
                 </div>
 
@@ -57,7 +60,7 @@ const EpisodPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={localStorage.getItem('theme') === 'dark' ? "border-black" : "border-light"}></div>
+                        <div className={context === 'dark' ? "border-black" : "border-light"}></div>
 
                         <div className="realeted-characters">
                             <div className="title">

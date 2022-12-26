@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+
+import { Context } from "../ThemeContext/themeContext";
 
 import './App.scss'
 
@@ -22,26 +25,29 @@ if (localStorage.getItem('theme') === null) {
 }
 
 const App = () => {
+    const [context, setContext] = useState(localStorage.getItem('theme'))
     return (
         <Router>
-            <div className={localStorage.getItem('theme') === 'dark' ? "App-dark" :"App-light"}>
-                <Routes>
-                    <Route path="/" element={<LoginPage/>}/>
-                    <Route path="/createAccount" element={<CreateAccountPage/>} />
-                    <Route path="/recoveryPassword" element={<PasswordRecovery/>}/> 
-                    <Route path="/listOfCharacters" element={<ListOfCharactersPage/>}/>
-                    <Route path="/Character/:id" element={<CharacterPage/>}/>
-                    <Route path="/listOfLocaions" element={<ListOfLocations/>}/>
-                    <Route path="/location/:id" element={<LocationPage/>}/>
-                    <Route path="/listOfEpisods" element={<ListOfEpisods/>}/>
-                    <Route path="/episodePage/:id" element={<EpisodePage/>}/>
-                    <Route path="/settingsPage" element={<SettingsPage/>}/>
-                    <Route path="/changeUserData" element={<EditProfile/>}/>
-                    <Route path="/nameChange" element={<NameChange/>}/>
-                    <Route path="/passwordChange" element={<PasswordChange/>}/>
-                </Routes>
-            </div>       
-        </Router> 
+            <Context.Provider value={[context, setContext]}>
+                <div className={context === 'dark' ? "App-dark" : "App-light"}>
+                    <Routes>
+                        <Route path="/" element={<LoginPage />} />
+                        <Route path="/createAccount" element={<CreateAccountPage />} />
+                        <Route path="/recoveryPassword" element={<PasswordRecovery />} />
+                        <Route path="/listOfCharacters" element={<ListOfCharactersPage />} />
+                        <Route path="/Character/:id" element={<CharacterPage />} />
+                        <Route path="/listOfLocaions" element={<ListOfLocations />} />
+                        <Route path="/location/:id" element={<LocationPage />} />
+                        <Route path="/listOfEpisods" element={<ListOfEpisods />} />
+                        <Route path="/episodePage/:id" element={<EpisodePage />} />
+                        <Route path="/settingsPage" element={<SettingsPage />} />
+                        <Route path="/changeUserData" element={<EditProfile />} />
+                        <Route path="/nameChange" element={<NameChange />} />
+                        <Route path="/passwordChange" element={<PasswordChange />} />
+                    </Routes>
+                </div>
+            </Context.Provider>
+        </Router>
     )
 }
 

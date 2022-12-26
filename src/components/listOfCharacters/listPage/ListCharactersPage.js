@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useContext } from "react"
 import { useSelector } from "react-redux"
 import { useGetAllCharactersQuery, useGetCharactersByFiltersQuery } from '../../../serviсes/characterApi'
+import { Context } from '../../ThemeContext/themeContext';
 import './ListCharactersPage.scss'
 
 import ListItem from '../ItemList/listItem'
@@ -21,6 +22,7 @@ const ListCharacters = (props) => {
     const [countFilterPage, setCountFilterPage] = useState(1)
     const [AllCharacters, setAllCharacters] = useState([])
     const [FilteredCharacters, setFilteredCharacters] = useState([])
+    const [context, setContext] = useContext(Context)
 
     const filters = useSelector((state) => state.filter.paramsForCharatersQuery)
 
@@ -55,14 +57,14 @@ const ListCharacters = (props) => {
 
     return (
         <>
-            <div className={localStorage.getItem('theme') === 'dark' ? "characters-page__search dark-theme-secondary" : "characters-page__search light-theme-secondary"}>
+            <div className={context === 'dark' ? "characters-page__search dark-theme-secondary" : "characters-page__search light-theme-secondary"}>
                 <div>
                     <img src={Search} alt="search" />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти персонажа" onFocus={() => props.changePage()} />
                 </div>
-                <div className={localStorage.getItem('theme') === 'dark' ? "border-dark" : "border-light"}></div>
+                <div className={context === 'dark' ? "border-dark" : "border-light"}></div>
                 <div>
                     <img src={Filter} alt="filter" onClick={() => props.da()} />
                 </div>

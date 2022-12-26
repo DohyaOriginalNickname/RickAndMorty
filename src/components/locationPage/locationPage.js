@@ -1,6 +1,8 @@
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import { useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom'
 import { useGetLocationQuery } from '../../serviсes/locationsApi'
 import { useGetCharacterQuery } from '../../serviсes/characterApi'
+import { Context } from '../ThemeContext/themeContext';
 
 import ItemOfCharactersList from '../UI/ItemOfCharactersList/ItemOfCharactersList'
 
@@ -15,6 +17,7 @@ const LocationPage = () => {
 
     const { id } = useParams()
     const { data, isLoading } = useGetLocationQuery(id)
+    const [context, setContext] = useContext(Context)
     const navigate = useNavigate()
 
     const renderList = () => {
@@ -35,8 +38,8 @@ const LocationPage = () => {
                     <div className='background'>
                         <img src={image} alt="" />
                     </div>
-                    <div className={localStorage.getItem('theme') === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
-                        <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
+                    <div className={context === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
+                        <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
                     </div>
                     <div className='something'></div>
                 </div>

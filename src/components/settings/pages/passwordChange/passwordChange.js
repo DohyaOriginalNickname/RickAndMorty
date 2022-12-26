@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { changeUserPassword } from '../../../../serviсes/authentication';
+import { Context } from '../../../ThemeContext/themeContext';
 
 import Modal from '../../../UI/modal/modal';
 import './passwordChange.scss'
@@ -14,6 +15,7 @@ const PasswordChange = () => {
     const [oldPass, setOldPass] = useState('')
     const [newPass, setNewPass] = useState('')
     const [modal, setModal] = useState('')
+    const [context, setContext] = useContext(Context)
 
     const errorMessage = 'Проверьте подключение к интернету или старый пароль неверен'
 
@@ -38,7 +40,7 @@ const PasswordChange = () => {
 
                 <div className='aaaa'>
                     <Link to={'/changeUserData'}>
-                        <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
+                        <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                     </Link>
                     <p>Изменить пароль</p>
                 </div>

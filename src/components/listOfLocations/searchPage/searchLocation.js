@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useContext } from "react"
 import { useGetLocationByNameQuery } from '../../../serviсes/locationsApi'
+import { Context } from '../../ThemeContext/themeContext';
 
 import ItemOfLocationsList from "../../UI/ItemOfLocationsList/ItemOfLocationsList"
 import './searchLocations.scss'
@@ -16,6 +17,8 @@ const SearchLocation = (props) => {
     const [inputValue, setInputValue] = useState('')
     const [countPage, setCountPage] = useState(1)
     const [foundLocation, setFoundLocations] = useState([])
+    const [context, setContext] = useContext(Context)
+    
     const { data, error } = useGetLocationByNameQuery({inputValue, page: countPage})
 
     const refObserver = useRef(null)
@@ -65,15 +68,15 @@ const SearchLocation = (props) => {
 
     return (
         <>
-            <div className={localStorage.getItem('theme') === 'dark' ? "locations-page__search_active dark-theme-secondary" : "locations-page__search_active light-theme-secondary"}>
+            <div className={context === 'dark' ? "locations-page__search_active dark-theme-secondary" : "locations-page__search_active light-theme-secondary"}>
                 <div>
-                    <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.da()} />
+                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.da()} />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти локацию" autoFocus onChange={(e)=> changeInputValue(e)} value={inputValue} />
                 </div>
                 <div>
-                    <img src={localStorage.getItem('theme') === 'dark' ? CancelBlackTheme : CancelWhiteTheme} alt="filter" onClick={() => setInputValue('')} />
+                    <img src={context === 'dark' ? CancelBlackTheme : CancelWhiteTheme} alt="filter" onClick={() => setInputValue('')} />
                 </div>
             </div>
             <div className="search-locations-list">

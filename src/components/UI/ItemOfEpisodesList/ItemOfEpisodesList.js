@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from '../../ThemeContext/themeContext';
 import './ItemOfEpisodesList.scss'
 import ArrowBlackTheme2 from '../../../assets/other/blackThemeItems/Arrow2.png'
 import ArrowWhiteTheme2 from '../../../assets/other/whiteThemeItems/Arrow2.png'
 
 const ItemOfEpisodesList = (props) => {
+    const [context, setContext] = useContext(Context)
     return (
         <Link to={`/episodePage/${props.id}`}>
             <li className="episode">
@@ -18,7 +21,7 @@ const ItemOfEpisodesList = (props) => {
                 {
                     props.arrow ?
                         <div>
-                            <img src={localStorage.getItem('theme') === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" className='arrow' />
+                            <img src={context === 'dark' ? ArrowBlackTheme2 : ArrowWhiteTheme2} alt="" className='arrow' />
                         </div> : null
                 }
             </li>

@@ -1,6 +1,7 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useContext } from 'react'
 import { useSelector } from 'react-redux'
 import { useGetAllLocationsQuery, useGetLocationsByFiltersQuery } from '../../../serviсes/locationsApi'
+import { Context } from '../../ThemeContext/themeContext';
 import './ListLocationsPage.scss'
 
 import ItemOfLocationsList from '../../UI/ItemOfLocationsList/ItemOfLocationsList'
@@ -16,6 +17,8 @@ const ListLocations = (props) => {
     const [countFilteredPage, setCountFilteredPage] = useState(1)
     const [AllLocations, setAllLocations] = useState([])
     const [FilteredLocations, setFilteredLocations] = useState([])
+    const [context, setContext] = useContext(Context)
+    
     const filters = useSelector((state) => state.filter.paramsForLocationsQuery)
 
     const { data: allLocations, isLoading: isLoadingAllLocations } = useGetAllLocationsQuery(countPage)
@@ -70,14 +73,14 @@ const ListLocations = (props) => {
 
     return (
         <>
-            <div className={localStorage.getItem('theme') === 'dark' ? "locations-page__search dark-theme-secondary" : "locations-page__search light-theme-secondary"}>
+            <div className={context === 'dark' ? "locations-page__search dark-theme-secondary" : "locations-page__search light-theme-secondary"}>
                 <div>
                     <img src={Search} alt="search" />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти локацию" onClick={() => props.changePage()} />
                 </div>
-                <div className={localStorage.getItem('theme') === 'dark' ? "border-dark" : "border-light"}></div>
+                <div className={context === 'dark' ? "border-dark" : "border-light"}></div>
                 <div>
                     <img src={Filter} alt="filter" onClick={() => props.da()} />
                 </div>
