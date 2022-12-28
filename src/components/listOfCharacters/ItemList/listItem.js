@@ -6,7 +6,7 @@ const ListItem = (props) => {
     const refObserver = useRef(null)
 
     const options = {
-        root: props.aaa,
+        root: props.refRoot,
         rootMargin: '0px',
         threshold: 1.0
     }

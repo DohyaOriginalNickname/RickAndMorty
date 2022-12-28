@@ -28,7 +28,7 @@ const FiltersOfLocationsPage = (props) => {
     return (
         <>
             <div className="header-filters">
-                <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" onClick={() => props.da()}/>
+                <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" onClick={() => props.changeToFilterPage()}/>
                 <p className="title">Фильтры</p>
                 <img src={clearFilters} alt="" className={ Object.keys(filter).length > 0 ? 'clear-filter-ready' : 'clear-filter-not-ready'} onClick={() => clearOfFilters()}/>
             </div>

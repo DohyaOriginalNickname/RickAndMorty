@@ -7,16 +7,16 @@ import image from '../../assets/Rectangle.png'
 
 const ListOfEpisods = () => {
 
-    const [ da, setDa ] = useState(false)
+    const [ ChangePage, setChangePage] = useState(false)
 
     const changePage = () => {
-        setDa(!da)
+        setChangePage(!ChangePage)
     }
 
 
     return (
         <div className='episodes-page'>
-            { !da ? <ListEpisodes da={changePage} image={image}/> : <SearchEpisode da={changePage} image={image}/>}
+            { !ChangePage ? <ListEpisodes changePage={changePage} image={image}/> : <SearchEpisode changePage={changePage} image={image}/>}
         </div>
     )
 }

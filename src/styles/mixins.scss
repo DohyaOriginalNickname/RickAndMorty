@@ -1,11 +1,11 @@
-@mixin field-property($da: false, $background:$secondary-black-theme, $color:$blackThemeText) {
+@mixin field-property($logo: false, $background:$secondary-black-theme, $color:$blackThemeText) {
     display: flex;
     flex-direction: column;
     gap: 12px;
     label {
         color: $color;
     }
-    @if $da == false {
+    @if $logo == false {
         &__login {
             @include input-style($background:$background, $color:$color);
         }

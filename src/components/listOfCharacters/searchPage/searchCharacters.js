@@ -31,8 +31,8 @@ const SearchCharacter = (props) => {
     }, [data])
 
     const plusPage = () => {
-        const aaa = JSON.parse(sessionStorage.getItem('data-info'))
-        if (aaa.next !== null) {
+        const dataInfo = JSON.parse(sessionStorage.getItem('data-info'))
+        if (dataInfo.next !== null) {
             setCountPage(countPage => countPage + 1)
         }
     }
@@ -47,7 +47,7 @@ const SearchCharacter = (props) => {
         <>
             <div className={context === 'dark' ? "characters-page__search_active dark-theme-secondary" : "characters-page__search_active light-theme-secondary"}>
                 <div>
-                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.changePage()} />
+                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.changeToSearchPage()} />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти персонажа" autoFocus onChange={(e) => changeInputValue(e)} value={inputValue} />
@@ -60,7 +60,7 @@ const SearchCharacter = (props) => {
                 <p className="result-title">Результаты поиска</p>
                 <ul className="found-characters" ref={ref}>
                     {
-                        data !== undefined ? !error ? <ListItem data={searchChar} plusPage={plusPage} aaa={ref.current} /> :
+                        data !== undefined ? !error ? <ListItem data={searchChar} plusPage={plusPage} refRoot={ref.current} /> :
                             <div className="not-found-characters">
                                 <img src={CharacterNotFound} alt="" />
                                 <p>Персонаж с таким именем не найден</p>

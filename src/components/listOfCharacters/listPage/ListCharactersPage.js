@@ -62,11 +62,11 @@ const ListCharacters = (props) => {
                     <img src={Search} alt="search" />
                 </div>
                 <div>
-                    <input type="text" placeholder="Найти персонажа" onFocus={() => props.changePage()} />
+                    <input type="text" placeholder="Найти персонажа" onFocus={() => props.changeToSearchPage()} />
                 </div>
                 <div className={context === 'dark' ? "border-dark" : "border-light"}></div>
                 <div>
-                    <img src={Filter} alt="filter" onClick={() => props.da()} />
+                    <img src={Filter} alt="filter" onClick={() => props.changeToFilterPage()} />
                 </div>
             </div>
             <div className="characters-page__list">
@@ -76,7 +76,7 @@ const ListCharacters = (props) => {
                 </div>
                 <ul className={template ? 'list' : 'tile'} ref={ref}>
                     {
-                        errorFilter  ? <NotFoundByFilter/> : isLoadingAllCharacters || isLoadingFilteredCharacters ? <Loader/> : <ListItem data={Object.keys(filters).length > 0 ? FilteredCharacters : AllCharacters} template={template} aaa={ref.current} plusPage={plusPage} /> 
+                        errorFilter  ? <NotFoundByFilter/> : isLoadingAllCharacters || isLoadingFilteredCharacters ? <Loader/> : <ListItem data={Object.keys(filters).length > 0 ? FilteredCharacters : AllCharacters} template={template} refRoot={ref.current} plusPage={plusPage} /> 
                     }
                 </ul>
             </div>

@@ -13,18 +13,18 @@ const ListOfLocations = () => {
     const [searchPage, setSearchPage] = useState(false)
     const [filterPage, setFilterPage] = useState(false)
 
-    const changePage = () => {
+    const changeToSearchPage = () => {
         setSearchPage(!searchPage)
     }
 
-    const da = () => {
+    const changeToFilterPage = () => {
         setFilterPage(!filterPage)
     }
 
     return (
         <div className='locations-page'>
             {
-                !searchPage ? !filterPage ? <ListLocations image={image} changePage={changePage} da={da} /> : <FiltersOfLocationsPage da={da} /> : <SearchLocation image={image} da={changePage} />
+                !searchPage ? !filterPage ? <ListLocations image={image} changeToSearchPage={changeToSearchPage} changeToFilterPage={changeToFilterPage} /> : <FiltersOfLocationsPage changeToFilterPage={changeToFilterPage} /> : <SearchLocation image={image} changeToSearchPage={changeToSearchPage} />
             }
         </div>
     )

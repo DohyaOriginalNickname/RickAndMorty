@@ -1,7 +1,7 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 
-@mixin name($flex: true) {
+@mixin flex-box($flex: true) {
     @if $flex == true {
         .title {
             color: $noActiveElement;
@@ -78,13 +78,13 @@
             text-align: center;
             gap: 24px;
             .title__avatar {
-                .avatar-white-theme{
+                .avatar-white-theme {
                     border: 8px solid $whiteTheme;
                     border-radius: 100px;
                     width: 146px;
                     height: 146px;
                 }
-                .avatar-black-theme{
+                .avatar-black-theme {
                     border: 8px solid $secondary-black-theme;
                     border-radius: 100px;
                     width: 146px;
@@ -129,10 +129,10 @@
             display: flex;
             gap: 118px;
             .gender {
-                @include name;
+                @include flex-box;
             }
             .race {
-                @include name;
+                @include flex-box;
             }
         }
         .other-data {
@@ -144,11 +144,11 @@
             }
             .location {
                 color: inherit;
-                @include name(false);
+                @include flex-box(false);
             }
             .position {
                 color: inherit;
-                @include name(false);
+                @include flex-box(false);
             }
         }
     }

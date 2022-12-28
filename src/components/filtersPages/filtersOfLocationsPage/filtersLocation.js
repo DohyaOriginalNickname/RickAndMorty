@@ -14,7 +14,7 @@ const FilterPage = (props) => {
 
     return (
         <>
-            {page === 0 ? <MainPage changePage={changePage} da={props.da} /> : <SubPagesFilters changePage={changePage} num={page} /> }
+            {page === 0 ? <MainPage changePage={changePage} changeToFilterPage={props.changeToFilterPage} /> : <SubPagesFilters changePage={changePage} num={page} /> }
         </>
     )
 }

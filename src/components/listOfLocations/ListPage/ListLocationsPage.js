@@ -78,11 +78,11 @@ const ListLocations = (props) => {
                     <img src={Search} alt="search" />
                 </div>
                 <div>
-                    <input type="text" placeholder="Найти локацию" onClick={() => props.changePage()} />
+                    <input type="text" placeholder="Найти локацию" onClick={() => props.changeToSearchPage()} />
                 </div>
                 <div className={context === 'dark' ? "border-dark" : "border-light"}></div>
                 <div>
-                    <img src={Filter} alt="filter" onClick={() => props.da()} />
+                    <img src={Filter} alt="filter" onClick={() => props.changeToFilterPage()} />
                 </div>
             </div>
             <div className="locations-page__list">

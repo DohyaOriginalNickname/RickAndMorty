@@ -13,18 +13,18 @@ const ListOfCharactersPage = () => {
     const [searchPage, setSearchPage] = useState(false)
     const [filterPage, setFilterPage] = useState(false)
 
-    const changePage = () => {
+    const changeToSearchPage= () => {
         setSearchPage(!searchPage)
     }
 
-    const da = () => {
+    const changeToFilterPage = () => {
         setFilterPage(!filterPage)
     }
 
     return (
         <div className="characters-page">
             {
-                !searchPage ? !filterPage ? <ListCharacters changePage={changePage} da={da}/> : <FiltersPage da={da} /> : <SearchCharacter changePage={changePage} />
+                !searchPage ? !filterPage ? <ListCharacters changeToSearchPage={changeToSearchPage} changeToFilterPage={changeToFilterPage}/> : <FiltersPage changeToFilterPage={changeToFilterPage} /> : <SearchCharacter changeToSearchPage={changeToSearchPage} />
             }
         </div>
     )

@@ -70,7 +70,7 @@ const SearchEpisode = (props) => {
         <>
             <div className={context === 'dark' ? "episodes-page__search_active dark-theme-secondary" : "episodes-page__search_active light-theme-secondary"}>
                 <div>
-                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.da()} />
+                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.changePage()} />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти локацию" autoFocus onChange={changeInputValue} value={inputValue} />

@@ -15,7 +15,6 @@ const LoginPage = () => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [modal, setModal] = useState(false)
-    const [access, setAccess] = useState(false)
     const [recoveryPassword, setRecoveryPassword] = useState(false)
 
     const navigate = useNavigate()
@@ -30,7 +29,6 @@ const LoginPage = () => {
         e.preventDefault()
         loginUser(login, password)
             .then(() => {
-                setAccess(access => !access)
                 navigate('/listOfCharacters')
             })
             .catch(() => {
