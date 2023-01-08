@@ -10,13 +10,6 @@
         border-top-left-radius: 20px;
     }
     
-    .dark {
-        background: $secondary-black-theme;
-    }
-    .light {
-        background: $whiteTheme;
-        border: 1px solid #E0E0E0;
-    }
 
     .item__description {
         padding: 12px 16px;
@@ -24,8 +17,9 @@
         height: 68px;
         border-bottom-right-radius: 20px;
         border-bottom-left-radius: 20px;
+        background: var(--secondary-color);
         .title {
-            color: inherit;
+            color: var(--font-color);
             @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
         }
 

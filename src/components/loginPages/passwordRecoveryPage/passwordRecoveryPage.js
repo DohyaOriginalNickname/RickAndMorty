@@ -1,21 +1,25 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { Context } from '../../ThemeContext/themeContext';
 import { Link } from 'react-router-dom'
 
 //import { changePasswordByEmail } from '../../../serviсes/authentication'
 
 import './passwordRecoveryPage.scss'
-import arrow from '../../../assets/other/blackThemeItems/Arrow.png'
+import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
 
 const PasswordRecovery = () => {
 
     const [email, setEmail] = useState('')
     const [newPassword, setNewPassword] = useState('')
 
+    const [context, setContext] = useContext(Context)
+
     return (
         <div className="recovery-page">
             <div className="to-back-button">
                 <div>
-                    <Link to={'/'}><img src={arrow} alt="arrow" /></Link>
+                    <Link to={'/'}><img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" /></Link>
                 </div>
                 <div className="title">
                     <p>Восстановление</p>

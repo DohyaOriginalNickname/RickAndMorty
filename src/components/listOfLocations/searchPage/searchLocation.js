@@ -70,7 +70,7 @@ const SearchLocation = (props) => {
         <>
             <div className={context === 'dark' ? "locations-page__search_active dark-theme-secondary" : "locations-page__search_active light-theme-secondary"}>
                 <div>
-                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.changeToFilterPage()} />
+                    <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.changeToSearchPage()} />
                 </div>
                 <div>
                     <input type="text" placeholder="Найти локацию" autoFocus onChange={(e)=> changeInputValue(e)} value={inputValue} />

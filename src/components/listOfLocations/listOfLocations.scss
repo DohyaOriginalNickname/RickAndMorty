@@ -3,8 +3,8 @@
 
 .locations-page {
     height: 100vh;
-    background-color: inherit;
-    color: inherit;
+    background-color: var(--primary-color);
+    color: var(--font-color);
     display: flex;
     flex-direction: column;
     align-items: center;

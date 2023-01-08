@@ -9,6 +9,7 @@
     gap: 20px;
     width: 375px;
     height: 48px;
+    background:var(--secondary-color);
     input {
         width: 256px;
         color: inherit;
@@ -32,9 +33,6 @@
         @include list(false);
         height: 675px;
         width: 335px;
-        a{
-            color: inherit;
-        }
     }
     .not-found-episodes {
         color: $noActiveElement;

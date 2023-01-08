@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { Context } from '../../ThemeContext/themeContext';
 import { Link } from 'react-router-dom'
 
 import { createNewUser } from '../../../serviсes/authentication'
-
-import arrow from '../../../assets/other/blackThemeItems/bigArrow.png'
+import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
 
 import './createAccountPage.scss'
 const CreateAccountPage = () => {
@@ -14,6 +15,8 @@ const CreateAccountPage = () => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
 
+    const [context, setContext] = useContext(Context)
+
     const createAccount = () => {
         createNewUser(name, surName, middleName, login, password)
     }
@@ -22,7 +25,7 @@ const CreateAccountPage = () => {
         <div className="create-account">
             <div className="create-account__header">
                 <div className="arrow">
-                    <Link to={'/'}><img src={arrow} alt="backArrow" /></Link>
+                    <Link to={'/'}><img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="backArrow" /></Link>
                 </div>
                 <div className="title">
                     <p>Создание аккаунта</p>

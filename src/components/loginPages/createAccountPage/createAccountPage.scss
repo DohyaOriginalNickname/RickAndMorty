@@ -3,7 +3,8 @@
 
 .create-account{
     height: 100vh;
-    background-color: $primary-black-theme;
+    background-color: var(--primary-color);
+    color: var(--font-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +21,7 @@
         .title{
             font-size: $bigSize;
             line-height: 36px;
-            color: $blackThemeText;
+            color: inherit;
             font-weight: 700;
         }
     }
@@ -45,8 +46,7 @@
             }
         }
         .border{
-            width: 319px;
-            border: 2px solid rgba(21, 42, 58, 0.5);
+            border: 2px solid var(--secondary-color);
         }
         .button-submit{
             position: absolute;

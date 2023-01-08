@@ -38,7 +38,7 @@ const LocationPage = () => {
                     <div className='background'>
                         <img src={image} alt="" />
                     </div>
-                    <div className={context === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
+                    <div className="arrow" onClick={() => navigate(-1)}>
                         <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
                     </div>
                     <div className='something'></div>

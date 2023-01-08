@@ -3,8 +3,8 @@
 
 .settings-page {
     height: 100vh;
-    background-color: inherit;
-    color: inherit;
+    background-color: var(--primary-color);
+    color: var(--font-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,6 +27,9 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    .border {
+        border: 1px solid var(--secondary-color);
+    }
     .main-settings {
         display: flex;
         flex-direction: column;

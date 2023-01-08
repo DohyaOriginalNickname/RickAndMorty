@@ -117,7 +117,7 @@ const ListEpisodes = (props) => {
 
     return (
         <>
-            <div className={context === 'dark' ? 'episodes-page__search dark-theme-secondary' : 'episodes-page__search light-theme-secondary'}>
+            <div className={context === 'dark' ? 'episodes-page__search' : 'episodes-page__search'}>
                 <img src={Search} alt="" />
                 <input type="text" placeholder='Найти эпизод' onClick={() => props.changePage()} />
             </div>

@@ -38,7 +38,7 @@ const PasswordChange = () => {
             <div className={modal ? "modal-bg" : null}></div>
             <div className={modal ? 'password-change-page no-touch' : 'password-change-page'}>
 
-                <div className='aaaa'>
+                <div className='exit'>
                     <Link to={'/changeUserData'}>
                         <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                     </Link>

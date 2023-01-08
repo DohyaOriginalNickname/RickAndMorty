@@ -36,7 +36,7 @@ const NameChange = () => {
             <div className={modal ? "modal-bg" : null}></div>
             <div className={modal ? 'name-change-page no-touch' : 'name-change-page'}>
 
-                <div className='aaaa'>
+                <div className='exit'>
                     <Link to={'/changeUserData'}>
                         <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="arrow" />
                     </Link>

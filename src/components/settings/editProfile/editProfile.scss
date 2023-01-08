@@ -3,8 +3,8 @@
 
 .edit-page {
     height: 100vh;
-    background-color: inherit;
-    color: inherit;
+    background-color: var(--primary-color);
+    color: var(--font-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,16 +48,13 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-        a {
-            color: inherit;
-        }
         .select-of-change__item {
             display: flex;
             align-items: center;
             .data-of-select {
                 width: 100%;
                 p:first-child {
-                    color: inherit;
+                    color: var(--font-color);
                     @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
                 }
                 p:last-child {
@@ -65,7 +62,7 @@
                     @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
                 }
                 p.change-pass {
-                    color: inherit;
+                    color: var(--font-color);
                     @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
                 }
             }

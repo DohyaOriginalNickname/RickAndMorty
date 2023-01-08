@@ -37,7 +37,7 @@ const EpisodPage = () => {
                     <div className="background">
                         <img src={backgroundImage} alt="" />
                     </div>
-                    <div className={context === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
+                    <div className="arrow" onClick={() => navigate(-1)}>
                         <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
                     </div>
                 </div>
@@ -60,7 +60,7 @@ const EpisodPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={context === 'dark' ? "border-black" : "border-light"}></div>
+                        <div className="border"></div>
 
                         <div className="realeted-characters">
                             <div className="title">

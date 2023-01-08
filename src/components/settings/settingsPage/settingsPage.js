@@ -59,7 +59,7 @@ const SettingsPage = () => {
                     </div>
 
                     <div className='others-settings'>
-                        <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                        <div className="border" ></div>
 
                         <div className='change-theme'>
                             <p>Внешний вид</p>
@@ -73,14 +73,14 @@ const SettingsPage = () => {
                             </div>
                         </div>
 
-                        <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                        <div className="border" ></div>
 
                         <div className='about'>
                             <p>О приложении</p>
                             <p>Зигерионцы помещают Джерри и Рика в симуляцию, чтобы узнать секрет изготовления концен-трирован- ной темной материи.</p>
                         </div>
 
-                        <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                        <div className="border" ></div>
 
                         <div className='version'>
                             <p>Версия приложения</p>
@@ -101,7 +101,6 @@ const SettingsPage = () => {
 const ChangeThemeModal = (props) => {
 
     const [context, setContext] = useContext(Context)
-    const themes = ['Выключенна', 'Включенна', 'Следовать настройкам системы', 'В режиме энергосбережения']
 
     const changeTheme = (event) => {
         setContext(event.target.value)

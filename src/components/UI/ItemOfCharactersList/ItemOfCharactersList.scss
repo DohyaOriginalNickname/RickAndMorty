@@ -13,7 +13,7 @@
         @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
     }
     .name {
-        color: inherit;
+        color: var(--font-color);
         @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
     }
     .race {

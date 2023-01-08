@@ -26,11 +26,11 @@
 
 .character-page {
     height: 100%;
-    background: inherit;
+    background: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: inherit;
+    color: var(--font-color);
     .header {
         .background {
             width: 100%;
@@ -45,7 +45,7 @@
                     rgba(11, 30, 45, 0.65);
                 backdrop-filter: blur(4px);
                 background-color: wheat;
-                .arrow-white {
+                .arrow {
                     position: relative;
                     left: 16px;
                     display: flex;
@@ -53,18 +53,7 @@
                     justify-content: center;
                     width: 48px;
                     height: 48px;
-                    background-color: $primary-black-theme;
-                    border-radius: 100px;
-                }
-                .arrow-black {
-                    position: relative;
-                    left: 16px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 48px;
-                    height: 48px;
-                    background-color: $whiteTheme;
+                    background-color: var(--primary-color);
                     border-radius: 100px;
                 }
             }
@@ -139,30 +128,21 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
-            a {
-                color: inherit;
-            }
             .location {
-                color: inherit;
+                color: var(--font-color);
                 @include flex-box(false);
             }
             .position {
-                color: inherit;
+                color: var(--font-color);
                 @include flex-box(false);
             }
         }
     }
-    .border-black {
+    .border {
         width: 100%;
-        border: 2px solid $secondary-black-theme;
+        border: 2px solid var(--secondary-color);
         margin-bottom: 36px;
     }
-    .border-light {
-        width: 100%;
-        border: 2px solid $secondary-white-theme;
-        margin-bottom: 36px;
-    }
-
     .episodes {
         width: 100%;
         padding: 0 16px;
@@ -184,9 +164,6 @@
         .episodes__list {
             display: flex;
             flex-direction: column;
-            a {
-                color: inherit;
-            }
             .episodes__item {
                 display: flex;
                 align-items: center;

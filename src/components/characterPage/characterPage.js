@@ -42,7 +42,7 @@ const CharacterPage = () => {
                     <div className="background">
                         <div className='background__image'>
                             <img src="" alt="" />
-                            <div className={context === 'dark' ? "arrow-white" : "arrow-black"} onClick={() => navigate(-1)}>
+                            <div className='arrow' onClick={() => navigate(-1)}>
                                 <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="" />
                             </div>
                         </div>
@@ -93,7 +93,7 @@ const CharacterPage = () => {
                         </Link>
                     </div>
                 </div>
-                <div className={context === 'dark' ? "border-black" : "border-light"}></div>
+                <div className="border"></div>
                 <div className="episodes">
                     <div>
                         <p className="title">Эпизоды</p>

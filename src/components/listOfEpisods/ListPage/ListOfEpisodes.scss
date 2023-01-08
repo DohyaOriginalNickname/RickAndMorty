@@ -10,6 +10,7 @@
     gap: 10px;
     border-radius: 100px;
     margin-bottom: 10px;
+    background:var(--secondary-color);
     input {
         width: 280px;
         color: $noActiveElement;
@@ -69,7 +70,4 @@
     height: 604px;
     padding: 0 16px;
     overflow-y: scroll;
-    a{
-        color: inherit;
-    }
 }
