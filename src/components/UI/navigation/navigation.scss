@@ -11,6 +11,7 @@
     justify-content: center;
     padding: 8px 10px 12px;
     box-shadow: 0px -4px 30px rgba(0, 0, 0, 0.08);
+    background:var(--secondary-color);
     &__item{
         width: 88.75px;
         display: flex;

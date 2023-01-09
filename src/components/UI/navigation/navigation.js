@@ -23,7 +23,7 @@ import settingsIcon from '../../../assets/navigation/nonActiveIcons/nonActiveSet
 const Navigation = () => {
     const [context, setContext] = useContext(Context)
     return (
-        <nav className={context === 'dark' ? "navigation-panel dark-theme-secondary" : "navigation-panel light-theme-secondary"}>
+        <nav className={context === 'dark' ? "navigation-panel" : "navigation-panel"}>
             <NavLink to={'/listOfCharacters'}>
                 {({ isActive }) => (
                     <div className={isActive ? "navigation-panel__item_select" : "navigation-panel__item"}>
