@@ -45,7 +45,7 @@ const SearchCharacter = (props) => {
 
     return (
         <>
-            <div className={context === 'dark' ? "characters-page__search_active dark-theme-secondary" : "characters-page__search_active light-theme-secondary"}>
+            <div className="characters-page__search_active">
                 <div>
                     <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.changeToSearchPage()} />
                 </div>

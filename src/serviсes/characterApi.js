@@ -15,11 +15,8 @@ export const characterApi = createApi({
         }),
         getCharactersByFilters: builder.query({
             query: ({ obj = {}, page = 1 }) => {
-                let stringQuery = ''
-                for (const key in obj) {
-                    stringQuery += obj[key]
-                }
-                return `/character/?page=${page}${stringQuery}`
+                let stringQuery = new URLSearchParams(Object.values(obj).join(''))
+                return `/character/?page=${page}&${stringQuery.toString()}`
             }
         })
     })

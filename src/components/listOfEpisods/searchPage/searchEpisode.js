@@ -68,7 +68,7 @@ const SearchEpisode = (props) => {
 
     return (
         <>
-            <div className={context === 'dark' ? "episodes-page__search_active dark-theme-secondary" : "episodes-page__search_active light-theme-secondary"}>
+            <div className="episodes-page__search_active">
                 <div>
                     <img src={context === 'dark' ? ArrowBlackTheme : ArrowWhiteTheme} alt="search" onClick={() => props.changePage()} />
                 </div>

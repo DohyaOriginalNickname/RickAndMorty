@@ -73,7 +73,7 @@ const ListLocations = (props) => {
 
     return (
         <>
-            <div className={context === 'dark' ? "locations-page__search dark-theme-secondary" : "locations-page__search light-theme-secondary"}>
+            <div className="locations-page__search">
                 <div>
                     <img src={Search} alt="search" />
                 </div>

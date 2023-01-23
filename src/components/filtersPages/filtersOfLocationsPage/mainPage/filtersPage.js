@@ -42,7 +42,7 @@ const FiltersOfLocationsPage = (props) => {
                         <img src={EndTo} alt="" />
                     </div>
                 </div>
-                <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                <div className="border"></div>
                 <div className='sort-block'>
                     <div className='title'>Сортировать по</div>
                     <div className='sort' onClick={() => props.changePage(1)}>

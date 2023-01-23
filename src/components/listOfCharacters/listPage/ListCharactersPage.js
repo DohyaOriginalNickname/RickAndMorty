@@ -57,7 +57,7 @@ const ListCharacters = (props) => {
 
     return (
         <>
-            <div className={context === 'dark' ? "characters-page__search dark-theme-secondary" : "characters-page__search light-theme-secondary"}>
+            <div className="characters-page__search">
                 <div>
                     <img src={Search} alt="search" />
                 </div>

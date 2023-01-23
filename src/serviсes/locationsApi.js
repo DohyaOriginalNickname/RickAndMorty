@@ -15,11 +15,8 @@ export const locationsApi = createApi({
         }),
         getLocationsByFilters: builder.query({
             query: ({ page = 1, obj = {} }) => {
-                let stringQuery = ''
-                for (const key in obj) {
-                    stringQuery += obj[key]
-                }
-                return `/location/?page=${page}${stringQuery}`
+                let stringQuery = new URLSearchParams(Object.values(obj).join(''))
+                return `/location/?page=${page}&${stringQuery.toString()}`
             }
         })
     })

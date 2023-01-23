@@ -17,7 +17,7 @@ const FilterTypePage = (props) => {
     const filter = useSelector(state => state.filter.paramsForLocationsQuery)
 
     const filtersOfTypeLocation = ['Planet', 'Microverse', 'Space station', 'Fantasy town', 'Resort', 'TV', 'Dream', 'Dimension', 'Mount', 'Consciouness', 'liquid', 'Diegesis', 'Spacecraft', 'unknown']
-    const filtersOfDimensionLocation = ['Dimension 35-C', 'dimension C-137', 'Dimension C-500A', 'Dimension J19ζ7', 'Fantasy Dimension', 'Replacment dimension']
+    const filtersOfDimensionLocation = ['Dimension 35-C', 'Dimension C-137', 'Dimension C-500A', 'Dimension J19ζ7', 'Fantasy Dimension', 'Replacement Dimension']
 
     useEffect(() => {
         const array = props.num === 1 ?
@@ -74,7 +74,7 @@ const FilterTypePage = (props) => {
 
             <div className='list-of-filter'>
                 <p>{Object.keys(filter).length !== 0 ? aaa() : "Не выбрано"}</p>
-                <div className={context === 'dark' ? "dark-theme-border" : "light-theme-border"}></div>
+                <div className= "border"></div>
                 <ul>
                     {elements}
                 </ul>
