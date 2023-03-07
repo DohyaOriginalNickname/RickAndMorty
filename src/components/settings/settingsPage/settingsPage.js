@@ -116,11 +116,11 @@ const ChangeThemeModal = (props) => {
             <ul className='select-list' onClick={(e) => changeTheme(e)}>
                 <li>
                     <input type="radio" name='theme' value="light" id='off' />
-                    <label htmlFor='off'>Выключенна</label>
+                    <label htmlFor='off'>Выключена</label>
                 </li>
                 <li>
                     <input type="radio" name='theme' value="dark" id='on' />
-                    <label htmlFor='on'>Включенна</label>
+                    <label htmlFor='on'>Включена</label>
                 </li>
                 <li>
                     <input type="radio" name='theme' value="for-the-system" id='for-the-system' />

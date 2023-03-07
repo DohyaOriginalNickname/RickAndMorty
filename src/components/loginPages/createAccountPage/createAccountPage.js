@@ -32,7 +32,7 @@ const CreateAccountPage = () => {
                 </div>
             </div>
             <div>
-                <form className="create-account__form">
+                <form className="create-account__form" autoComplete='off'>
                     <div className="user-data">
                         <div className="field">
                             <label htmlFor="name">Имя</label>

@@ -8,8 +8,6 @@ import Modal from "../../UI/modal/modal"
 import title from "../../../assets/loadingPage/title.png"
 import './loginPage.scss'
 
-// TODO сделать модалку с сообщением об ошибке
-
 const LoginPage = () => {
 
     const [login, setLogin] = useState('')
@@ -44,7 +42,7 @@ const LoginPage = () => {
                 <div >
                     <img src={title} alt="title" className="sign-in-page__title" />
                 </div>
-                <form className="sign-in-page__form">
+                <form className="sign-in-page__form" autoComplete="off">
                     <div className="field">
                         <label htmlFor="login">Логин</label>
                         <input type="text" id="login" placeholder="Логин" className="field__login" value={login} onChange={(event) => setLogin(event.target.value)} />

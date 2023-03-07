@@ -44,7 +44,7 @@ const NameChange = () => {
                 </div>
 
 
-                <div className="user-data">
+                <form className="user-data" autoComplete='off'>
                     <div className="field">
                         <label htmlFor="name">Имя</label>
                         <input type="text" id="name" placeholder="Имя" className="field__login" value={newName} onChange={(e) => setNewName(e.target.value)} />
@@ -57,7 +57,7 @@ const NameChange = () => {
                         <label htmlFor="middleName">Отчество</label>
                         <input type="text" id="middleName" placeholder="Отчество" className="field__login" value={newMiddleName} onChange={(e) => setMiddleName(e.target.value)} />
                     </div>
-                </div>
+                </form>
 
                 <div className='button-submit'>
                     <button onClick={() => changeData()}>Сохранить</button>

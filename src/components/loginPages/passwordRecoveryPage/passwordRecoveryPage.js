@@ -26,7 +26,7 @@ const PasswordRecovery = () => {
                 </div>
             </div>
             <div className="recovery-page__form">
-                <form>
+                <form autoComplete='off'>
                     <div className="field">
                         <label htmlFor="login">Логин</label>
                         <input type="text" id="login" placeholder="Логин" className="field__login" value={email} onChange={(e) => setEmail(e.target.value)} />

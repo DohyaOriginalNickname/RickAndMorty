@@ -45,16 +45,16 @@ const PasswordChange = () => {
                     <p>Изменить пароль</p>
                 </div>
 
-                <div className='form'>
+                <form className='form' autoComplete='off'>
                     <div className="field">
                         <label htmlFor="login">Старый пароль</label>
-                        <input type="password" id="login" placeholder="Старый пароль" className='field__pass' value={oldPass} onChange={(e) => setOldPass(e.target.value)} />
+                        <input type="password" id="login" placeholder="Старый пароль" autoComplete='off' className='field__pass' value={oldPass} onChange={(e) => setOldPass(e.target.value)} />
                     </div>
                     <div className="field">
                         <label htmlFor="pass">Новый пароль</label>
                         <input type="password" id="pass" placeholder="Новый пароль" className='field__pass' value={newPass} onChange={(e) => setNewPass(e.target.value)} />
                     </div>
-                </div>
+                </form>
 
                 <div className='button-submit'>
                     <button disabled={oldPass === '' && newPass === '' ? true : false} onClick={() => changePassword()}>Сохранить</button>
