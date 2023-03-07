@@ -24,181 +24,164 @@
     }
 }
 
+@mixin theme($color) {
+    border: 8px solid $color;
+    border-radius: 100px;
+    width: 146px;
+    height: 146px;
+}
+
 .character-page {
-    height: 100%;
-    background: var(--primary-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--font-color);
-    .header {
-        .background {
-            width: 100%;
-            .background__image {
-                height: 218px;
-                background: linear-gradient(
-                        180deg,
-                        rgba(0, 0, 0, 0.65) 0%,
-                        rgba(11, 30, 45, 0) 37.29%,
-                        rgba(11, 30, 45, 0) 68.93%
-                    ),
-                    rgba(11, 30, 45, 0.65);
-                backdrop-filter: blur(4px);
-                background-color: wheat;
-                .arrow {
-                    position: relative;
-                    left: 16px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 48px;
-                    height: 48px;
-                    background-color: var(--primary-color);
-                    border-radius: 100px;
-                }
-            }
-        }
+    @include page;
 
-        .title {
-            position: relative;
-            top: -70px;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            gap: 24px;
-            .title__avatar {
-                .avatar-white-theme {
-                    border: 8px solid $whiteTheme;
-                    border-radius: 100px;
-                    width: 146px;
-                    height: 146px;
-                }
-                .avatar-black-theme {
-                    border: 8px solid $secondary-black-theme;
-                    border-radius: 100px;
-                    width: 146px;
-                    height: 146px;
-                }
-            }
-            .title__descripion {
-                display: flex;
-                flex-direction: column;
-                gap: 36px;
-                .name {
-                    @include text-style($bigSize, $biggest-line-height, $regular-letter-spacing);
-                }
-                .live {
-                    color: #43d049;
-                    text-transform: uppercase;
-                    @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
-                }
-                .dead {
-                    color: #eb5757;
-                    text-transform: uppercase;
-                    @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
-                }
-                .char-description {
-                    margin: 0 16px;
-                    text-align: start;
-                    @include text-style($smallSize-2, $regular-line-height, $big-letter-spacing);
-                }
-            }
-        }
-    }
-
-    .character-data {
-        position: relative;
-        top: -46px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 0 16px;
-        width: 100%;
-        .gender-and-race {
-            display: flex;
-            gap: 118px;
-            .gender {
-                @include flex-box;
-            }
-            .race {
-                @include flex-box;
-            }
-        }
-        .other-data {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            .location {
-                color: var(--font-color);
-                @include flex-box(false);
-            }
-            .position {
-                color: var(--font-color);
-                @include flex-box(false);
-            }
-        }
-    }
     .border {
         width: 100%;
         border: 2px solid var(--secondary-color);
         margin-bottom: 36px;
     }
-    .episodes {
+}
+
+.header {
+    .background {
         width: 100%;
-        padding: 0 16px;
+        .background__image {
+            height: 218px;
+            background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.65) 0%,
+                    rgba(11, 30, 45, 0) 37.29%,
+                    rgba(11, 30, 45, 0) 68.93%
+                ),
+                rgba(11, 30, 45, 0.65);
+            backdrop-filter: blur(4px);
+            background-color: wheat;
+            .arrow {
+                position: relative;
+                left: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 48px;
+                height: 48px;
+                background-color: var(--primary-color);
+                border-radius: 100px;
+            }
+        }
+    }
+
+    .title {
+        position: relative;
+        top: -70px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+        .title__avatar {
+            .avatar-white-theme {
+                @include theme($whiteTheme);
+            }
+            .avatar-black-theme {
+                @include theme($secondary-black-theme);
+            }
+        }
+        .title__descripion {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            .name {
+                @include text-style($bigSize, $biggest-line-height, $regular-letter-spacing);
+            }
+            .live {
+                color: #43d049;
+                text-transform: uppercase;
+                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+            }
+            .dead {
+                color: #eb5757;
+                text-transform: uppercase;
+                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+            }
+            .char-description {
+                margin: 0 16px;
+                text-align: start;
+                @include text-style($smallSize-2, $regular-line-height, $big-letter-spacing);
+            }
+        }
+    }
+}
+
+.character-data {
+    position: relative;
+    top: -46px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 16px;
+    width: 100%;
+    .gender-and-race {
+        display: flex;
+        gap: 118px;
+        .gender,.race {
+            @include flex-box;
+        }
+    }
+    .other-data {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            .title {
-                @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
-            }
-            .subtitle {
-                color: $noActiveElement;
-                @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
-            }
+        .location,.position {
+            color: var(--font-color);
+            @include flex-box(false);
         }
-        .episodes__list {
+    }
+}
+
+.episodes {
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: inherit;
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title {
+            @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+        }
+        .subtitle {
+            color: $noActiveElement;
+            @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
+        }
+    }
+    .episodes__list {
+        display: flex;
+        flex-direction: column;
+        .episodes__item {
             display: flex;
-            flex-direction: column;
-            .episodes__item {
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            .description {
+                width: 100%;
                 display: flex;
-                align-items: center;
-                gap: 16px;
-                margin-bottom: 24px;
-                .description {
+                flex-direction: column;
+                color: inherit;
+                p {
                     width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    color: inherit;
-                    p {
-                        width: 100%;
-                    }
-                    p.serial-number {
-                        color: #22a2bdde;
-                        text-transform: uppercase;
-                        @include text-style(
-                            $smallerSize,
-                            $small-line-height,
-                            $biggest-letter-spacing,
-                            $bold-font-weight
-                        );
-                    }
-                    p.series-title {
-                        @include text-style(
-                            $regularSize-1,
-                            $regular-line-height-2,
-                            $big-letter-spacing,
-                            $bold-font-weight
-                        );
-                    }
-                    p.release-date {
-                        color: $noActiveElement;
-                        @include text-style($smallSize-3, $regular-line-height, $small-letter-spacing);
-                    }
+                }
+                p.serial-number {
+                    color: #22a2bdde;
+                    text-transform: uppercase;
+                    @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
+                }
+                p.series-title {
+                    @include text-style($regularSize-1, $regular-line-height-2, $big-letter-spacing, $bold-font-weight);
+                }
+                p.release-date {
+                    color: $noActiveElement;
+                    @include text-style($smallSize-3, $regular-line-height, $small-letter-spacing);
                 }
             }
         }

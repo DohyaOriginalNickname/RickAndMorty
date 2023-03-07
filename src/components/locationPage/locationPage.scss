@@ -2,12 +2,8 @@
 @import "../../styles/mixins.scss";
 
 .location-page {
-    background: var(--primary-color);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--font-color);
+    @include page;
+    
     &__header {
         z-index: 0;
         backdrop-filter: blur(4px);
@@ -39,50 +35,51 @@
         border-top-right-radius: 26px;
         width: 100%;
         padding: 22px 16px;
-        .location-data {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            margin-bottom: 36px;
-            .main-data {
-                display: flex;
-                flex-direction: column;
-                .title {
-                    color: inherit;
-                    @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
-                }
-                div {
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    color: $noActiveElement;
-                    p {
-                        @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
-                    }
-                    .dot {
-                        width: 2px;
-                        height: 2px;
-                        background: #6e798c;
-                    }
-                }
-            }
-            .description {
-                @include text-style($smallSize-2, $regular-line-height, $regular-letter-spacing);
-            }
-        }
+    }
+}
 
-        .related-characters {
+.location-data {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 36px;
+    .main-data {
+        display: flex;
+        flex-direction: column;
+        .title {
+            color: inherit;
+            @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+        }
+        div {
             display: flex;
-            flex-direction: column;
-            gap: 24px;
-            .title {
-                @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+            align-items: center;
+            gap: 5px;
+            color: $noActiveElement;
+            p {
+                @include text-style($smallSize-1, $small-line-height, $big-letter-spacing);
             }
-            .list-of-characters {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
+            .dot {
+                width: 2px;
+                height: 2px;
+                background: #6e798c;
             }
         }
+    }
+    .description {
+        @include text-style($smallSize-2, $regular-line-height, $regular-letter-spacing);
+    }
+}
+
+.related-characters {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    .title {
+        @include text-style($regularSize-2, $regular-line-height-3, $small-letter-spacing, $bold-font-weight);
+    }
+    .list-of-characters {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
     }
 }

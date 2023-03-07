@@ -2,11 +2,6 @@
 @import "../../styles/mixins.scss";
 
 .episodes-page {
-    background-color: var(--primary-color);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include page;
     padding: 15px 0;
-    color: var(--font-color);
 }

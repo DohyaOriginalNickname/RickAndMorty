@@ -92,3 +92,28 @@
         @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
     }
 }
+
+@mixin page {
+    height: 100vh;
+    background: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--font-color);
+}
+
+@mixin page__search_active {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px 12px 16px;
+    gap: 20px;
+    width: 375px;
+    height: 48px;
+    background:var(--secondary-color);
+    input {
+        width: 256px;
+        color: inherit;
+        background: inherit;
+        @include text-style($regularSize-1, $regular-line-height-2, 0.444444px);
+    }
+}

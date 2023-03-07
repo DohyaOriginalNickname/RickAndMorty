@@ -2,12 +2,7 @@
 @import "../../../styles/mixins.scss";
 
 .settings-page {
-    height: 100vh;
-    background-color: var(--primary-color);
-    color: var(--font-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include page;
     gap: 24px;
     padding: 15px 16px;
 }
@@ -30,97 +25,39 @@
     .border {
         border: 1px solid var(--secondary-color);
     }
-    .main-settings {
+}
+
+.main-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .profile {
         display: flex;
-        flex-direction: column;
-        gap: 30px;
-        .profile {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            img {
-                width: 80px;
-                height: 80px;
-                border-radius: 50%;
-            }
-            .profile__info {
-                p:first-child {
-                    color: inherit;
-                    @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
-                }
-                p:last-child {
-                    color: $noActiveElement;
-                    @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
-                }
-            }
+        align-items: center;
+        gap: 16px;
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
         }
-        .edit-button {
-            border: 1px solid $activeElement;
-            color: $activeElement;
-            border-radius: 12px;
-            background: inherit;
-            width: 100%;
-            height: 40px;
+        .profile__info {
+            p:first-child {
+                color: inherit;
+                @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
+            }
+            p:last-child {
+                color: $noActiveElement;
+                @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
+            }
         }
     }
-    .others-settings {
-        display: flex;
-        flex-direction: column;
-        gap: 36px;
-        .change-theme {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            > p {
-                color: $noActiveElement;
-                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
-                text-transform: uppercase;
-            }
-            .select-theme {
-                display: flex;
-                align-items: center;
-                gap: 16px;
-                .info-of-theme {
-                    width: 100%;
-                    p:first-child {
-                        color: inherit;
-                        @include text-style($regularSize-1, $regular-line-height-2, $small-letter-spacing);
-                    }
-                    p:last-child {
-                        color: $noActiveElement;
-                        @include text-style($smallSize-3, $regular-line-height, $regular-letter-spacing);
-                    }
-                }
-            }
-        }
-
-        .about {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            p:first-child {
-                color: $noActiveElement;
-                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
-                text-transform: uppercase;
-            }
-            p:last-child {
-                @include text-style($smallSize-2, $regular-line-height, $regular-letter-spacing);
-            }
-        }
-
-        .version {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            p:first-child {
-                color: $noActiveElement;
-                @include text-style($smallerSize, $small-line-height, $biggest-letter-spacing, $bold-font-weight);
-                text-transform: uppercase;
-            }
-            p:last-child {
-                @include text-style($smallSize-2, $regular-line-height, $regular-letter-spacing);
-            }
-        }
+    .edit-button {
+        border: 1px solid $activeElement;
+        color: $activeElement;
+        border-radius: 12px;
+        background: inherit;
+        width: 100%;
+        height: 40px;
     }
 }
 
