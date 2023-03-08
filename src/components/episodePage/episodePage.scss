@@ -3,29 +3,7 @@
 
 .episode-page {
     @include page;
-    
-    &__header {
-        z-index: 0;
-        backdrop-filter: blur(4px);
-        background: linear-gradient(180deg, rgba(11, 30, 45, 0) 68.93%, rgba(0, 0, 0, 0.65) 100%),
-            linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(11, 30, 45, 0) 37.29%, rgba(11, 30, 45, 0) 68.93%);
-        .arrow {
-            z-index: 1;
-            position: absolute;
-            left: 16px;
-            top: 16px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            padding: 12px;
-            gap: 10px;
-            background: var(--secondary-color);
-            border-radius: 100px;
-        }
-    }
+    @include header;
 
     &__main {
         position: relative;
