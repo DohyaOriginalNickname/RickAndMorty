@@ -1,12 +1,12 @@
 import { useState, useContext } from 'react'
-import { Context } from '../../ThemeContext/themeContext';
+import { Context } from 'components/ThemeContext/themeContext';
 import { Link } from 'react-router-dom'
 
-//import { changePasswordByEmail } from '../../../serviсes/authentication'
+//import { changePasswordByEmail } from 'serviсes/authentication'
 
 import './passwordRecoveryPage.scss'
-import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
-import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
 
 const PasswordRecovery = () => {
 

@@ -1,4 +1,4 @@
-import notFoundByFilter from '../../../assets/notFoundImages/notFoundByFilter.png'
+import notFoundByFilter from 'assets/notFoundImages/notFoundByFilter.png'
 import './notFoundByFilter.scss'
 
 const NotFoundByFilter = () => {

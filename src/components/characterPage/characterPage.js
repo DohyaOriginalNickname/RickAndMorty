@@ -1,18 +1,18 @@
 import { useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { useGetCharacterQuery } from '../../serviсes/characterApi'
-import { useGetEpisodeQuery } from '../../serviсes/episodsApi'
-import { Context } from '../ThemeContext/themeContext';
+import { useGetCharacterQuery } from 'serviсes/characterApi'
+import { useGetEpisodeQuery } from 'serviсes/episodsApi'
+import { Context } from 'components/ThemeContext/themeContext';
 
-import ItemOfEpisodesList from '../UI/ItemOfEpisodesList/ItemOfEpisodesList'
+import ItemOfEpisodesList from 'components/UI/ItemOfEpisodesList/ItemOfEpisodesList'
 
-import ArrowBlackTheme from '../../assets/other/blackThemeItems/Arrow.png'
-import ArrowBlackTheme2 from '../../assets/other/blackThemeItems/Arrow2.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
+import ArrowBlackTheme2 from 'assets/other/blackThemeItems/Arrow2.png'
 
-import ArrowWhiteTheme from '../../assets/other/whiteThemeItems/Arrow.png'
-import ArrowWhiteTheme2 from '../../assets/other/whiteThemeItems/Arrow2.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
+import ArrowWhiteTheme2 from 'assets/other/whiteThemeItems/Arrow2.png'
 
-import image from '../../assets/Rectangle.png'
+import image from 'assets/Rectangle.png'
 import './characterPage.scss'
 
 //TODO сделать бэкграунд

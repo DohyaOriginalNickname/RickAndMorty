@@ -1,19 +1,19 @@
 import { useState, useEffect, useRef, useContext } from "react"
 import { useSelector } from "react-redux"
-import { useGetAllCharactersQuery, useGetCharactersByFiltersQuery } from '../../../serviсes/characterApi'
-import { Context } from '../../ThemeContext/themeContext';
+import { useGetAllCharactersQuery, useGetCharactersByFiltersQuery } from 'serviсes/characterApi'
+import { Context } from 'components/ThemeContext/themeContext';
 import './ListCharactersPage.scss'
 
-import ListItem from '../ItemList/listItem'
-import Loader from '../../UI/loader/loader'
-import NotFoundByFilter from "../../filtersPages/notFoundByFilter/notFoundByFilter"
-import Navigation from "../../UI/navigation/navigation"
+import ListItem from 'components/listOfCharacters/ItemList/listItem'
+import Loader from 'components/UI/loader/loader'
+import NotFoundByFilter from "components/filtersPages/notFoundByFilter/notFoundByFilter"
+import Navigation from "components/UI/navigation/navigation"
 
-import Search from '../../../assets/other/Search.png'
-import Filter from '../../../assets/other/Filter.png'
+import Search from 'assets/other/Search.png'
+import Filter from 'assets/other/Filter.png'
 
-import Group from '../../../assets/other/Group.png'
-import List from '../../../assets/other/List.png'
+import Group from 'assets/other/Group.png'
+import List from 'assets/other/List.png'
 
 const ListCharacters = (props) => {
 

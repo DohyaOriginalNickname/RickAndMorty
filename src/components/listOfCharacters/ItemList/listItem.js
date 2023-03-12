@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import ItemOfCharactersList from '../../UI/ItemOfCharactersList/ItemOfCharactersList'
+import ItemOfCharactersList from 'components/UI/ItemOfCharactersList/ItemOfCharactersList'
 
 
 const ListItem = (props) => {

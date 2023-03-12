@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from '../../ThemeContext/themeContext';
+import { Context } from 'components/ThemeContext/themeContext';
 import './ItemOfCharactersList.scss'
-import ArrowBlackTheme2 from '../../../assets/other/blackThemeItems/Arrow2.png'
-import ArrowWhiteTheme2 from '../../../assets/other/whiteThemeItems/Arrow2.png'
+import ArrowBlackTheme2 from 'assets/other/blackThemeItems/Arrow2.png'
+import ArrowWhiteTheme2 from 'assets/other/whiteThemeItems/Arrow2.png'
 
 const ItemOfCharactersList = (props) => {
     const [context, setContext] = useContext(Context)

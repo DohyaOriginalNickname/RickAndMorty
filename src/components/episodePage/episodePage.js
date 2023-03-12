@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useGetEpisodeQuery } from "../../serviсes/episodsApi";
-import { useGetCharacterQuery } from "../../serviсes/characterApi";
-import { Context } from '../ThemeContext/themeContext';
+import { useGetEpisodeQuery } from "serviсes/episodsApi";
+import { useGetCharacterQuery } from "serviсes/characterApi";
+import { Context } from 'components/ThemeContext/themeContext';
 
-import ItemOfCharactersList from '../UI/ItemOfCharactersList/ItemOfCharactersList'
+import ItemOfCharactersList from 'components/UI/ItemOfCharactersList/ItemOfCharactersList'
 
-import ArrowBlackTheme from '../../assets/other/blackThemeItems/Arrow.png'
-import ArrowWhiteTheme from '../../assets/other/whiteThemeItems/Arrow.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
 
-import backgroundImage from '../../assets/Rectangle3.png'
-import playButton from '../../assets/PlayButton.png'
+import backgroundImage from 'assets/Rectangle3.png'
+import playButton from 'assets/PlayButton.png'
 
 import './episodePage.scss'
 const EpisodPage = () => {

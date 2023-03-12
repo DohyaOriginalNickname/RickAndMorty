@@ -1,16 +1,16 @@
 import { useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
-import { useGetLocationQuery } from '../../serviсes/locationsApi'
-import { useGetCharacterQuery } from '../../serviсes/characterApi'
-import { Context } from '../ThemeContext/themeContext';
+import { useGetLocationQuery } from 'serviсes/locationsApi'
+import { useGetCharacterQuery } from 'serviсes/characterApi'
+import { Context } from 'components/ThemeContext/themeContext';
 
-import ItemOfCharactersList from '../UI/ItemOfCharactersList/ItemOfCharactersList'
+import ItemOfCharactersList from 'components/UI/ItemOfCharactersList/ItemOfCharactersList'
 
 import './locationPage.scss'
 
-import image from '../../assets/Rectangle2.png'
-import ArrowBlackTheme from '../../assets/other/blackThemeItems/Arrow.png'
-import ArrowWhiteTheme from '../../assets/other/whiteThemeItems/Arrow.png'
+import image from 'assets/Rectangle2.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
 
 
 const LocationPage = () => {

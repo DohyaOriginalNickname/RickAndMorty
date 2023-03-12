@@ -1,12 +1,12 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { changeUserData } from '../../../../serviсes/authentication';
-import { Context } from '../../../ThemeContext/themeContext';
+import { changeUserData } from 'serviсes/authentication';
+import { Context } from 'components/ThemeContext/themeContext';
 
-import Modal from '../../../UI/modal/modal';
+import Modal from 'components/UI/modal/modal';
 import './nameChange.scss'
-import ArrowBlackTheme from '../../../../assets/other/blackThemeItems/Arrow.png'
-import ArrowWhiteTheme from '../../../../assets/other/whiteThemeItems/Arrow.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
 
 const NameChange = () => {
 

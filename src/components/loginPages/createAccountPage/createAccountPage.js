@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react'
-import { Context } from '../../ThemeContext/themeContext';
+import { Context } from 'components/ThemeContext/themeContext';
 import { Link } from 'react-router-dom'
 
-import { createNewUser } from '../../../serviсes/authentication'
-import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
-import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
+import { createNewUser } from 'serviсes/authentication'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
 
 import './createAccountPage.scss'
 const CreateAccountPage = () => {

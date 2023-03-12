@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from '../../ThemeContext/themeContext';
+import { Context } from 'components/ThemeContext/themeContext';
 import './ItemOfLocationsList.scss'
 
 const ItemOfLocationsList = (props) => {

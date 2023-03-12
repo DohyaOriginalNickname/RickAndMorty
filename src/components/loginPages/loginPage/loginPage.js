@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 
-import { loginUser } from "../../../serviсes/authentication"
+import { loginUser } from "serviсes/authentication"
 
-import Modal from "../../UI/modal/modal"
+import Modal from "components/UI/modal/modal"
 
-import title from "../../../assets/loadingPage/title.png"
+import title from "assets/loadingPage/title.png"
 import './loginPage.scss'
 
 const LoginPage = () => {

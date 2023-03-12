@@ -1,5 +1,5 @@
-import title from "../../../assets/loadingPage/title.png"
-import rickAndMorty from "../../assets/loadingPage/RickAndMorty.png"
+import title from "assets/loadingPage/title.png"
+import rickAndMorty from "assets/loadingPage/RickAndMorty.png"
 
 import './loadingDisplay.scss'
 

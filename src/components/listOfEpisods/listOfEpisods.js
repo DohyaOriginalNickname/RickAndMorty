@@ -3,7 +3,7 @@ import SearchEpisode from './searchPage/searchEpisode';
 import ListEpisodes from './ListPage/ListOfEpisodes';
 import './listOfEpisods.scss'
 
-import image from '../../assets/Rectangle.png'
+import image from 'assets/Rectangle.png'
 
 const ListOfEpisods = () => {
 

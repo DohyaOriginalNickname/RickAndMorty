@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState, useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCharactersFilters, clearCharactersFilters } from '../../../store/slice'
-import { Context } from '../../ThemeContext/themeContext';
+import { addCharactersFilters, clearCharactersFilters } from 'store/slice'
+import { Context } from 'components/ThemeContext/themeContext';
 
 import './filtersPage.scss'
 
-import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
-import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
-import clearFilters from '../../../assets/other/ClearFilters.png'
-import StartTo from '../../../assets/other/StartTo.png'
-import EndTo from '../../../assets/other/EndTo.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
+import clearFilters from 'assets/other/ClearFilters.png'
+import StartTo from 'assets/other/StartTo.png'
+import EndTo from 'assets/other/EndTo.png'
 
 const FiltersPage = (props) => {
 

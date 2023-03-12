@@ -1,16 +1,16 @@
 import { useRef, useEffect, useState, useContext } from 'react'
 import { useSelector } from 'react-redux'
-import { useGetAllLocationsQuery, useGetLocationsByFiltersQuery } from '../../../serviсes/locationsApi'
-import { Context } from '../../ThemeContext/themeContext';
+import { useGetAllLocationsQuery, useGetLocationsByFiltersQuery } from 'serviсes/locationsApi'
+import { Context } from 'components/ThemeContext/themeContext';
 import './ListLocationsPage.scss'
 
-import ItemOfLocationsList from '../../UI/ItemOfLocationsList/ItemOfLocationsList'
-import Loader from '../../UI/loader/loader'
-import NotFoundByFilter from "../../filtersPages/notFoundByFilter/notFoundByFilter"
-import Navigation from '../../UI/navigation/navigation'
+import ItemOfLocationsList from 'components/UI/ItemOfLocationsList/ItemOfLocationsList'
+import Loader from 'components/UI/loader/loader'
+import NotFoundByFilter from "components/filtersPages/notFoundByFilter/notFoundByFilter"
+import Navigation from 'components/UI/navigation/navigation'
 
-import Search from '../../../assets/other/Search.png'
-import Filter from '../../../assets/other/Filter.png'
+import Search from 'assets/other/Search.png'
+import Filter from 'assets/other/Filter.png'
 
 const ListLocations = (props) => {
     const [countPage, setCountPage] = useState(1)

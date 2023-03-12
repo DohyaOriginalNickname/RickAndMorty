@@ -1,17 +1,17 @@
 import { useState, useRef, useEffect, useContext } from 'react'
-import { useGetEpisodeByNameQuery } from '../../../serviсes/episodsApi'
-import { Context } from '../../ThemeContext/themeContext';
+import { useGetEpisodeByNameQuery } from 'serviсes/episodsApi'
+import { Context } from 'components/ThemeContext/themeContext';
 import './searchEpisode.scss'
 
-import ItemOfEpisodesList from '../../UI/ItemOfEpisodesList/ItemOfEpisodesList'
+import ItemOfEpisodesList from 'components/UI/ItemOfEpisodesList/ItemOfEpisodesList'
 
-import CancelBlackTheme from '../../../assets/other/blackThemeItems/Cancel.png'
-import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
+import CancelBlackTheme from 'assets/other/blackThemeItems/Cancel.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
 
-import CancelWhiteTheme from '../../../assets/other/whiteThemeItems/Cancel.png'
-import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
+import CancelWhiteTheme from 'assets/other/whiteThemeItems/Cancel.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
 
-import EpisodeNotFound from '../../../assets/notFoundImages/EpisodeNotFound.png'
+import EpisodeNotFound from 'assets/notFoundImages/EpisodeNotFound.png'
 
 const SearchEpisode = (props) => {
 

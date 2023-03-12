@@ -1,17 +1,17 @@
 import { useState, useRef, useEffect, useContext } from "react"
-import { useGetCharacterByNameQuery } from "../../../serviсes/characterApi"
-import { Context } from '../../ThemeContext/themeContext';
-import ListItem from "../ItemList/listItem"
+import { useGetCharacterByNameQuery } from "serviсes/characterApi"
+import { Context } from 'components/ThemeContext/themeContext';
+import ListItem from "components/listOfCharacters/ItemList/listItem"
 
 import './searchCharacters.scss'
 
-import CancelBlackTheme from '../../../assets/other/blackThemeItems/Cancel.png'
-import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
+import CancelBlackTheme from 'assets/other/blackThemeItems/Cancel.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
 
-import CancelWhiteTheme from '../../../assets/other/whiteThemeItems/Cancel.png'
-import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
+import CancelWhiteTheme from 'assets/other/whiteThemeItems/Cancel.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
 
-import CharacterNotFound from '../../../assets/notFoundImages/CharacterNotFound.png'
+import CharacterNotFound from 'assets/notFoundImages/CharacterNotFound.png'
 
 const SearchCharacter = (props) => {
 

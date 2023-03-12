@@ -1,14 +1,14 @@
 import { useRef, useState, useEffect, useContext } from 'react';
-import { useGetAllEpisodesQuery } from '../../../serviсes/episodsApi';
-import { Context } from '../../ThemeContext/themeContext';
+import { useGetAllEpisodesQuery } from 'serviсes/episodsApi';
+import { Context } from 'components/ThemeContext/themeContext';
 
-import ItemOfEpisodesList from '../../UI/ItemOfEpisodesList/ItemOfEpisodesList';
-import Loader from '../../UI/loader/loader'
-import Navigation from '../../UI/navigation/navigation';
+import ItemOfEpisodesList from 'components/UI/ItemOfEpisodesList/ItemOfEpisodesList';
+import Loader from 'components/UI/loader/loader'
+import Navigation from 'components/UI/navigation/navigation';
 
 import './ListOfEpisodes.scss'
 
-import Search from '../../../assets/other/Search.png'
+import Search from 'assets/other/Search.png'
 
 const ListEpisodes = (props) => {
 

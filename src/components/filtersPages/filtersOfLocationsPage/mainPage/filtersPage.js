@@ -1,19 +1,19 @@
 import { useContext } from 'react';
 import { useDispatch } from 'react-redux'
-import { clearLocationsFilters } from '../../../../store/slice'
+import { clearLocationsFilters } from 'store/slice'
 import { useSelector } from 'react-redux'
-import { Context } from '../../../ThemeContext/themeContext';
+import { Context } from 'components/ThemeContext/themeContext';
 import './filtersPage.scss'
 
-import ArrowBlackTheme from '../../../../assets/other/blackThemeItems/Arrow.png'
-import ArrowBlackTheme2 from '../../../../assets/other/blackThemeItems/Arrow2.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
+import ArrowBlackTheme2 from 'assets/other/blackThemeItems/Arrow2.png'
 
-import ArrowWhiteTheme from '../../../../assets/other/whiteThemeItems/Arrow.png'
-import ArrowWhiteTheme2 from '../../../../assets/other/whiteThemeItems/Arrow2.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
+import ArrowWhiteTheme2 from 'assets/other/whiteThemeItems/Arrow2.png'
 
-import clearFilters from '../../../../assets/other/ClearFilters.png'
-import StartTo from '../../../../assets/other/StartTo.png'
-import EndTo from '../../../../assets/other/EndTo.png'
+import clearFilters from 'assets/other/ClearFilters.png'
+import StartTo from 'assets/other/StartTo.png'
+import EndTo from 'assets/other/EndTo.png'
 
 const FiltersOfLocationsPage = (props) => {
 

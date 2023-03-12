@@ -1,16 +1,16 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Context } from '../../ThemeContext/themeContext';
+import { Context } from 'components/ThemeContext/themeContext';
 
-import { name } from '../../../serviсes/storage';
+import { name } from 'serviсes/storage';
 
 import './editProfile.scss'
-import ArrowBlackTheme from '../../../assets/other/blackThemeItems/Arrow.png'
-import ArrowBlackTheme2 from '../../../assets/other/blackThemeItems/Arrow2.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
+import ArrowBlackTheme2 from 'assets/other/blackThemeItems/Arrow2.png'
 
-import ArrowWhiteTheme from '../../../assets/other/whiteThemeItems/Arrow.png'
-import ArrowWhiteTheme2 from '../../../assets/other/whiteThemeItems/Arrow2.png'
-import avatar from '../../../assets/avatar.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
+import ArrowWhiteTheme2 from 'assets/other/whiteThemeItems/Arrow2.png'
+import avatar from 'assets/avatar.png'
 import { useEffect, useState } from 'react';
 
 

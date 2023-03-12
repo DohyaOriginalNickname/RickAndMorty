@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addLocationsFilters } from '../../../../store/slice'
-import { Context } from '../../../ThemeContext/themeContext';
+import { addLocationsFilters } from 'store/slice'
+import { Context } from 'components/ThemeContext/themeContext';
 
-import ArrowBlackTheme from '../../../../assets/other/blackThemeItems/Arrow.png'
-import ArrowWhiteTheme from '../../../../assets/other/whiteThemeItems/Arrow.png'
+import ArrowBlackTheme from 'assets/other/blackThemeItems/Arrow.png'
+import ArrowWhiteTheme from 'assets/other/whiteThemeItems/Arrow.png'
 
 import './subPagesFilters.scss'
 

@@ -4,9 +4,9 @@ import './listOfLocations.scss'
 
 import SearchLocation from './searchPage/searchLocation'
 import ListLocations from './ListPage/ListLocationsPage'
-import FiltersOfLocationsPage from '../filtersPages/filtersOfLocationsPage/filtersLocation'
+import FiltersOfLocationsPage from 'components/filtersPages/filtersOfLocationsPage/filtersLocation'
 
-import image from '../../assets/image2.png'
+import image from 'assets/image2.png'
 
 const ListOfLocations = () => {
 
